@@ -18,7 +18,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - "procfy-db-data:/var/lib/postgresql/data"
+      - "futengage-db-data:/var/lib/postgresql/data"
 
 volumes:
-  procfy-db-data:
+  futengage-db-data:
