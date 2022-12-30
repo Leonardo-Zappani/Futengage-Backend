@@ -4,6 +4,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.1.0",
     "@hotwired/turbo-rails": "^7.2.4",
+    "@pixi/filter-kawase-blur": "^3.2.0",
     "@rails/actioncable": "^7.0.4",
     "@rails/actiontext": "^7.0.4",
     "@rails/activestorage": "^7.0.4",
@@ -21,24 +22,28 @@
     "chart.js": "^4.0.1",
     "chartkick": "^4.2.0",
     "clipboard": "^2.0.11",
+    "debounce": "^1.2.1",
     "dropzone": "^6.0.0-beta.2",
     "el-transition": "^0.0.7",
     "esbuild": "^0.15.10",
     "esbuild-rails": "^1.0.3",
     "flatpickr": "^4.6.13",
     "glob": "^8.0.3",
+    "hsl-to-hex": "^1.0.0",
     "jquery": "^3.6.1",
     "jquery-mask-plugin": "^1.14.16",
     "js-cookie": "^3.0.1",
     "jstz": "^2.1.1",
     "local-time": "^2.1.0",
     "moment": "^2.29.4",
+    "pixi.js": "^5.0.1",
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0",
     "postcss-import": "^14.1.0",
     "postcss-nested": "^5.0.6",
     "postcss-nesting": "^10.2.0",
     "postcss-scss": "^4.0.4",
+    "simplex-noise": "^3.0.1",
     "slim-select": "^1.27.1",
     "stimulus-checkbox-select-all": "^5.1.0",
     "stimulus-dropdown": "^2.0.0",
@@ -53,6 +58,5 @@
   "scripts": {
     "build": "node esbuild.config.js",
     "build:css": "tailwindcss --postcss --minify -i ./app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/tailwind.css"
-
   }
 }
