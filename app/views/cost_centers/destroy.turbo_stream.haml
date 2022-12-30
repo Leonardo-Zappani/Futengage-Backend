@@ -1,0 +1,3 @@
+= turbo_stream.remove @cost_center
+= turbo_stream.update :flash, render(FlashComponent.new(flash: flash))
+= turbo_stream.remove_css_class '#empty_state', 'hidden md:hidden' unless @cost_center.account.cost_centers.any?

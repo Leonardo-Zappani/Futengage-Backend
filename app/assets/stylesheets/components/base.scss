@@ -1,0 +1,83 @@
+html, body {
+  @apply h-full subpixel-antialiased antialiased
+}
+
+html {
+  @apply scroll-smooth font-sans;
+}
+
+body {
+  @apply text-gray-700 block h-full bg-white text-base sm:text-xs xl:text-sm;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold tracking-tight p-0 m-0;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+h6 {
+  @apply text-base;
+}
+
+p {
+  @apply leading-4 m-0 p-0;
+}
+
+button, a {
+  @apply cursor-pointer
+}
+
+form {
+  @apply block
+}
+
+[type='checkbox'],[type='radio'] {
+  @apply h-5 w-5 text-primary-500 focus:ring-primary-500;
+}
+
+turbo-frame {
+  @apply flex flex-col sm:w-full box-content self-stretch justify-start
+}
+
+li {
+  @apply box-content
+}
+
+input, select, button {
+  @apply text-base sm:text-xs xl:text-sm
+}
+
+.px-base {
+  @apply px-3
+}
+
+.py-base {
+  @apply py-2 sm:py-1.5
+}
+
+.p-base {
+  @apply p-2 sm:p-1.5
+}
+
+.turbo-progress-bar {
+  @apply bg-primary-500 h-0.5
+}

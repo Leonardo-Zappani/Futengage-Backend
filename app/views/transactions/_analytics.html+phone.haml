@@ -1,0 +1,15 @@
+.block.w-full.space-y-3.px-base.py-base
+  .block.w-full
+    = turbo_frame_tag :outcome, src: outcome_transactions_path(bank_account_id: current_bank_account, transaction_type: current_transaction_type, month: current_month), loading: :lazy, class: 'h-full' do
+      = render 'loading'
+  .block.w-full
+    = turbo_frame_tag :revenues, src: revenues_transactions_path(bank_account_id: current_bank_account, transaction_type: current_transaction_type, month: current_month), loading: :lazy, class: 'h-full' do
+      = render 'loading'
+  .block.w-full
+    = turbo_frame_tag :expenses, src: expenses_transactions_path(bank_account_id: current_bank_account, transaction_type: current_transaction_type, month: current_month), loading: :lazy, class: 'h-full' do
+      = render 'loading'
+  .block.w-full
+    = turbo_frame_tag :chart, src: chart_transactions_path(bank_account_id: current_bank_account, transaction_type: current_transaction_type, month: current_month), loading: :lazy, class: 'h-full' do
+      = render 'loading'
+  .block.w-full
+    = render 'balance', current_bank_account: current_bank_account, current_transaction_type: current_transaction_type, current_month: current_month

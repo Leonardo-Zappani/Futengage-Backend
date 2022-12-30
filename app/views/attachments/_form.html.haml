@@ -1,0 +1,17 @@
+= form_with url: [@record, :attachments], html: { class: 'relative' } do |f|
+  .grid.grid-cols-1.gap-y-3.gap-x-3.sm:grid-cols-2
+    .form-group.col-span-2
+      .dropzone.dropzone-default.divide-y.dz-clickable{
+        data: {
+          controller: 'dropzone',
+          dropzone_max_file_size: '5',
+          dropzone_max_files: '5' } }
+        .dropzone__message.dz-message
+          = f.file_field :attachments, class: 'sr-only', multiple: true, direct_upload: true, data: { dropzone_target: 'input' }
+          %svg.dropzone__svg{"aria-hidden" => "true", fill: "none", stroke: "currentColor", viewbox: "0 0 48 48"}
+            %path{d: "M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
+          .dropzone__info
+            %p.pl-1= t('shared.or_drag_and_drop')
+          .dropzone__formats= t('shared.accepted_formats')
+    .form-group.col-span-2
+      = f.submit t('shared.send_files'), class: "btn btn--primary"

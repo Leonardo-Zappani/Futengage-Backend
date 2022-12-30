@@ -1,0 +1,12 @@
+= render TurboDrawerComponent.new(title: t(".title")) do
+  .flex.flex-col.space-y-4.sm:space-y-6
+    .form-group.border.border-gray-200.px-4.py-5.sm:p-0
+      %dl.sm:divide-y.sm:divide-gray-200
+        .py-4.sm:grid.sm:grid-cols-3.sm:gap-4.px-4
+          %dt.text-sm.font-medium.text-gray-500= 'Name'
+          %dd.mt-1.text-sm.text-gray-900.sm:col-span-2.sm:mt-0= @cost_center.name
+        .py-4.sm:grid.sm:grid-cols-3.sm:gap-4.px-4
+          %dt.text-sm.font-medium.text-gray-500= 'Description'
+          %dd.mt-1.text-sm.text-gray-900.sm:col-span-2.sm:mt-0= @cost_center.description
+    .form-group
+      = button_to 'Edit', edit_cost_center_path(@cost_center), class: 'btn', method: :get, data: { turbo_frame: 'drawer' }

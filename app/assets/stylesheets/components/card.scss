@@ -1,0 +1,15 @@
+.card {
+  @apply overflow-visible sm:border sm:rounded-lg sm:border-gray-200 bg-white divide-y;
+
+  &__body {
+    @apply p-3
+  }
+
+  &__header {
+    @apply p-3
+  }
+
+  &--shadow {
+    @apply sm:shadow
+  }
+}

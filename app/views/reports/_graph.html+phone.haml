@@ -1,0 +1,27 @@
+.flex.items-center.justify-center.sm.space-x-6.pt-3
+  .block.animate__animated.animate__pulse.animate__faster
+    -if params[:graph] != "out_per_day_graph" && params[:graph] != "in_per_day_graph"
+      = pie_chart  @response, id: 'canvas', title: t("reports.#{params[:graph]}.title"), percentage: true, donut: true, legend: @response.count > 10 ? "bottom" : "bottom", round: 2, |
+      zeros: true,thousands: ",", loading: "Loading...", refresh: 60,  prefix: Current.account&.default_currency + " ", width: "300px", height: "550px",                        |
+      download: { filename: t("reports.#{params[:graph]}.title").gsub(/\s/, '_') + Current.account.name, background: "#ffffff" }                                     |
+    - else
+      %h3.flex.justify-center
+        = t("reports.#{params[:graph]}.title")
+      = column_chart  @response, donut: true, legend: "bottom", round: 2, zeros: true, loading: "Loading...", refresh: 60,  prefix: Current.account&.default_currency + " ",  width: "300px", height: "450px"
+.stacked-list__hidden-col.stacked-list.stacked-paid-tittle.pt-3
+  .flex
+    .paragraph-base.form-group-checkbox.mt-2
+      %h3
+        = t("reports.#{params[:graph]}.subtitle")
+      .paragraph-muted.pt-2
+        = t("reports.#{params[:graph]}.recipe")
+    .form-group-checkbox.mt-2
+      %div
+        = t("reports.#{params[:graph]}.description")
+  - @response.each do |response|
+    .flex
+      .paragraph-base.form-group-checkbox.mt-2
+        .paragraph-base
+          = Category.human_attribute_name(response[0])
+      .form-group-checkbox.mt-2
+        = Money.from_amount(response[1]).format

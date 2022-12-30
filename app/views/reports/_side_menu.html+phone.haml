@@ -1,0 +1,40 @@
+.block.w-full.p-3.space-y-4
+  .form-group
+    .paragraph-base.flex-checkbox.mt-2.pl-2
+      %h4= t(".title")
+  .form-group
+    .paragraph-base.flex.mt-2.pl-2
+      .paragraph-base= link_to 'DRE', reports_path(request.query_parameters.merge(graph: 'dre_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('dre') && "sidenav__menu-item--graph"
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      %h4=t(".expenses")
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".description"),  reports_path(request.query_parameters.merge(graph: 'out_description_graph')), data: { turbo_frame: :graph}, class: request.fullpath.include?('out_description') && "sidenav__menu-item--graph"
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".day"), reports_path(request.query_parameters.merge(graph: 'out_per_day_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('out_per_day') && "sidenav__menu-item--graph"
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".type"),  reports_path(request.query_parameters.merge(graph: 'out_per_type_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('out_per_type') && "sidenav__menu-item--graph"
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".category"), reports_path(request.query_parameters.merge(graph: 'out_per_category_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('out_per_category') && "sidenav__menu-item--graph"
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".cost_center"), reports_path(request.query_parameters.merge(graph: 'out_per_cost_center_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('out_per_cost_center') && "sidenav__menu-item--graph"
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      %h4= t(".income")
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".description"), reports_path(request.query_parameters.merge(graph: 'in_description_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('in_description') && "sidenav__menu-item--graph"
+  .form-group    
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".day"),  reports_path(request.query_parameters.merge(graph: 'in_per_day_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('in_per_day') && "sidenav__menu-item--graph"
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".category"),  reports_path(request.query_parameters.merge(graph: 'in_per_category_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('in_per_category') && "sidenav__menu-item--graph"
+  .form-group
+    .paragraph-base.form-group-checkbox.mt-2.pl-2
+      .paragraph-base= link_to t(".cost_center"),  reports_path(request.query_parameters.merge(graph: 'in_per_cost_center_graph')), data: { turbo_frame: :graph }, class: request.fullpath.include?('in_per_cost_center') && "sidenav__menu-item--graph"

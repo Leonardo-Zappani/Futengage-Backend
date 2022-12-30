@@ -1,0 +1,50 @@
+= turbo_frame_tag @transaction do
+  = form_for @transaction, html: { class: 'relative' }  do |f|
+    = f.hidden_field :bank_account_id
+    = f.hidden_field :transaction_type
+
+    = hidden_field_tag :month, current_month
+    = hidden_field_tag :bank_account_id, current_bank_account.id
+    = hidden_field_tag :transaction_type, current_transaction_type
+
+    %li.transactions-list__item.bg-gray-100.overflow-visible.relative
+      %span.transactions-list__column.transactions-list__column--duedate
+        = f.text_field :due_date, value: l(f.object.due_date), class: 'form-control', data: date_picker_data
+      %span.transactions-list__column.transactions-list__column--name
+        = f.text_field :name, class: 'form-control', autofocus: true
+      - unless f.object.transfer?
+        %span.transactions-list__column.transactions-list__column--contact.overflow-visible
+          = f.collection_select :contact_id,
+           contacts(selected_contact: f.object.contact), :id, :name, { include_blank: true }, data: select_contact_data
+        %span.transactions-list__column.transactions-list__column--category.overflow-visible
+          = f.collection_select :category_id,
+            categories(selected_category: f.object.category), :id, :name, { include_blank: true }, data: select_category_data
+      - else
+        %span.transactions-list__column.transactions-list__column--bank-account.overflow-visible
+          = f.collection_select :bank_account_id,
+            bank_accounts, :id, :name, { include_blank: true }, data: { controller: 'select' }
+        %span.transactions-list__column.transactions-list__column--bank-account.overflow-visible
+          = f.collection_select :transfer_to_id,
+            bank_accounts, :id, :name, { include_blank: true }, data: { controller: 'select' }
+      %span.transactions-list__column.transactions-list__column--amount
+        .form-input-group
+          = f.text_field :amount_cents, class: 'form-control', data: currency_data_params
+          .form-input-group__right
+            = f.select :amount_currency, accepted_currencies, {}, class: 'form-input-group__select'
+      - unless f.object.transfer?
+        %span.transactions-list__column.transactions-list__column--payment-type.overflow-visible
+          -# = f.select :payment_type, enum_option_pairs(Transaction, :payment_type), {}, data: { controller: 'select' }
+          = f.select :payment_type, enum_option_pairs(Transaction, :payment_type), {}, disabled: !f.object.on_cash?, data: { controller: 'select' }
+      %span.transactions-list__column.transactions-list__column--paid.text-center
+        -if can?(:create, transactions_url)
+          = f.check_box :paid, class: 'form-control-checkbox'
+      %span.transactions-list__column.transactions-list__column--actions
+        .flex.items-center.justify-end.space-x-1.5
+          = f.button type: :submit, class: 'btn-circle btn-circle--success' do
+            = heroicon 'check', options: { class: 'btn-circle__icon' }
+          = link_to @transaction.new_record? ? add_transactions_path(current_required_params) : transaction_path(@transaction, current_required_params), data: { turbo_frame: dom_id(@transaction) }, class: 'btn-circle btn-circle--danger' do
+            = heroicon 'x-mark', options: { class: 'btn-circle__icon' }
+  - unless @transaction.new_record?
+    .flex.justify-center.relative.text-center.w-full
+      -if can?(:create, transactions_url)
+        = link_to t('shared.details'), details_transaction_path(@transaction, current_required_params), class: 'h-6 absolute -bottom-6 left-auto btn-solid btn-solid--primary shadow-xl z-1', data: { turbo_frame: :drawer }

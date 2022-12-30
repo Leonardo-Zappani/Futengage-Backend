@@ -1,0 +1,16 @@
+.paragraph-base {
+  @apply truncate w-full leading-6 sm:leading-4;
+}
+
+.paragraph-muted {
+  @apply truncate w-full text-gray-400 leading-4 text-sm sm:text-xs;
+}
+
+.text-muted {
+  @apply text-gray-400 leading-4 text-sm text-sm sm:text-xs
+}
+
+.text-mutedh {
+  @apply truncate w-full leading-6 sm:leading-4;
+  padding-top: 5px;
+}

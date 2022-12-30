@@ -1,0 +1,11 @@
+.min-h-full.px-4.py-4.sm:px-6.sm:py-4.md:grid.md:place-items-center.lg:px-8
+  .mx-auto.max-w-max
+    .sm:flex
+      %p.flex.justify-center.font-bold.tracking-tight.text-indigo-600
+        = heroicon 'magnifying-glass', options: { class: 'h-12 w-12' }
+      .sm:ml-6
+        .sm:border-l.sm:border-gray-200.sm:pl-6
+          %h4.font-semibold.text-center.sm:text-left= t('.search_not_found')
+          %p.text-base.text-gray-500.text-center.sm:text-left= t('.please_check_your_search', term: term)
+        .mt-8.flex.space-x-4.sm:border-l.sm:border-transparent.sm:pl-6
+          = link_to t('.clear_all'), clear_path, class: 'btn btn--primary'

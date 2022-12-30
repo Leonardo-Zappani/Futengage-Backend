@@ -1,0 +1,34 @@
+- if @transaction.transfer? && ![@transaction.transfer_to_id, @transaction.bank_account_id].include?(current_bank_account.id)
+  = turbo_stream.prepend :transactions, partial: 'goto_bank_account', locals: { transaction: @transaction }
+- elsif current_month.all_month.cover?(@transaction.due_date)
+  = turbo_stream.prepend :transactions, @transaction
+- else
+  = turbo_stream.prepend :transactions, partial: 'goto', locals: { transaction: @transaction, current_bank_account: current_bank_account }
+
+= turbo_stream.update :new_transaction, partial: 'new', locals: { current_bank_account: current_bank_account, current_transaction_type: @transaction.transaction_type, current_month: current_month }
+= turbo_stream.turbo_frame_reload :totalizer
+
+- if @transaction.paid?
+  = turbo_stream.turbo_frame_reload :bank_account_balance
+
+- unless @transaction.transfer?
+  = turbo_stream.turbo_frame_reload :outcome
+  = turbo_stream.turbo_frame_reload :chart
+
+- if @transaction.revenue?
+  = turbo_stream.turbo_frame_reload :revenues
+
+- if @transaction.expense?
+  = turbo_stream.turbo_frame_reload :expenses
+
+- if @selected_payment_type == :installment
+  - @transaction.installment_type = :monthly
+  - @transaction.installment_total = 2
+  = turbo_stream.update :drawer, partial: 'setup_installments', locals: { transaction: @transaction, bank_account_id: current_bank_account.id, transaction_type: current_transaction_type, month: current_month }
+
+- if @selected_payment_type == :recurrent
+  - @transaction.installment_type = :monthly
+  - @transaction.installment_total = 12
+  = turbo_stream.update :drawer, partial: 'setup_recurrence', locals: { transaction: @transaction, bank_account_id: current_bank_account.id, transaction_type: current_transaction_type, month: current_month }
+
+= turbo_stream.update :flash, render(FlashComponent.new(flash: flash))

@@ -1,0 +1,27 @@
+= turbo_frame_tag :bank_account_balance do
+  .block.space-y-2.relative.w-auto.overflow-visible{ data: { controller: :dropdown }}
+    = button_tag type: :button, id: 'account_list_button', class: 'flex-1 flex w-full rounded-md bg-white px-base py-base flex items-center space-x-3 hover:bg-gray-100 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2', data: { action: "dropdown#toggle keyup@window->dropdown#hideWithKeyboard click@window->dropdown#hide" } do
+      .flex-1
+        .block.text-right
+          .block.truncate.text-base.sm:text-sm.text-gray-500= BankAccount.human_attribute_name(:balance_cents)
+          - if current_bank_account.balance_cents.positive?
+            .block.text-lg.font-medium.text-success-500= current_bank_account.balance.format
+          - elsif current_bank_account.balance_cents.zero?
+            .block.text-lg.font-medium= current_bank_account.balance.format
+          - else
+            .block.text-lg.font-medium.text-danger-500= current_bank_account.balance.format
+          .block.text-sm.sm:text-xs.font-medium= current_bank_account.name
+      .flex-shrink-0
+        = heroicon "chevron-up-down", options: { class: "profile-menu__chevron" }
+    .c-dropdown__menu.c-dropdown__menu--right-to-left.hidden{"data-dropdown-target": "menu",
+                                   "data-transition-enter-from": "opacity-0 scale-95",
+                                   "data-transition-enter-to": "opacity-100 scale-100",
+                                   "data-transition-leave-from": "opacity-100 scale-100",
+                                   "data-transition-leave-to": "opacity-0 scale-95"}
+      %ul.profile-menu__group{ id: "balance_options" }
+        = render partial: 'balance_option', collection: Current.account.bank_accounts.order(:name), as: :bank_account
+    - if can?(:create, transactions_url)
+      .hidden.sm:block.flex-shrink-0.text-right
+        = button_to new_bank_account_path, class: 'btn', method: :get, data: { turbo_frame: 'drawer' } do
+          = heroicon 'plus', options: { class: 'btn-circle__icon' }
+          %span= t('.new_bank_account')

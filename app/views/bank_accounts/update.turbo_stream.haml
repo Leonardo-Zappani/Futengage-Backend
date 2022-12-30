@@ -1,0 +1,4 @@
+= turbo_stream.replace @bank_account
+= turbo_stream.replace "balance_option_#{ @bank_account.id }", partial: "transactions/balance_option", locals: { bank_account: @bank_account }
+= turbo_stream.update :drawer, ''
+= turbo_stream.update :flash, render(FlashComponent.new(flash: flash))

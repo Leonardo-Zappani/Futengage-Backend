@@ -1,0 +1,12 @@
+---
+:concurrency: 5
+production:
+  :concurrency: 15
+:queues:
+  - critical
+  - default
+  - low
+  - mailers
+  - active_storage_analysis
+  - active_storage_purge
+  - imports

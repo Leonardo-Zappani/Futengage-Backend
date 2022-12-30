@@ -1,0 +1,33 @@
+!!!
+%html{:lang => "#{I18n.locale}"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title Procfy
+
+    = viewport_meta_tag
+    = csrf_meta_tags
+    = csp_meta_tag
+    = action_cable_meta_tag
+
+    = stylesheet_link_tag "tailwind", "data-turbo-track": "reload", media: "all"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+
+    %link{rel: "preload", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap", as: "style", onload: "this.onload=null;this.rel='stylesheet'"}/
+
+    = render 'favicons'
+
+  %body.subpixel-antialiased
+    %main.layout{"data-controller" => "sidebar"}
+      - if user_signed_in?
+        = render 'sidenav'
+        .layout__container
+          = render 'trial_notification'
+          = render 'pending_invitations'
+          = yield
+        = render 'footer'
+      - else
+        = yield
+    = turbo_frame_tag "flash" do
+      = render(FlashComponent.new(flash: flash))
+    = turbo_frame_tag "drawer"
+

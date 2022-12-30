@@ -1,0 +1,12 @@
+= render(Page::HeaderComponent.new(title: AccountInvitation.model_name.human))
+
+.mx-3.sm:mx-auto.mt-0.sm:my-10.p-3.sm:p-6.bg-white.rounded-lg.border.border-gray-300.text-left{style: "max-width: 600px"}
+  .form-group
+    .flex.items-center.space-x-3
+      = image_tag url_for_avatar(@account_invitation.account.company), class: "h-10 w-10 rounded-full inline-block"
+      .block
+        = t(".invited_you_to_join_html", inviter: @account_invitation.invited_by.name, account: @account_invitation.account.name).html_safe
+  .form-group.mt-6
+    .block.sm:flex.sm:items-center.sm:space-x-3.space-y-3.sm:space-y-0
+      = button_to t(".accept"), accept_account_invitation_path(@account_invitation.token), method: :put, class: "btn btn--primary"
+      = button_to t(".decline"), reject_account_invitation_path(@account_invitation.token), method: :delete, class: "btn btn--danger", data: {turbo_confirm: t("shared.are_you_sure?")}

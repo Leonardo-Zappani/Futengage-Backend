@@ -1,0 +1,6 @@
+= turbo_frame_tag transaction do
+  %li
+    .transactions-list__goto
+      = link_to transactions_path(bank_account_id: transaction.bank_account, transaction_type: transaction.transaction_type, month: transaction.due_date.beginning_of_month), class: 'transactions-list__go', data: { turbo_frame: :transactions_index } do
+        = heroicon 'arrow-uturn-right', options: { class: 'btn-circle__icon' }
+        %span= t('.goto', month: l(transaction.due_date.in_time_zone, format: :month))

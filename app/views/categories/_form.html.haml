@@ -1,0 +1,12 @@
+= form_for @category do |f|
+  - if @category.errors.any?
+    = render 'errors', resource: @category
+  .flex.flex-col.space-y-4.sm:space-y-6.pb-6
+    .form-group
+      = f.label :name, class: 'form-label'
+      = f.text_field :name, autofocus: true, class: 'form-control'
+    .form-group
+      = f.label :description, class: 'form-label'
+      = f.text_area :description, class: 'form-control', data: { controller: 'textarea-autogrow' }
+    .form-group
+      = f.submit class: "btn btn--primary"

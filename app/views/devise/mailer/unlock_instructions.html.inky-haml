@@ -1,0 +1,19 @@
+%row
+  %columns
+    %h4= t(".subject")
+
+%spacer{ size: '16' }
+
+%row
+  %columns
+    %p= t(".greeting", recipient: @resource.email)
+    %p= t(".message")
+    %p= t(".instruction")
+
+%spacer{ size: '16' }
+
+%row
+  %columns
+    %button.radius{ href: unlock_url(@resource, unlock_token: @token) }= t(".action")
+
+%spacer{ size: '16' }

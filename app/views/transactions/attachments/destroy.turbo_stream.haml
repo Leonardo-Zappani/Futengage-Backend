@@ -1,0 +1,3 @@
+= turbo_stream.remove @attachment
+= turbo_stream.replace dom_id(@record), partial: 'transactions/transaction', locals: { transaction: @record }
+= turbo_stream.update :flash, render(FlashComponent.new(flash: flash))

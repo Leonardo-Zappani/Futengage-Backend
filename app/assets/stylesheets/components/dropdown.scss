@@ -1,0 +1,23 @@
+.c-dropdown {
+  @apply relative inline-block text-left;
+
+  &__menu {
+    @apply ease-in-out duration-100 absolute z-10 mt-1 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none;
+
+    &--right-to-left {
+      @apply right-0 w-auto
+    }
+
+    &--left-to-right {
+      @apply left-0 w-auto
+    }
+  }
+
+  &__group {
+    @apply py-1
+  }
+
+  &__item {
+    @apply flex items-center space-x-2 w-full text-left block px-base py-base font-medium text-gray-700 hover:bg-gray-100
+  }
+}

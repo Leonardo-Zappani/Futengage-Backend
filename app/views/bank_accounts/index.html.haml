@@ -1,0 +1,21 @@
+- content_for(:title, BankAccount.model_name.human(count: 2))
+= turbo_frame_tag :bank_accounts_index do
+  = render(Page::HeaderComponent.new(title: BankAccount.model_name.human(count: 2))) do |header|
+    - header.search do
+      = render 'search_form', search_path: bank_accounts_path
+    - header.action do
+      - if can?(:create, bank_accounts_url)
+        = button_to new_bank_account_path, class: 'btn-circle btn-circle--primary', method: :get, data: { turbo_frame: 'drawer', controller: :tooltip, tooltip_content_value: t('bank_accounts.new.title') } do
+          = heroicon 'plus', options: { class: 'btn-circle__icon' }
+
+  .card
+    = render(Table::TableComponent.new) do |table|
+      - table.header do |header|
+        - header.col(classes: 'c-table__column--description') { BankAccount.human_attribute_name(:name) }
+        - header.col(classes: 'c-table__column--flag') { BankAccount.human_attribute_name(:default) }
+        - header.col(classes: 'c-table__column--amount justify-end') { BankAccount.human_attribute_name(:balance) }
+        - header.col(classes: 'c-table__column--actions')
+      - table.body(id: :bank_accounts) do
+        = render @records
+
+  = render(Page::PaginatorComponent.new(paginator: @pagy))

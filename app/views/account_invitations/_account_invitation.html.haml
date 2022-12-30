@@ -1,0 +1,11 @@
+= render(Table::ItemComponent.new(item: account_invitation, classes: 'group', link: edit_account_invitation_path(id: account_invitation.id), options: { data: { turbo_frame: 'drawer' } })) do |item|
+  - item.col(classes: 'c-table__column--description') do
+    .paragraph-base= account_invitation.name
+    .paragraph-muted= account_invitation.email
+  - item.col(classes: 'c-table__column--description') { te(account_invitation, :role) }
+  - item.col(classes: 'c-table__column--datetime hidden xl:flex') { l(account_invitation.updated_at) }
+  - item.col(classes: 'c-table__column--actions') do
+    = button_to edit_account_invitation_path(id: account_invitation.id), method: :get, onclick: 'event.stopPropagation()', data: { turbo_frame: 'drawer', controller: :tooltip, tooltip_content_value: t('shared.edit') }, class: 'btn-circle btn-circle--primary hidden group-hover:flex' do
+      = heroicon 'pencil', options: { class: 'btn-circle__icon' }
+    = button_to account_invitation_path(id: account_invitation.id), method: :delete, onclick: 'event.stopPropagation()', form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, data: { controller: :tooltip, tooltip_content_value: t('shared.remove') }, class: 'btn-circle btn-circle--danger hidden group-hover:flex' do
+      = heroicon 'trash', options: { class: 'btn-circle__icon' }

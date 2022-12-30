@@ -1,0 +1,47 @@
+= turbo_frame_tag transaction do
+  = link_to details_transaction_path(transaction, { month: @current_month }), data: { turbo_frame: :drawer }, class: 'stacked-list__item' do
+    .flex.items-center.space-x-3.py-base.px-base
+      .flex-1.block.overflow-hidden
+        .paragraph-base.overflow-hidden.mb-2
+          %span= transaction.name
+          - if transaction.description.present?
+            .paragraph-muted.overflow-hidden= transaction.description
+        .flex.items-center.justify-between.text-sm
+          .block.text-muted= Transaction.human_attribute_name(:due_date)
+          .block.font-medium= local_date(transaction.due_date, :date)
+        - unless transaction.transfer?
+          .flex.items-center.justify-between.text-sm
+            .block.text-muted= Transaction.human_attribute_name(:contact_id)
+            .block.font-medium= transaction.contact&.name || '-'
+          .flex.items-center.justify-between.text-sm
+            .block.text-muted= Transaction.human_attribute_name(:category_id)
+            .block.font-medium= transaction.category&.name || '-'
+        - else
+          .flex.items-center.justify-between.text-sm
+            .block.text-muted= Transaction.human_attribute_name(:bank_account_id)
+            .block.font-medium= transaction.bank_account&.name
+          .flex.items-center.justify-between.text-sm
+            .block.text-muted= Transaction.human_attribute_name(:transfer_to_id)
+            .block.font-medium= transaction.transfer_to&.name
+        .flex.items-center.justify-between.text-sm
+          .block.text-muted= Transaction.human_attribute_name(:amount)
+          .block.font-semibold{class: amount_text_class(transaction, @current_bank_account)}= render(Transactions::AmountViewerComponent.new(transaction: transaction))
+        - unless transaction.transfer?
+          .flex.items-center.justify-between.text-sm
+            .block.text-muted= Transaction.human_attribute_name(:payment_type)
+            .block.font-medium
+              .flex.items-center.space-x-2.flex-wrap
+                - if transaction.installment?
+                  %span.badge.badge--installments= "#{transaction.installment_number}/#{transaction.installment_total}"
+                - if transaction.recurrent?
+                  %span.badge.badge--recurrence= "#{transaction.installment_number}/#{transaction.installment_total}"
+                .flex.flex-col.flex-wrap
+                  %span.leading-4= te(transaction, :payment_type)
+                  - unless transaction.on_cash?
+                    %span.leading-3.text-xs.text-gray-400.text-right= te(transaction, :installment_type)
+        .flex.items-center.justify-between.text-sm
+          .block.text-muted= Transaction.human_attribute_name(:paid)
+          .block.font-medium= render(ToggleComponent.new(url: toggle_transaction_path(transaction), enabled: transaction.paid?, params: @current_required_params))
+
+      .flex-shrink-0.flex.items-center.justify-end.space-x-2
+        = render(Transactions::DropdownActionsComponent.new(transaction: transaction, month: @current_month))

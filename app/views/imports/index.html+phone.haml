@@ -1,0 +1,16 @@
+- content_for(:title, Import.model_name.human(count: 2))
+= turbo_frame_tag :imports_index do
+  = render(Page::HeaderComponent.new(title: Import.model_name.human(count: 2))) do |header|
+    - header.search do
+      = render 'search_form', search_path: imports_path
+    - header.action do
+      - if can?(:create, imports_url)
+        = button_to new_import_path, id: 'file_upload_upper_button', class: 'btn-circle btn-circle--primary', method: :get, data: { turbo_frame: 'drawer' } do
+          = heroicon 'arrow-up-tray', options: { class: 'btn-circle__icon' }
+  .card
+    = render(Table::TableComponent.new) do |table|
+      - table.body(id: :imports) do
+        = render @records
+        = render 'empty_state_file', add_path: new_import_path, hidden: @records.any?, options: { data: { turbo_frame: 'drawer' } }
+
+  = render(Page::PaginatorComponent.new(paginator: @pagy))

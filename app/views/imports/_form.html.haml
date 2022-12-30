@@ -1,0 +1,12 @@
+= form_for @import do |f|
+  - if @import.errors.any?
+    = render 'errors', errors: @import.errors
+  .flex.flex-col.space-y-4.sm:space-y-6.direct-upload--border
+    .form-group
+      = f.label t('.select_file'), class: 'form-label'
+      = f.file_field :file, required: true, class: 'form-input-file', direct_upload: true, accept: ".xlsx"
+    .form-group.col-span-1
+      = f.label t('.select_source'), class: 'form-label'
+      = f.select :source, enum_option_pairs(Import, :source), {}, data: { controller: 'select' }
+    .form-group
+      = f.submit t('.start_import'), id: "upload_file_button", class: "btn btn--primary"

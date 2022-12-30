@@ -1,0 +1,10 @@
+= form_with(url: search_path, method: :get, html: { class: "search-form" }, data: { controller: 'search-form' }) do |f|
+  %label.sr-only{:for => "search_field"} Search
+  .search-form__container
+    .search-form__icon
+      = heroicon "magnifying-glass"
+    = f.search_field :q, value: params[:q], autofocus: (defined?(autofocus) ? autofocus : false), placeholder: t("shared.search"), class: "form-control pl-8", data: { action: 'search->search-form#onResetSearch' }
+    - if defined?(form_params) && form_params.any?
+      - form_params.each do |k, v|
+        - next if v.blank?
+        = f.hidden_field k, value: v

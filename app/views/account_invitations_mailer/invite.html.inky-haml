@@ -1,0 +1,12 @@
+%row
+  %columns
+    %p.text-left= t(".hi_there", name: @account_invitation.name)
+    %p.text-left= t(".header_html", inviter: @invited_by.name, account: @account.name)
+
+%spacer{ size: '16' }
+
+%row
+  %columns
+    %p.text-left= t(".description_html").html_safe
+    %button.radius{ href: account_invitation_url(@account_invitation)}= t(".view_invitation")
+    %p.text-left= t(".ignore").html_safe

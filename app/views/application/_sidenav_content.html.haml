@@ -1,0 +1,27 @@
+%nav.sidenav__content{"aria-label": "Sidebar"}
+  = link_to root_path, class: active_class?('home') ? "sidenav__menu-item--active" : "sidenav__menu-item" do
+    = heroicon "home", options: { class: "sidenav__menu-item-icon" }
+    = t(".dashboard")
+
+  = link_to transactions_path, class: active_class?('transactions') ? "sidenav__menu-item--active" : "sidenav__menu-item" do
+    = heroicon "currency-dollar", options: { class: "sidenav__menu-item-icon" }
+    = Transaction.model_name.human(count: 2)
+
+  = link_to reports_path, class: active_class?('reports') ? "sidenav__menu-item--active" : "sidenav__menu-item" do
+    = heroicon "chart-bar", options: { class: "sidenav__menu-item-icon" }
+    = t('reports.index.title')
+
+  = link_to contacts_path, class: active_class?('contacts') ? "sidenav__menu-item--active" : "sidenav__menu-item" do
+    = heroicon "user-group", options: { class: "sidenav__menu-item-icon" }
+    = Contact.model_name.human(count: 2)
+
+  = tag.div(**expandable_params(expanded: %w[bank_accounts categories cost_centers].include?(controller_name))) do
+    %button.sidenav__menu-item.relative{type: "button", "aria-controls": "sub-menu-settings", "aria-expanded": "false", "data-action": "expandable#toggle"}
+      = heroicon "cog-8-tooth", options: { class: "sidenav__menu-item-icon" }
+      %span.flex-1= t(".settings")
+      %svg.sidenav__menu-item-caret{"aria-hidden": "true", "data-expandable-target": "caret", viewbox: "0 0 20 20"}
+        %path{d: "M6 6L14 10L6 14V6Z", fill: "currentColor"}
+    #sub-menu-settings.hidden{"data-expandable-target": "menu"}
+      = link_to Category.model_name.human(count: 2), categories_path, class: active_class?('categories') ? 'sidenav__submenu-item--active' : 'sidenav__submenu-item'
+      = link_to CostCenter.model_name.human(count: 2), cost_centers_path, class: active_class?('cost_centers') ? 'sidenav__submenu-item--active' : 'sidenav__submenu-item'
+      = link_to BankAccount.model_name.human(count: 2), bank_accounts_path, class: active_class?('bank_accounts') ? 'sidenav__submenu-item--active' : 'sidenav__submenu-item'

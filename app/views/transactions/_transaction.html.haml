@@ -1,0 +1,61 @@
+= turbo_frame_tag transaction do
+  = link_to can?(:update, transaction) ? edit_transaction_path(transaction, { month: @current_month }) : 'javascript:;', class: 'transactions-list__item' do
+    .transactions-list__column.transactions-list__column--duedate.font-medium.justify-between
+      .paragraph-base.overflow-hidden
+        = local_date(transaction.due_date, :date)
+      - if transaction.delayed?
+        %span{ data: { controller: :tooltip, tooltip_content_value: I18n.t('.delayed') } }
+          = heroicon 'chat-bubble-oval-left', variant: :mini, options: { class: 'h-5 w-5 text-danger-200 hover:text-danger-300' }
+      - elsif transaction.due_today?
+        %span{ data: { controller: :tooltip, tooltip_content_value: I18n.t('.due_today') } }
+          = heroicon 'chat-bubble-oval-left', variant: :mini, options: { class: 'h-5 w-5 text-warning-200 hover:text-warning-300' }
+      - elsif transaction.paid?
+        %span{ data: { controller: :tooltip, tooltip_content_value: I18n.t('.paid') } }
+          = heroicon 'chat-bubble-oval-left', variant: :mini, options: { class: 'h-5 w-5 text-success-500 hover:text-success-600' }
+      - else
+        %span{ data: { controller: :tooltip, tooltip_content_value: I18n.t('.on_time') } }
+          = heroicon 'chat-bubble-oval-left', variant: :mini, options: { class: 'h-5 w-5 text-gray-200 hover:text-gray-300' }
+
+    .transactions-list__column.transactions-list__column--name.truncate
+      .paragraph-base.truncate
+        %span= transaction.name
+      - if transaction.description.present?
+        .paragraph-muted.truncate= transaction.description
+
+    - unless transaction.transfer?
+      .transactions-list__column.transactions-list__column--contact
+        .paragraph-base.overflow-hidden= transaction.contact&.name
+      .transactions-list__column.transactions-list__column--category
+        .paragraph-base.overflow-hidden= transaction.category&.name
+    - else
+      .transactions-list__column.transactions-list__column--bank-account
+        .paragraph-base.overflow-hidden= transaction.bank_account&.name
+      .transactions-list__column.transactions-list__column--bank-account
+        .paragraph-base.overflow-hidden= transaction.transfer_to&.name
+    .transactions-list__column.transactions-list__column--amount.font-medium{class: amount_text_class(transaction, @current_bank_account)}= render(Transactions::AmountViewerComponent.new(transaction: transaction))
+
+    - unless transaction.transfer?
+      .transactions-list__column.transactions-list__column--payment-type
+        .flex.items-center.flex-wrap.space-x-2
+          - if transaction.installment?
+            %span.badge.badge--installments= "#{transaction.installment_number}/#{transaction.installment_total}"
+          - if transaction.recurrent?
+            %span.badge.badge--recurrence= "#{transaction.installment_number}/#{transaction.installment_total}"
+          .flex.flex-col.flex-wrap
+            %span.leading-4= te(transaction, :payment_type)
+            - unless transaction.on_cash?
+              %span.leading-3.text-xs.text-gray-400= te(transaction, :installment_type)
+    .transactions-list__column.transactions-list__column--paid.justify-start
+      - if can?(:update, transaction)
+        = render(ToggleComponent.new(url: toggle_transaction_path(transaction), enabled: transaction.paid?, params: @current_required_params))
+      - else
+        = t(transaction.paid?)
+    .transactions-list__column.transactions-list__column--actions.overflow-visible
+      .flex.items-center.justify-end.space-x-1.5
+        - if transaction.attachments.attached?
+          .relative
+            = button_to [transaction, :attachments], class: 'btn-circle', method: :get, onclick: 'event.stopPropagation()', form: { data: { turbo_frame: :drawer } }, data: { controller: :tooltip, tooltip_content_value: t('shared.attachments') } do
+              = heroicon 'paper-clip', options: { class: 'btn-circle__icon' }
+            .absolute.badge.badge--primary.badge--circle.-left-2.-top-1= transaction.attachments.count
+        - if can?(:update, transaction)
+          = render(Transactions::DropdownActionsComponent.new(transaction: transaction, month: @current_month))

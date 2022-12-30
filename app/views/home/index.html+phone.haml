@@ -1,0 +1,45 @@
+- content_for(:title, t('.title'))
+
+= turbo_frame_tag :home_index, "data-controller": "turbo-history" do
+  = render(Page::HeaderComponent.new(title: greeting_day(hour: Time.current.hour)))
+
+  .card
+    .card__body
+      = render 'account', current_bank_account: current_bank_account, current_transaction_type: current_transaction_type, current_month: current_month
+
+  .card
+    .card__header
+      %h5= t('.expected_and_accomplished')
+      .flex.items-center.text-gray-500.space-x-3
+        %span= t(@current_bank_account.name)
+    .card__body
+      .w-full.block.md:grid.md:grid-cols-2.md:gap-6
+        .block
+          = turbo_frame_tag :revenues, src: home_revenues_path(bank_account_id: current_bank_account, month: current_month), loading: :lazy, class: 'h-full' do
+            = render 'loading'
+        .block
+          = turbo_frame_tag :expenses, src: home_expenses_path(bank_account_id: current_bank_account, month: current_month), loading: :lazy, class: 'h-full' do
+            = render 'loading'
+
+  .card
+    .card__header
+      %h5= t('.semester_cash_flow')
+      .block.text-gray-500= t(@current_bank_account.name)
+    .card__body
+      .block.overflow-x-auto.text-left
+        = turbo_frame_tag :chart, src: home_chart_path(bank_account_id: current_bank_account, transaction_type: current_transaction_type, month: current_month), loading: :lazy, class: 'h-full' do
+          = render 'loading'
+
+  .card
+    .card__header
+      %h5= t('.results') + " (" + t('.dre') + ")"
+      .block.text-gray-500= l(@current_month, format: :long_month).titleize
+    .card__body
+      = turbo_frame_tag :dre, src: home_dre_path(bank_account_id: current_bank_account, month: current_month), loading: :lazy, class: 'h-full' do
+        = render 'loading'
+
+  .card
+    .card__header
+      %h5= t('.storage_size')
+    .card__body
+      = render 'storage'

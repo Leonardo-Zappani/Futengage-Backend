@@ -1,0 +1,19 @@
+%row
+  %columns
+    %h4= t(".subject")
+
+%spacer{ size: '16' }
+
+%row
+  %columns
+    %p= t(".greeting", recipient: @email)
+    %p= t(".instruction")
+
+%spacer{ size: '16' }
+
+%row
+  %columns
+    %button.radius{ href: confirmation_url(@resource, confirmation_token: @token)}= t(".action")
+
+
+%spacer{ size: '16' }

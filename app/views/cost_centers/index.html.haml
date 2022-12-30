@@ -1,0 +1,25 @@
+- content_for(:title, CostCenter.model_name.human(count: 2))
+= turbo_frame_tag :cost_centers_index do
+  = render(Page::HeaderComponent.new(title: CostCenter.model_name.human(count: 2))) do |header|
+    - header.search do
+      = render 'search_form', search_path: cost_centers_path
+    - header.action do
+      - if can?(:create, CostCenter)
+        = button_to new_cost_center_path, class: 'btn-circle btn-circle--primary', method: :get, data: { turbo_frame: 'drawer', controller: :tooltip, tooltip_content_value: t('cost_centers.new.title') } do
+          = heroicon 'plus', options: { class: 'btn-circle__icon' }
+
+  .card
+    = render(Table::TableComponent.new) do |table|
+      - table.header do |header|
+        - header.col(classes: 'c-table__column--description') { sortable CostCenter, :name, CostCenter.human_attribute_name(:name) }
+        - header.col(classes: 'c-table__column--datetime hidden xl:flex') { sortable CostCenter, :updated_at, CostCenter.human_attribute_name(:updated_at) }
+        - header.col(classes: 'c-table__column--actions')
+      - table.body(id: :cost_centers) do
+        = render @records
+        = render 'empty_state', hidden: @records.any?,
+                                is_search: params[:q].present?,
+                                add_path: new_cost_center_path,
+                                clear_path: cost_centers_path,
+                                options: { data: { turbo_frame: 'drawer' } }
+
+  = render(Page::PaginatorComponent.new(paginator: @pagy))

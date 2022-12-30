@@ -1,0 +1,12 @@
+= render(Table::ItemComponent.new(item: cost_center, classes: 'group', link: (can?(:update, cost_center) &&edit_cost_center_path(cost_center)), options: { data: { turbo_frame: 'drawer' } })) do |item|
+  - item.col(classes: 'c-table__column--description') do
+    .paragraph-base= cost_center.name
+    .paragraph-muted= cost_center.description
+  - item.col(classes: 'c-table__column--datetime hidden xl:flex') { l(cost_center.updated_at) }
+  - item.col(classes: 'c-table__column--actions') do
+    - if can?(:update, cost_center)
+      = button_to edit_cost_center_path(cost_center),id: 'edit_cost_center', method: :get, onclick: 'event.stopPropagation()', data: { turbo_frame: 'drawer', controller: :tooltip, tooltip_content_value: t('shared.edit') }, class: 'btn-circle btn-circle--primary hidden group-hover:flex' do
+        = heroicon 'pencil', options: { class: 'btn-circle__icon' }
+    - if can?(:destroy, cost_center)    
+      = button_to cost_center,id: 'delete_cost_center', method: :delete, onclick: 'event.stopPropagation()', form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, data: { controller: :tooltip, tooltip_content_value: t('shared.remove') }, class: 'btn-circle btn-circle--danger hidden group-hover:flex' do
+        = heroicon 'trash', options: { class: 'btn-circle__icon' }

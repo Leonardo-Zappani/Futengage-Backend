@@ -1,0 +1,19 @@
+= turbo_frame_tag :reports_index, "data-controller": "turbo-history" do
+  - content_for(:title, t('.title'))  
+  = render(Page::HeaderComponent.new(title: t('.title')))
+  .flex.justify-center
+    -# = turbo_frame_tag :filter, "data-controller": "turbo-history" do
+    = render 'header_reports', current_bank_account: @current_bank_account, current_month: @current_month, end_date: @current_end_date, start_date: @current_start_date, bank_accounts: Current.account.bank_accounts, cost_center: Current.account.cost_centers
+  %div{:class => "flex justify-center items-top align-top"}
+    %div{:class => "flex-1 max-w-5x1 rounded"}
+      %div{:class => "pt-1"}
+        = render 'side_menu'
+      %div{:class => "pt-5"}
+        -if @response.blank?
+          = render 'empty_state'
+        -elsif params[:graph].present? && params[:graph] != 'dre_graph'
+          = render 'graph', current_bank_account: @current_bank_account, bank_accounts: Current.account.bank_accounts, cost_center: Current.account.cost_centers do
+            =render 'loading'
+        -else
+          = render 'dre_graph', current_bank_account: @current_bank_account, bank_accounts: Current.account.bank_accounts, cost_center: Current.account.cost_centers do
+            =render 'loading'

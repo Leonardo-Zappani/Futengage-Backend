@@ -1,0 +1,40 @@
+.c-dropdown{"data-controller": "dropdown"}
+  = button_tag type: :button, class: 'btn-circle',id: "edit_action" , data: { action: "dropdown#toggle keyup@window->dropdown#hideWithKeyboard click@window->dropdown#hide" } do
+    = heroicon 'ellipsis-vertical', options: { class: 'btn-circle__icon' }
+  .c-dropdown__menu.c-dropdown__menu--right-to-left{"data-dropdown-target": "menu",
+                                 "data-transition-enter-from": "opacity-0 scale-95",
+                                 "data-transition-enter-to": "opacity-100 scale-100",
+                                 "data-transition-leave-from": "opacity-100 scale-100",
+                                 "data-transition-leave-to": "opacity-0 scale-95"}
+    .profile-menu__group
+      = button_to details_transaction_path(@transaction), id: "details_#{dom_id(@transaction)}", method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
+        = heroicon 'pencil', options: { class: 'h-4 w-4 text-primary-500' }
+        %span.whitespace-nowrap= t('shared.details')
+      = button_to [@transaction, :attachments], id: "attachments_#{dom_id(@transaction)}", method: :get, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
+        = heroicon 'paper-clip', options: { class: 'h-4 w-4 text-primary-500' }
+        %span.whitespace-nowrap= t('shared.attachments')
+      = button_to duplicate_transaction_path(@transaction), method: :patch, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
+        = heroicon 'document-duplicate', options: { class: 'h-4 w-4  text-primary-500' }
+        %span= t('shared.duplicate')
+      = button_to move_to_transaction_path(@transaction), method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
+        = heroicon 'arrows-right-left', options: { class: 'h-4 w-4  text-primary-500' }
+        %span= t('shared.move_to')
+
+    - if @transaction.on_cash?
+      .profile-menu__group
+        = button_to setup_installments_transaction_path(@transaction), method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
+          = heroicon 'banknotes', options: { class: 'h-4 w-4  text-primary-500' }
+          %span.whitespace-nowrap= t('shared.setup_installments')
+        = button_to setup_recurrence_transaction_path(@transaction), method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
+          = heroicon 'clock', options: { class: 'h-4 w-4  text-primary-500' }
+          %span.whitespace-nowrap= t('shared.setup_recurrence')
+
+    .profile-menu__group
+      - if @transaction.on_cash?
+        = button_to @transaction,id: "destroy_action", method: :delete, params: { option: :only_this_installment, bank_account_id: @transaction.bank_account_id, month: @month }, form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item' do
+          = heroicon 'trash', options: { class: 'h-4 w-4 text-danger-500' }
+          %span= t('shared.remove')
+      - else
+        = button_to destroy_dialog_transaction_path(@transaction), method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item' do
+          = heroicon 'trash', options: { class: 'h-4 w-4 text-danger-500' }
+          %span= t('shared.destroy_dialog')

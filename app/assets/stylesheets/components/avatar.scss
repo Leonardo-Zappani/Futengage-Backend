@@ -1,0 +1,37 @@
+.avatar {
+  @apply rounded-full h-12 w-12 overflow-hidden inline-flex items-center justify-center bg-gray-200 flex-shrink-0;
+  & img  {
+    @apply object-contain h-12 w-auto
+  }
+
+  & svg  {
+    @apply object-contain h-6 w-6
+  }
+
+  &--md {
+    @apply h-10 w-10;
+    & img {
+      @apply h-10
+    }
+    & svg {
+      @apply h-5 w-5
+    }
+  }
+
+  &--sm {
+    @apply h-8 w-8;
+    & img {
+      @apply h-8
+    }
+    & svg {
+      @apply h-4 w-4
+    }
+  }
+
+  &--xs {
+    @apply h-6 w-6;
+    & img {
+      @apply h-6
+    }
+  }
+}

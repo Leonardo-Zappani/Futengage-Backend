@@ -1,0 +1,4 @@
+= turbo_stream.prepend :account_users, @account_user
+= turbo_stream.update :drawer, ''
+= turbo_stream.update :flash, render(FlashComponent.new(flash: flash))
+= turbo_stream.add_css_class '#empty_state', 'hidden md:hidden'

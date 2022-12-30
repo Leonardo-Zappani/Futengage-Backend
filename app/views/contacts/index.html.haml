@@ -1,0 +1,31 @@
+- content_for(:title, Contact.model_name.human(count: 2))
+= turbo_frame_tag :contacts_index, "data-controller": "turbo-history" do
+  = render(Page::HeaderComponent.new(title: Contact.model_name.human(count: 2))) do |header|
+    - header.search do
+      = render 'search_form', search_path: contacts_path, query_params: request.query_parameters
+    - header.action do
+      - if can?(:create, Contact)
+        = link_to new_contact_path(request.query_parameters), class: 'btn-circle btn-circle--primary', data: { turbo_frame: 'drawer', controller: :tooltip, tooltip_content_value: t('contacts.new.title') } do
+          = heroicon 'plus', options: { class: 'btn-circle__icon' }
+
+  = render 'tabs'
+
+  .card
+    = render(Table::TableComponent.new) do |table|
+      - table.header do |header|
+        - header.col(classes: 'c-table__column--avatar')
+        - header.col(classes: 'c-table__column--description') { sortable Contact, :first_name, Contact.human_attribute_name(:name) }
+        - header.col(classes: 'c-table__column--document-1') { sortable Contact, :document_1, Contact.human_attribute_name(:document_1) }
+        - header.col(classes: 'c-table__column--email hidden lg:flex') { sortable Contact, :email, Contact.human_attribute_name(:email) }
+        - header.col(classes: 'c-table__column--phone-number hidden xl:flex') { sortable Contact, :phone_number, Contact.human_attribute_name(:phone_number) }
+        - header.col(classes: 'c-table__column--datetime hidden xl:flex') { sortable Contact, :updated_at, Contact.human_attribute_name(:updated_at) }
+        - header.col(classes: 'c-table__column--actions')
+      - table.body(id: :contacts) do
+        = render @records
+        = render 'empty_state', hidden: @records.any?,
+                                is_search: params[:q].present?,
+                                add_path: new_contact_path,
+                                clear_path: contacts_path,
+                                options: { data: { turbo_frame: 'drawer' } }
+
+  = render(Page::PaginatorComponent.new(paginator: @pagy))

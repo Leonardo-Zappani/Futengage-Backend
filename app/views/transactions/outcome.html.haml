@@ -1,0 +1,9 @@
+= turbo_frame_tag :outcome, class: 'h-full' do
+  .block.text-left.w-full.animate__animated.animate__fadeIn.animate__faster
+    .block.text-sm.sm:text-xs.xl:text-sm.text-gray-500= t('.outcome')
+    - if @outcome.positive?
+      .block.text-lg.font-medium.text-emerald-500.animate__animated.animate__pulse.animate__faster= @outcome.format
+    - elsif @outcome.zero?
+      .block.text-lg.font-medium.animate__animated.animate__pulse.animate__faster= @outcome.format
+    - else
+      .block.text-lg.font-medium.text-rose-500.animate__animated.animate__pulse.animate__faster= @outcome.format

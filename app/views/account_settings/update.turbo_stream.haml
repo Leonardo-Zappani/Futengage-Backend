@@ -1,0 +1,3 @@
+= turbo_stream.update :drawer, ''
+= turbo_stream.replace_all ".#{dom_id(@account.company, :avatar)}", partial: 'avatar', locals: { avatable: @account.company, icon: 'building-office' }
+= turbo_stream.update :flash, render(FlashComponent.new(flash: flash))

@@ -1,0 +1,3 @@
+auto_update_exchange:
+    every: '15m'    
+    class: UpdateExchangeRatesWorker

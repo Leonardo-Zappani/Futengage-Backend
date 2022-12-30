@@ -1,0 +1,298 @@
+.ss-main {
+  @apply relative w-full inline-block text-sm sm:text-xs text-gray-700
+}
+
+.ss-main .ss-single-selected {
+  @apply flex items-center w-full appearance-none rounded-md border border-gray-300 px-2 py-1 h-10 sm:h-8 placeholder-gray-400 shadow-sm hover:shadow focus:border-primary-500 focus:outline-none focus:ring-primary-500 text-base sm:text-sm bg-white
+}
+
+.ss-main .ss-single-selected.ss-disabled {
+  @apply bg-gray-100 cursor-not-allowed
+}
+
+.ss-main .ss-single-selected.ss-open-above {
+  @apply rounded-md border-primary-500 box-border border-2
+}
+
+.ss-main .ss-single-selected.ss-open-below {
+  @apply rounded-md border-primary-500 box-border border-2
+}
+
+.ss-main .ss-single-selected .placeholder {
+  @apply flex flex-1 items-center truncate leading-4 text-left;
+  width: calc(100% - 30px);
+}
+
+.ss-main .ss-single-selected .placeholder * {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: auto
+}
+
+.ss-main .ss-single-selected .placeholder .ss-disabled {
+  color: #dedede
+}
+
+.ss-main .ss-single-selected .ss-deselect {
+  @apply flex items-center justify-center cursor-pointer;
+  margin-top: 0.15rem;
+}
+
+.ss-main .ss-single-selected .ss-deselect.ss-hide {
+  display: none
+}
+
+.ss-main .ss-single-selected .ss-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 1 auto;
+  margin: 0 2px 0 6px
+}
+
+.ss-main .ss-single-selected .ss-arrow span {
+  border: solid #666;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transition: transform .2s, margin .2s
+}
+
+.ss-main .ss-single-selected .ss-arrow span.arrow-up {
+  transform: rotate(-135deg);
+  margin: 3px 0 0 0
+}
+
+.ss-main .ss-single-selected .ss-arrow span.arrow-down {
+  transform: rotate(45deg);
+  margin: -3px 0 0 0
+}
+
+.ss-main .ss-multi-selected {
+  @apply flex items-center w-full appearance-none rounded-md border border-gray-300 px-2 py-1 placeholder-gray-400 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 text-sm bg-white;
+  min-height: 2.5rem;
+  @media (min-width: 640px) {
+    min-height: 2rem;
+  }
+}
+
+.ss-main .ss-multi-selected.ss-disabled {
+  @apply text-gray-500 bg-gray-50 cursor-not-allowed
+}
+
+.ss-main .ss-multi-selected.ss-disabled .ss-values .ss-disabled {
+  color: #666
+}
+
+.ss-main .ss-multi-selected.ss-disabled .ss-values .ss-value .ss-value-delete {
+  cursor: not-allowed
+}
+
+.ss-main .ss-multi-selected.ss-open-above {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px
+}
+
+.ss-main .ss-multi-selected.ss-open-below {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px
+}
+
+.ss-main .ss-multi-selected .ss-values {
+  @apply flex flex-1 flex-wrap items-center justify-start;
+}
+
+.ss-main .ss-multi-selected .ss-values .ss-disabled {
+  @apply flex leading-4 text-gray-300 whitespace-nowrap truncate w-full
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    transform: scale(1);
+    opacity: 1
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0
+  }
+}
+
+.ss-main .ss-multi-selected .ss-values .ss-value {
+  @apply inline-flex space-x-2 mr-1 my-0.5 items-center justify-center rounded-md bg-primary-500 group-hover:bg-primary-600 text-white px-2 py-1 sm:py-0.5 text-xs font-medium overflow-hidden;
+/*  display: flex;
+  user-select: none;
+  align-items: center;
+  font-size: 12px;
+  padding: 3px 5px;
+  margin: 3px 5px 3px 0px;
+  color: #fff;
+  background-color: #5897fb;
+  border-radius: 4px;
+  animation-name: scaleIn;
+  animation-duration: .2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both*/
+}
+
+.ss-main .ss-multi-selected .ss-values .ss-value.ss-out {
+  animation-name: scaleOut;
+  animation-duration: .2s;
+  animation-timing-function: ease-out
+}
+
+.ss-main .ss-multi-selected .ss-values .ss-value .ss-value-delete {
+  @apply cursor-pointer
+}
+
+.ss-main .ss-multi-selected .ss-add {
+  @apply flex items-center justify-end mr-1;
+  //display: flex;
+  //flex: 0 1 3px;
+  //margin: 9px 12px 0 5px
+}
+
+.ss-main .ss-multi-selected .ss-add .ss-plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #666;
+  position: relative;
+  height: 10px;
+  width: 2px;
+  transition: transform .2s
+}
+
+.ss-main .ss-multi-selected .ss-add .ss-plus:after {
+  background: #666;
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 10px;
+  left: -4px;
+  top: 4px
+}
+
+.ss-main .ss-multi-selected .ss-add .ss-plus.ss-cross {
+  @apply rotate-45
+}
+
+.ss-content {
+  @apply absolute divide-y bg-white shadow-lg rounded-md border mt-1 z-10 min-w-full transition-transform origin-top opacity-0 scale-y-0 duration-100;
+}
+
+.ss-content.ss-open {
+  @apply block opacity-100 scale-y-100
+}
+
+.ss-content .ss-search {
+  @apply flex items-center px-2 py-1 h-12 sm:h-10 space-x-2;
+}
+
+.ss-content .ss-search.ss-hide {
+  height: 0px;
+  opacity: 0;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px
+}
+
+.ss-content .ss-search.ss-hide input {
+  height: 0px;
+  opacity: 0;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px
+}
+
+.ss-content .ss-search input {
+  @apply block text-base sm:text-sm border-transparent w-full bg-white text-left appearance-none px-0 py-1 h-10 sm:h-8 placeholder-gray-400 focus:placeholder-gray-300 focus:ring-1 focus:border-transparent focus:outline-none focus:ring-transparent;
+  min-width: 9.25rem;
+}
+
+.ss-content .ss-search .ss-addable {
+  @apply flex-shrink-0 cursor-pointer text-xl leading-4 text-gray-700 bg-transparent hover:bg-gray-200 inline-flex items-center justify-center rounded-full h-10 w-10 sm:h-8 sm:w-8 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  padding-bottom: 0.15rem;
+  /*display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  flex: 0 0 30px;
+  height: 30px;
+  margin: 0 0 0 8px;
+  border: 1px solid #dcdee2;
+  border-radius: 4px;
+  box-sizing: border-box*/
+}
+
+.ss-content .ss-addable {
+  padding-top: 0px
+}
+
+.ss-content .ss-list {
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: left
+}
+
+.ss-content .ss-list .ss-optgroup .ss-optgroup-label {
+  padding: 6px 10px 6px 10px;
+  font-weight: bold
+}
+
+.ss-content .ss-list .ss-optgroup .ss-option {
+  @apply px-2 py-1 text-sm
+}
+
+.ss-content .ss-list .ss-optgroup-label-selectable {
+  cursor: pointer
+}
+
+.ss-content .ss-list .ss-optgroup-label-selectable:hover {
+  color: #fff;
+  background-color: #5897fb
+}
+
+.ss-content .ss-list .ss-option {
+  @apply flex flex-nowrap whitespace-nowrap select-none items-center space-x-2 w-full text-left px-2 py-1 h-10 sm:h-8 font-medium text-base sm:text-sm text-gray-700
+}
+
+.ss-content .ss-list .ss-option * {
+  @apply inline-block
+}
+
+.ss-content .ss-list .ss-option:hover, .ss-content .ss-list .ss-option.ss-highlighted {
+  @apply bg-gray-200
+}
+
+.ss-content .ss-list .ss-option.ss-disabled {
+  @apply cursor-not-allowed text-gray-300 bg-gray-50
+}
+
+.ss-content .ss-list .ss-option:not(.ss-disabled).ss-option-selected {
+  @apply cursor-pointer text-white bg-primary-500
+}
+
+.ss-content .ss-list .ss-option.ss-hide {
+  @apply hidden
+}
+
+.ss-content .ss-list .ss-option .ss-search-highlight {
+  @apply bg-warning-100
+}
+
+

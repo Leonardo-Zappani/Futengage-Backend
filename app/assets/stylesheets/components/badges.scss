@@ -1,0 +1,31 @@
+.badge {
+  @apply inline-flex items-center justify-center rounded-full bg-gray-100 px-1.5 py-0.5 text-xs text-gray-700 overflow-hidden border-2 border-white;
+
+  &--primary {
+    @apply bg-primary-500 group-hover:bg-primary-600 text-white
+  }
+  &--success {
+    @apply bg-success-500 group-hover:bg-success-600 text-white
+  }
+  &--danger {
+    @apply bg-danger-500 group-hover:bg-danger-600 text-white
+  }
+  &--warning {
+    @apply bg-warning-500 group-hover:bg-warning-600 text-white
+  }
+  &--circle {
+    @apply px-0.5 py-0.5 h-5 w-5
+  }
+  &--installments {
+    @apply border-transparent text-white bg-pink-500 rounded-none rounded-l-full;
+    width: 3.25rem
+  }
+  &--recurrence {
+    @apply border-transparent text-white bg-violet-500 rounded-none rounded-l-full;
+    width: 3.25rem
+  }
+  &--on-cash {
+    @apply border-transparent text-white bg-gray-500 rounded-none rounded-l-full;
+    width: 3.25rem
+  }
+}

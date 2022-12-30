@@ -1,0 +1,41 @@
+%table.spacer
+  %tbody
+    %tr
+      %td{height: "32", style: "font-size:32px;line-height:32px;"}
+        = '&nbsp;'.html_safe
+
+%table.row
+  %tr
+    %th.first.last.columns{ style: 'border-bottom: 1px solid #e5e7eb' }
+      = image_tag 'logo2x.png', style: 'height: 32px; width: auto'
+    %th.expander
+
+%table.spacer
+  %tbody
+    %tr
+      %td{height: "16", style: "font-size:16px;line-height:16px;"}
+        = '&nbsp;'.html_safe
+
+%table.row
+  %tr
+    %th.first.last.columns{ style: 'border-bottom: 1px solid #e5e7eb' }
+      %p.text-left{ style: 'line-height: 100%' }
+        %small= t('layouts.mailer.copyright_html', year: Date.current.year)
+      %p.text-left{ style: 'line-height: 100%; margin-bottom: 0px' }
+        %small
+          = t('layouts.mailer.address_line1')
+          %br
+          = t('layouts.mailer.address_line2')
+    %th.expander
+
+%table.spacer
+  %tbody
+    %tr
+      %td{height: "16", style: "font-size:16px;line-height:16px;"}
+        = '&nbsp;'.html_safe
+
+%table.row
+  %tr
+    %th.first.last.columns
+      %small{ style: 'line-height: 100%' }= t('.lgpd')
+    %th.expander

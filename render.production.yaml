@@ -1,0 +1,100 @@
+databases:
+  - name: procfy_database_production
+    databaseName: procfy_production
+    plan: free
+    region: ohio
+    ipAllowList:
+      - source: 0.0.0.0/0
+        description: everywhere
+
+services:
+  - type: redis
+    name: procfy_redis_production
+    region: ohio
+    plan: free # optional (defaults to starter)
+    ipAllowList: [ ] # only allow internal connections
+    maxmemoryPolicy: noeviction # optional (defaults to allkeys-lru)
+
+  - type: web
+    name: procfy_web_production
+    env: ruby
+    region: ohio
+    domains:
+      - app.procfy.io
+    repo: https://github.com/codengage/procfy
+    buildCommand: "./bin/render-build-web.sh"
+    startCommand: "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    envVars:
+      - key: RAILS_ENV
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: procfy_database_production
+          property: database
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: procfy_database_production
+          property: host
+      - key: DATABASE_PORT
+        fromDatabase:
+          name: procfy_database_production
+          property: port
+      - key: DATABASE_USERNAME
+        fromDatabase:
+          name: procfy_database_production
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: procfy_database_production
+          property: password
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: procfy_redis_production
+          property: connectionString
+      - key: RAILS_MAX_THREADS
+        sync: false
+
+  - type: worker
+    name: procfy_worker_production
+    env: ruby
+    region: ohio
+    repo: https://github.com/codengage/procfy
+    buildCommand: "./bin/render-build-sidekiq.sh"
+    startCommand: bundle exec sidekiq
+    envVars:
+      - key: RAILS_ENV
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: procfy_database_production
+          property: database
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: procfy_database_production
+          property: host
+      - key: DATABASE_PORT
+        fromDatabase:
+          name: procfy_database_production
+          property: port
+      - key: DATABASE_USERNAME
+        fromDatabase:
+          name: procfy_database_production
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: procfy_database_production
+          property: password
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: procfy_redis_production
+          property: connectionString
+      - key: RAILS_MAX_THREADS
+        sync: false
+
+

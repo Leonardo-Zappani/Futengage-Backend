@@ -1,0 +1,6 @@
+= turbo_frame_tag :account_invitations_index do
+  .card
+    %h6.text-center.px-3.py-1.5.border-b.bg-gray-50= AccountInvitation.model_name.human(count: 2)
+    %ul.stacked-list#account_invitations
+      = render @records
+      %p.px-base.py-base.text-gray-500#empty_state{ class: !@records.empty? && 'hidden' }= t('.there_are_not_pending_invites')

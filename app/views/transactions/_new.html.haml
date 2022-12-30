@@ -1,0 +1,7 @@
+= turbo_frame_tag :new_transaction do
+  %li
+    .transactions-list__new
+      = link_to new_transaction_path(bank_account_id: current_bank_account, transaction_type: current_transaction_type, month: current_month ), class: 'transactions-list__add' do
+        = heroicon 'plus', options: { class: 'btn-circle__icon' }
+        %span= t('.new_transaction')
+

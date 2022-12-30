@@ -1,0 +1,5 @@
+- if @transaction.same_currency?
+  .paragraph-base.text-left= @transaction&.exchanged_amount&.format
+- else
+  .paragraph-base.text-left= @transaction&.amount&.format
+  .paragraph-muted.text-left.text-xs= "~ #{@transaction&.exchanged_amount&.format}"

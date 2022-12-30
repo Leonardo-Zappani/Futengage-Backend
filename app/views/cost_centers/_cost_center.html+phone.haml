@@ -1,0 +1,12 @@
+%li{ id: dom_id(cost_center) }
+  = link_to edit_cost_center_path(cost_center), data: { turbo_frame: 'drawer' }, class: 'stacked-list__item' do
+    .stacked-list__layout
+      .stacked-list__left
+        .stacked-list__content
+          .stacked-list__details
+            .paragraph-base= cost_center.name
+            .paragraph-muted= cost_center.description
+      .stacked-list__actions
+        - if can?(:destroy, cost_center)
+          = button_to edit_cost_center_path(cost_center), method: :get, onclick: 'event.stopPropagation()', data: { turbo_frame: 'drawer' }, class: 'btn-circle btn-circle--primary' do
+            = heroicon 'pencil', options: { class: 'btn-circle__icon' }

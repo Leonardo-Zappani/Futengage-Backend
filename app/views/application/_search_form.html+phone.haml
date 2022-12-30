@@ -1,0 +1,11 @@
+= form_with(url: search_path, method: :get, html: { class: "search-form",  }, data: { controller: 'search-form' }) do |f|
+  .search-form__container.flex-1
+    %label.sr-only{for: "search_field"} Search
+    = f.search_field "q", value: params[:q], autofocus: (defined?(autofocus) ? autofocus : false), placeholder: t("shared.search"), type: "search", class: "form-control", data: { action: 'search->search-form#onResetSearch' }
+  .block.flex-shrink-0
+    = button_tag type: 'submit', class: 'btn-circle' do
+      = heroicon 'magnifying-glass', options: { class: 'btn-circle__icon' }
+  - if defined?(form_params) && form_params.any?
+    - form_params.each do |k, v|
+      - next if v.blank?
+      = f.hidden_field k, value: v

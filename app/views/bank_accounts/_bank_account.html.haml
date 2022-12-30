@@ -1,0 +1,22 @@
+= render(Table::ItemComponent.new(item: bank_account, classes: 'group', link: (can?(:update, bank_account) && turn_default_bank_account_path(bank_account)), options: { data: { turbo_frame: 'drawer' } })) do |item|
+  - item.col(classes: 'c-table__column--description whitespace-nowrap') do
+    .w-full.flex.items-center.justify-between= bank_account.name
+  - item.col(classes: 'c-table__column--flag') do
+    - if can?(:update, bank_account)
+      - if bank_account.default?
+        = heroicon 'star', variant: :solid, options: { class: "btn-circle__icon text-warning-500", 'data-controller': 'tooltip', 'data-tooltip-content-value': t('shared.main') }
+    - else
+      - if can?(:update, bank_account)
+        = button_to turn_default_bank_account_path(bank_account), method: :patch, form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, data: { controller: 'tooltip', tooltip_content_value: t('shared.turn_main') }, onclick: 'event.stopPropagation()', class: 'btn-circle' do
+          = heroicon 'star', variant: :solid, options: { class: "btn-circle__icon 'text-gray-500" }
+  - item.col(classes: 'c-table__column--amount text-primary-500 font-medium justify-end') do
+    %div.text-right{ class: bank_account.balance.negative? ? 'text-danger-500' : 'text-primary-500' }
+      = bank_account.balance.format
+  - item.col(classes: 'c-table__column--actions') do
+    - if can?(:update, bank_account)
+      = button_to edit_bank_account_path(bank_account), method: :get, data: { turbo_frame: 'drawer', controller: :tooltip, tooltip_content_value: t('shared.edit') }, onclick: 'event.stopPropagation()', class: 'btn-circle btn-circle--primary hidden group-hover:flex' do
+        = heroicon 'pencil', options: { class: 'btn-circle__icon' }
+    - remove_disabled = bank_account.transactions.exists? || bank_account.transactions_as_recipient.exists?
+    - if can?(:destroy, bank_account)
+      = button_to bank_account, method: :delete, disabled: remove_disabled, form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, data: { controller: :tooltip, tooltip_content_value: t('shared.remove') }, onclick: 'event.stopPropagation()', class: 'btn-circle btn-circle--danger hidden group-hover:flex' do
+        = heroicon 'trash', options: { class: 'btn-circle__icon' }

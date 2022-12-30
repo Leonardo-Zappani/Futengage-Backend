@@ -1,0 +1,29 @@
+.profile-menu{ data: { controller: 'tooltip dropdown', tooltip_content_value: t('.switch_account') }}
+  %div
+    %button.profile-menu__activator.group{"data-action": "dropdown#toggle keyup@window->dropdown#hideWithKeyboard click@window->dropdown#hide", type: "button"}
+      %span.profile-menu__layout
+        %span.profile-menu__info
+          = render 'avatar', avatable: Current.account.company, icon: 'building-office'
+          %span.profile-menu__detail
+            %p.paragraph-base.font-semibold= Current.account.first_name
+            - if Current.account.balance > 0
+              %p.paragraph-muted.text-success-500.mt-0.5= Current.account.balance.format
+            - else
+              %p.paragraph-muted.text-danger-500.mt-0.5= Current.account.balance.format
+        = heroicon "arrows-right-left", options: { class: "profile-menu__chevron" }
+  .profile-menu__items-bottom-top.hidden{"data-dropdown-target": "menu",
+                       "data-transition-enter-from": "opacity-0 scale-95",
+                       "data-transition-enter-to": "opacity-100 scale-100 z-50",
+                       "data-transition-leave-from": "opacity-100 scale-100 z-50",
+                       "data-transition-leave-to": "opacity-0 scale-95"}
+
+    .profile-menu__group
+      - Current.user.accounts.includes(company: { avatar_attachment: :blob}).each do |account|
+        = button_to user_settings_switch_account_path, method: :put, class: 'profile-menu__item', params: { user: { account_id: account.id } }, form: { data: { turbo: false } } do
+          = render 'avatar', avatable: account.company, icon: 'building-office'
+          .truncate.w-40
+            %p.paragraph-base.font-semibold.truncate= account.first_name
+            %p.paragraph-muted.mt-0.5= account.balance.format
+          .block
+            - if Current.account == account
+              .badge.badge--primary= t('.current_account')

@@ -1,0 +1,16 @@
+= render(Table::ItemComponent.new(item: contact, classes: 'group', link:  (can?(:update, contact) && edit_contact_path(contact)), options: { data: { turbo_frame: 'drawer' } })) do |item|
+  - item.col(classes: 'c-table__column--avatar') do
+    .avatar.avatar--md
+      = image_tag url_for_avatar(contact)
+  - item.col(classes: 'c-table__column--description') { contact.name }
+  - item.col(classes: 'c-table__column--document-1') { coalesce(contact.document_1, default: t('shared.not_informed')) }
+  - item.col(classes: 'c-table__column--email hidden lg:flex') { coalesce(contact.email, default: t('shared.not_informed')) }
+  - item.col(classes: 'c-table__column--phone-number hidden xl:flex') { coalesce(contact.phone_number, default: t('shared.not_informed')) }
+  - item.col(classes: 'c-table__column--datetime hidden xl:flex') { l(contact.updated_at) }
+  - item.col(classes: 'c-table__column--actions') do
+    - if can?(:update, contact)
+      = button_to edit_contact_path(contact), method: :get, data: { turbo_frame: 'drawer', controller: :tooltip, tooltip_content_value: t('shared.edit') }, onclick: 'event.stopPropagation()', class: 'btn-circle btn-circle--primary hidden group-hover:flex' do
+        = heroicon 'pencil', options: { class: 'btn-circle__icon' }
+    - if can?(:destroy, contact)    
+      = button_to contact, method: :delete, onclick: 'event.stopPropagation()', form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, data: { controller: :tooltip, tooltip_content_value: t('shared.remove') }, class: 'btn-circle btn-circle--danger hidden group-hover:flex' do
+        = heroicon 'trash', options: { class: 'btn-circle__icon' }

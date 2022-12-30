@@ -1,0 +1,32 @@
+= render TurboDrawerComponent.new(title: t(".title")) do
+  = form_with url: @transaction, method: :delete, html: { class: 'relative' } do |f|
+    = hidden_field_tag :month, current_month
+    = hidden_field_tag :bank_account_id, current_bank_account.id
+    = hidden_field_tag :transaction_type, current_transaction_type
+
+    %p.text-sm.leading-5.text-gray-500= t('.how_do_you_prefer_delete_it').html_safe
+
+    .mt-6
+      .space-y-2
+        .flex.items-center
+          = radio_button_tag :option, 'only_this_installment', true, class: 'h-4 w-4 border-gray-300 text-primary-500 focus:ring-primary-500'
+          = label_tag :action_only_this_installment, t('.only_this_installment'), class: 'ml-3 block text-sm font-medium text-gray-700'
+
+        - if @transaction.installment_number < @transaction.installment_total
+          .flex.items-center
+            = radio_button_tag :option, 'this_and_next_installments', false, class: 'h-4 w-4 border-gray-300 text-primary-500 focus:ring-primary-500'
+            = label_tag :action_this_and_next_installments, t('.this_and_next_installments'), class: 'ml-3 block text-sm font-medium text-gray-700'
+
+        - if @transaction.installment_number > 1 && @transaction.installment_number < @transaction.installment_total
+          .flex.items-center
+            = radio_button_tag :option, 'prev_and_next_installments', false, class: 'h-4 w-4 border-gray-300 text-primary-500 focus:ring-primary-500'
+            = label_tag :action_prev_and_next_installments, t('.prev_and_next_installments'), class: 'ml-3 block text-sm font-medium text-gray-700'
+
+        - if @transaction.installment_number > 1 && @transaction.installment_number == @transaction.installment_total
+          .flex.items-center
+            = radio_button_tag :option, 'this_and_prev_installments', false, class: 'h-4 w-4 border-gray-300 text-primary-500 focus:ring-primary-500'
+            = label_tag :action_this_and_prev_installments, t('.this_and_prev_installments'), class: 'ml-3 block text-sm font-medium text-gray-700'
+
+
+    .form-group.mt-6
+      = f.submit t('shared.delete'), class: "btn-solid btn-solid--danger"

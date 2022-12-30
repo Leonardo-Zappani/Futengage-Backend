@@ -1,0 +1,24 @@
+%li{ id: dom_id(contact) }
+  = link_to edit_contact_path(contact), data: { turbo_frame: 'drawer' }, class: 'stacked-list__item' do
+    .stacked-list__layout
+      .stacked-list__left
+        .stacked-list__avatar
+          .avatar.avatar--md
+            - if contact.avatar.attached?
+              = image_tag contact.avatar.variant(resize_to_limit: [100, 100])
+            - else
+              = image_tag 'avatar_placeholder.png'
+        .stacked-list__content
+          .stacked-list__details
+            .paragraph-base= contact.name
+            .paragraph-muted.sm:space-x-4
+              .space-x-1.flex.items-center
+                %span= heroicon 'phone', options: { class: 'h-4 w-4' }
+                %span= coalesce(contact.phone_number, default: 'Não informado')
+              .space-x-1.flex.items-center
+                %span= heroicon 'at-symbol', options: { class: 'h-4 w-4' }
+                %span= coalesce(contact.email, default: 'Não informado')
+      .stacked-list__actions
+        - if can?(:destroy, contact)
+          = button_to contact, method: :delete, onclick: "event.stopPropagation()", form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, class: 'btn-circle btn-circle--danger' do
+            = heroicon 'trash', options: { class: 'btn-circle__icon' }

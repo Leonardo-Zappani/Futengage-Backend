@@ -1,0 +1,22 @@
+!!! Strict
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "width=device-width", name: "viewport"}/
+    = stylesheet_link_tag "foundation_emails"
+    :css
+      /*table.button table td {*/
+      /*  background-color: #6366f1 !important;*/
+      /*}*/
+
+  %body
+    %table.body{ "data-made-with-foundation" => "" }
+      %tr
+        %td.float-center{ align: "center", valign: "top" }
+          %center
+            %table.container{ align: "center" }
+              %tr
+                %td
+                  = render 'application/mailer_header'
+                  = yield
+                  = render 'application/mailer_footer'

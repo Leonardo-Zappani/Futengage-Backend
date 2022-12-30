@@ -1,0 +1,8 @@
+.flex-shrink-0.w-full.h-auto.px-2.py-3.text-sm.lg:px-6
+  .flex.flex-col-reverse.p-4.text-sm.lg:flex-row.lg:justify-between.lg:p-0
+    .flex.items-center.justify-center.space-x-2
+      .text-gray-700.text-xs= "© #{Date.current.year} Procfy"
+    .flex.flex-wrap.justify-center.divide-x
+      = link_to t(".about"), about_path, class: "text-xs text-gray-700 no-underline block px-4 lg:my-0 my-2"
+      = link_to t(".privacy"), privacy_path, class: "text-xs text-gray-700 hover:text-gray-800 no-underline block lg:my-0 my-2 px-4"
+      = link_to t(".terms"), terms_path, class: "text-xs text-gray-700 hover:text-gray-800 no-underline block lg:my-0 my-2 px-4"

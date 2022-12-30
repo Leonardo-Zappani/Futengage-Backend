@@ -1,0 +1,21 @@
+= turbo_frame_tag :contacts_index do
+  = render(Page::HeaderComponent.new(title: Contact.model_name.human(count: 2))) do |header|
+    - header.search do
+      = render 'search_form', search_path: contacts_path, query_params: request.query_parameters
+    - header.action do
+      - if can?(:create, Contact)
+        = link_to new_contact_path(request.query_parameters), class: 'btn-circle btn-circle--primary', data: { turbo_frame: 'drawer' } do
+          = heroicon 'plus', options: { class: 'btn-circle__icon' }
+
+  = render 'tabs'
+
+  .card
+    %ul.stacked-list#contacts
+      = render @records
+      = render 'empty_state', hidden: @records.any?,
+                              is_search: params[:q].present?,
+                              add_path: new_contact_path,
+                              clear_path: contacts_path,
+                              options: { data: { turbo_frame: 'drawer' } }
+
+  = render(Page::PaginatorComponent.new(paginator: @pagy))

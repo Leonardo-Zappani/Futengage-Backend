@@ -1,0 +1,2 @@
+//= require chartkick
+//= Chart.bundle

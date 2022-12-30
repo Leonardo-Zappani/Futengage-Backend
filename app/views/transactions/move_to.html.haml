@@ -1,0 +1,9 @@
+= render TurboDrawerComponent.new(title: t(".title")) do
+  = form_for @transaction, html: { class: 'relative' } do |f|
+    = hidden_field_tag :month, @current_month
+    .grid.grid-cols-1.gap-y-6.gap-x-4.sm:grid-cols-2
+      .form-group.col-span-2
+        = f.label :transaction_type, class: 'form-label'
+        = f.select :transaction_type, enum_option_pairs(Transaction, :transaction_type), {}, data: { controller: 'select' }
+      .form-group.col-span-2
+        = f.submit class: "btn btn--primary"

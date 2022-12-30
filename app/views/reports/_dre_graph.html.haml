@@ -1,0 +1,67 @@
+= turbo_frame_tag :graph do
+  .card.animate__animated.animate__fadeIn.animate__faster
+    .card__header
+      %h3=  t(".title")
+      - if !(@bank_account.count > 1)
+        = Category.human_attribute_name(:"#{@bank_account.first.name} (#{params[:start_date].present? ? l(Date.parse(params[:start_date].to_s)) : l(Current.date.beginning_of_month)} à #{params[:end_date].present? ? l(Date.parse(params[:end_date].to_s)) : l(Current.date.end_of_month)})")
+      - else
+        = Category.human_attribute_name(:"#{@bank_account.first.name} e + #{@bank_account.count - 1} contas (#{params[:start_date].present? ? l(Date.parse(params[:start_date].to_s)) : l(Current.date.beginning_of_month)} à #{params[:end_date].present? ? l(Date.parse(params[:end_date].to_s)) : l(Current.date.end_of_month)})")
+    .card__body
+      .stacked-list__hidden-col.stacked-list.stacked-paid-tittle.pt-3
+        .flex
+          .paragraph-base.form-group-checkbox.mt-2
+            = heroicon 'plus', variant: :solid, options: { class: "h-5 w-5 text-success-500" }
+            .paragraph-base= t(".gross_income")
+          .form-group-checkbox.mt-2
+            .text-success-500= @response[:gross_income].format
+        .flex
+          .paragraph-base.form-group-checkbox.mt-2
+            = heroicon 'minus', variant: :solid, options: { class: "h-5 w-5 text-danger-500" }
+            .paragraph-base= t(".taxes")
+          .form-group-checkbox.mt-2
+            .text-danger-500= @response[:taxes].format
+        .flex
+          .paragraph-base.form-group-checkbox.mt-2.pl-6
+            = heroicon 'arrow-right-circle', variant: :solid, options: { class: "h-5 w-5 text-500" }
+            .paragraph-base= t(".gross_profit")
+          .form-group-checkbox.mt-2
+            -if @response[:gross_profit].positive?
+              .text-success-500= @response[:gross_profit].format
+            -else
+              .text-danger-500= @response[:gross_profit].format
+        .flex
+          .paragraph-base.form-group-checkbox.mt-2
+            = heroicon 'minus', variant: :solid, options: { class: "h-5 w-5 text-danger-500" }
+            .paragraph-base= t(".total_variable_expenses")
+          .form-group-checkbox.mt-2
+            .text-danger-500= @response[:variable_expense].format
+        .flex
+          .paragraph-base.form-group-checkbox.mt-2.pl-4.px-1.py-1
+            = heroicon 'arrow-right-circle', variant: :solid, options: { class: "h-5 w-5 text-500" }
+            .paragraph-base= t(".operating_profit")
+          .form-group-checkbox.mt-2
+            -if @response[:operating_profit].positive?
+              .text-success-500=  @response[:operating_profit].format
+            -else
+              .text-danger-500= @response[:operating_profit].format
+        .flex
+          .paragraph-base.form-group-checkbox.mt-2
+            = heroicon 'minus', variant: :solid, options: { class: "h-5 w-5 text-danger-500" }
+            .paragraph-base= t(".total_fixed_expenses")
+          .form-group-checkbox.mt-2
+            .text-danger-500= @response[:fixed_expense].format
+        .flex
+          .paragraph-base.form-group-checkbox.mt-2
+            = heroicon 'minus', variant: :solid, options: { class: "h-5 w-5 text-danger-500" }
+            .paragraph-base= t(".personnel_expenses")
+          .form-group-checkbox.mt-2
+            .text-danger-500= @response[:personnel_expenses].format
+        .flex
+          .paragraph-base.form-group-checkbox.mt-2.p-4
+            = heroicon 'arrow-right-circle', variant: :solid, options: { class: "h-5 w-5 text-500" }
+            .paragraph-base= t(".net_profit")
+          .form-group-checkbox.mt-2
+            - if @response[:result].positive?
+              .text-success-500=  @response[:result].format
+            - else
+              .text-danger-500= @response[:result].format

@@ -1,0 +1,10 @@
+- if Current.user.pending_invitations?
+  - account_invitation = Current.user.pending_invitations.first
+  - unless current_page?(controller: 'account_invitations', action: 'show', id: account_invitation.token)
+    .sm:border-l-4.border-purple-400.bg-purple-50.sm:mx-6.px-3.py-3.sm:py-2
+      .sm:flex.sm:items-center.sm:space-x-2.sm:justify-between
+        %p.sm:flex-1.text-sm.text-purple-700.sm:truncate
+          = t('.instructions', inviter: account_invitation.invited_by.name, account: account_invitation.account.name).html_safe
+        .sm:flex-shrink-0.mt-3.sm:mt-0.block.sm:flex.sm:items-center.sm:space-x-2.space-y-3.sm:space-y-0
+          = button_to t("account_invitations.show.accept"), accept_account_invitation_path(account_invitation.token), method: :put, class: "btn btn--primary"
+          = button_to t("account_invitations.show.decline"), reject_account_invitation_path(account_invitation.token), method: :delete, class: "btn btn--danger", data: {turbo_confirm: t("shared.are_you_sure?")}

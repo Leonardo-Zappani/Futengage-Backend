@@ -1,0 +1,12 @@
+= form_for @cost_center do |f|
+  - if @cost_center.errors.any?
+    = render 'errors', errors: @cost_center.errors
+  .flex.flex-col.space-y-4.sm:space-y-6.pb-6
+    .form-group
+      = f.label :name, class: 'form-label'
+      = f.text_field :name, autofocus: true, class: 'form-control'
+    .form-group
+      = f.label :description, class: 'form-label'
+      = f.text_area :description, class: 'form-control', data: { controller: 'textarea-autogrow' }
+    .form-group
+      = f.submit class: "btn btn--primary"

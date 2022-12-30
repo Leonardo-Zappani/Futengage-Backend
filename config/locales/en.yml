@@ -1,0 +1,443 @@
+---
+en:
+  true: Yes
+  false: No
+  activerecord:
+    models:
+      active_storage/attachment:
+        one: Attachment
+        other: Attachments
+      active_storage/blob:
+        one: File
+        other: Files
+      active_storage/variant_record:
+        one: Variant
+        other: Variants
+      action_text/rich_text:
+        one: Rich text
+        other: Rich texts
+      bank_account:
+        one: Bank account
+        other: Bank accounts
+      category:
+        one: Category
+        other: Categories
+      cost_center:
+        one: Cost center
+        other: Cost centers
+      company:
+        one: Company
+        other: Companies
+      contact:
+        one: Contact
+        other: Contacts
+      transaction:
+        one: Transaction
+        other: Transactions
+      domain:
+        one: Domain
+        other: Domains
+      account_user:
+        one: Member
+        other: Members
+      person:
+        one: Person
+        other: People
+      account_invitation:
+        one: Invitation
+        other: Invitations
+      account:
+        one: Account
+        other: Accounts
+      exchange_rate:
+        one: Exchange rate
+        other: Exchange rates
+
+    attributes:
+      account:
+        default_currency: Default currency
+        country_code: Country code
+      bank_account:
+        name: Name
+        account_type: Account type
+        balance_cents: Current balance
+        balance: Current balance
+        initial_balance_cents: Initial balance
+        updated_at: Updated at
+        default: Default?
+      category:
+        name: Name
+        description: Description
+        updated_at: Updated at
+      cost_center:
+        name: Name
+        description: Description
+        updated_at: Updated at
+      company:
+        name: Company name
+        document_1: Document ID
+        document_2: Document ID 2
+        email: E-mail
+        phone_number: Contact phone number
+        description: Observations
+        updated_at: Updated at
+      contact:
+        contact_type: Contact type
+        person_type: Person type
+        name: Name
+        document_1: Document ID
+        document_2: Document ID 2
+        email: E-mail
+        phone_number: Phone number
+        description: Observations
+        updated_at: Updated at
+      transaction:
+        transaction_type: Transaction type
+        due_date: Date
+        name: Description
+        contact_id: Contact
+        receipted_from: Receipt from
+        paid_to: Paid to
+        category_id: Category
+        payment_type: Type
+        paid: Paid?
+        paid_at: Paid on
+        amount: Amount
+        exchanged_amount: Exchanged amount
+        competency_date: Competency date
+        document_number: Document number
+        cost_center_id: Cost center
+        bank_account_id: Source account
+        payment_method: Payment method
+        description: Observations / Considerations
+        attachments: Payment Proofs & Attachments
+        transfer_to_id: Target account
+        installment_type: Frequency
+        installment_total: Total installments
+        installment_number: Installment number
+  application:
+    profile_menu:
+      sign_out: "Logout"
+      user_settings: "User settings"
+      account_settings: "Account settings"
+      billing: "Billing"
+      change_plan: "Change my plan"
+      change_payment_method: "Change payment method"
+      checkout: "Subscribe..."
+      rails_admin: "Administration (Rails Admin)"
+    sidenav_content:
+      configurations: "Settings"
+      dashboard: "Home"
+      settings: "Settings"
+    empty_state:
+      empty_result: "Empty result"
+      click_to_create_a_new_one: "Click below to add a new item"
+      add: "New"
+      clear_search: "Clear search"
+    empty_search:
+      search_not_found: "No results found"
+      please_check_your_search: "Could not find any record with term: %{term}"
+      clear_all: "Clear search"
+    footer:
+      about: "About"
+      privacy: "Privacy"
+      terms: "Terms"
+    billing_status:
+      current_plan: "My current plan"
+      trial_period: "You trial period ends in <strong>%{count_down}</strong> days"
+    switch_account:
+      switch_account: "Switch account"
+      current_account: "Current"
+    pending_invitations:
+      view_invitation: "You can accept/reject this invite"
+      instructions: "%{inviter} invite you to participate %{account}."
+  shared:
+    are_you_sure?: "Are you sure?"
+    error: "%{count} prohibited this domain from being saved:"
+    search: "Search..."
+    all: "All"
+    not_informed: "Not informed"
+    default: "Default"
+    edit: "Edit"
+    remove: "Remove"
+    date_format: "MM/dd/yyyy"
+    date_pattern: "00/00/0000"
+    upload_a_file: "Click here"
+    or_drag_and_drop: "Click here or drop your files"
+    accepted_formats: "PNG, JPG, PDF, DOC e XLS until 2MB"
+    details: "Details"
+    loading: "Loading..."
+    duplicate: "Duplicate"
+    move_to: "Move to..."
+    yes: "Yes"
+    no: "No"
+    setup_installments: "Setup installments..."
+    create_installments: "Create installments"
+    setup_recurrence: "Turn recurrent..."
+    create_transactions: "Create transactions"
+    delete: "Remove"
+    destroy_dialog: "Remove..."
+    turn_default: "Turn default"
+    main: "Main"
+    turn_main: "Turn main"
+    download: "Download"
+    import: "Import"
+    new_import: "New import"
+    you_are_not_authorized_to_access_this_page: "<strong>Access forbidden!</strong><br>You are not authorized to access this page or execute this action."
+    good_morning: "Good morning, %{name}"
+    good_afternoon: "Good afternoon, %{name}"
+    good_evening: "Good evening, %{name}"
+    good_night: "Good night, %{name}"
+    attachments: "Attachments"
+    attach: "Attach files"
+    send_files: "Send files"
+    guest: "Guest"
+  transactions:
+    new:
+      title: "New transaction"
+    create:
+      success: "Transaction created successfully"
+    update:
+      success: "Transaction updated successfully"
+    destroy:
+      success: "Transaction removed successfully"
+    toggle:
+      success: "Transaction updated successfully"
+      error: "Transaction update failed"
+    details:
+      title: "Transaction details"
+    totalizer:
+      total: "Total"
+      revenue_paid: "Paid"
+      revenue_unpaid: "Unpaid yet"
+      expense_paid: "Paid"
+      expense_unpaid: "Unpaid yet"
+      transfer_paid: "Done"
+      transfer_unpaid: "Not done yet"
+    outcome:
+      outcome: "Expected result in this month"
+    revenues:
+      revenues: "Revenues"
+      paid_revenues: "Paid"
+      prev_revenues: "Unpaid yet"
+    expenses:
+      expenses: "Expenses"
+      paid_expenses: "Paid"
+      prev_expenses: "Unpaid yet"
+    chart:
+      outcome: "Result"
+    duplicate:
+      success: "Transaction duplicated successfully"
+    move_to:
+      title: "Move to..."
+    balance:
+      new_bank_account: "Add bank account"
+    goto:
+      goto: "Go to %{month} and show me this transaction"
+    goto_bank_account:
+      goto_bank_account: "Switch to %{name} and show me this transaction"
+    setup_installments:
+      title: "Setup installments"
+    setup_recurrence:
+      title: "Setup recurrence"
+    destroy_dialog:
+      title: "Exclusion of installment item"
+      how_do_you_prefer_delete_it: "This transaction is part of an installment. <strong>What do you want remove?</strong>"
+      only_this_installment: "Only this installment"
+      this_and_next_installments: "This installment and the next ones"
+      prev_and_next_installments: "The previous installments and the next ones"
+      this_and_prev_installments: "This installment and the previous ones"
+    tabs:
+      next_month: "Next month"
+      prev_month: "Previous month"
+      current_month: "Current month"
+    transaction:
+      paid: Paid
+      not_paid: Not Paid 
+  home:
+    index:
+      dashboard: "Home"
+      title: "Home"
+      expected_and_accomplished: ""
+      subtitle: ""
+      bank_accounts: "Bank accounts"
+      bank_accounts_description: "Alternate between bank accounts"
+      storage_size: "Storage space"
+      storage_size_description: "Storage space control"
+    storage:
+      total: "Total"
+    stogare:
+      consumed: "Consumed"
+  reports:
+    descriptions:
+      nil: "Without description"
+    index:
+      title: "Reports"
+    in_description_graph:
+      title: "Per description "
+      subtitle: "Description"
+      description: "Value"
+      recipe: "(Income)"
+    in_per_category_graph:
+      title: "Per category "
+      subtitle: "Category"
+      description: "Value"
+      recipe: "(Income)"
+    in_per_cost_center_graph:
+      title: "Per cost center "
+      subtitle: "Cost Center"
+      description: "Value"
+      recipe: "(Income)"
+    in_per_day_graph:
+      title: "Per day "
+      subtitle: "Day"
+      description: "Value"
+      recipe: "(Income)"
+    in_per_type_graph:
+      title: "Per type "
+      subtitle: "Type"
+      description: "Value"
+      recipe: "(Income)"
+    out_description_graph:
+      title: "Per description "
+      subtitle: "Description"
+      description: "Value"
+      recipe: "(Expense)"
+    out_per_category_graph:
+      title: "Per category "
+      subtitle: "Category"
+      description: "Value"
+      recipe: "(Expense)"
+    out_per_cost_center_graph:
+      title: "Per cost center "
+      subtitle: "Cost center"
+      description: "Value"
+      recipe: "(Expense)"
+    out_per_day_graph:
+      title: "Per day "
+      subtitle: "Day"
+      description: "Value"
+      recipe: "(Expense)"
+    out_per_type_graph:
+      title: "Per type "
+      subtitle: "Type"
+      description: "Value"
+      recipe: "(Expense)"
+    dre_graph:
+      title: "Income Statement"
+      gross_income: "Gross income"
+      taxes: "Taxes"
+      brute_profit: "Brute Profit"
+      total_variable_expenses: "Total Variable Expenses"
+      operating_profit: "Operational Profit"
+      total_fixed_expenses: "Fixed Expenses"
+      personnel_expenses: "Personnel Expenses"
+      net_profit: "Outcome"
+      gross_profit: "Gross profit"
+    header_reports:
+      starting_date: "Start inicial"
+      ending_date: "Final Date"
+      select_bank_account: "Select Bank Account" 
+      select_cost_center: "Select Cost Center" 
+      include: "Include"
+      paid: "Paid"
+      not_paid: "Not Paid"
+      apply: "Apply"
+      clear: "Clear"
+    side_menu:
+      title: "Cash Flow"
+      dre: "Results (DRE)"
+      expenses: "Expenses"
+      income:  "receipts"
+      description: "Per Description"
+      day: "Per Day"
+      type: "Per Type"   
+      category: "Per Category"
+      cost_center: "Per Cost Center"   
+  account_settings:
+    edit:
+      title: "Account settings"
+    update:
+      success: "Account settings updated successfully"
+  user_settings:
+    edit:
+      title: "User settings"
+    update:
+      success: "User settings updated successfully"
+    form:
+      update: "Save settings"
+    switch_account:
+      success: "Current account switched successfully"
+
+  imports:
+    create:
+      success: "Importation created successfully"
+      fail_import: "Unable to import this file, no transactions found,please try again later"
+      error: "Unsupported file"
+    destroy:
+      success: "Import successfully deleted and all transactions have been rolled back"
+    update:
+      error: "You don't have permission to edit"
+    show:
+      error: "You don't have permission to vew"
+    find:
+      error: "Cannot find"
+    import:
+      are_you_sure?: "All imported transactions will be reverted. Do you want to continue?"
+    form:
+      select_file: "Select the file to be imported"
+      start_import: "Start import"
+      select_source: "Select the source of the file"
+    new:
+      title: "New import"
+
+  dre:
+    title:
+      statement: "Income Statement"
+
+     
+
+  checkout_portal_sessions:
+    new:
+      title: "Subscription"
+    form:
+      pricing_plans: "Pricing plans"
+      month_plans: "Monthly Plans"
+      year_plans: "Annual Plans"
+      subscribe: "Subscribe"
+  account_users:
+    update:
+      success: "User updated successfully"
+    destroy:
+      success: "User removed successfully"
+  account_invitations:
+    update:
+      success: "Invitation updated sucessfully"
+    index:
+      there_are_not_pending_invites: "There aren't pending invitations"
+  delayed: "Delayed"
+  due_today: "Due today"
+  on_time: "On time"
+  paid: "Paid"
+  attachments:
+    destroy:
+      success: "Attachment removed successfully"
+    index:
+      title: "Attachments"
+    create:
+      success: "Attachment created successfully"
+  notifications:
+    destroy:
+      success: "Notification removed successfully"
+    mark_as_read:
+      success: "Notification read successfully"
+    mark_as_unread:
+      success: "Notification unread successfully"
+    index:
+      empty_state: "You have no notifications"
+      my_notifications: "My notifications"
+      dismiss_all: "Dismiss all"
+    dismiss_all:
+      success: "Notifications updated successfully"
+  message: "Delayed transactions"
+  open_sidenav: "Open sidenav"

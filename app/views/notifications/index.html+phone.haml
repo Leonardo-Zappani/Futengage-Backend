@@ -1,0 +1,24 @@
+= turbo_frame_tag :notifications_index, class: 'w-auto z-30' do
+  .c-dropdown.z-30{ data: { controller: :dropdown }}
+    = button_tag type: :button, class: 'btn-circle relative group', data: { action: "dropdown#toggle keyup@window->dropdown#hideWithKeyboard click@window->dropdown#hide" } do
+      = heroicon 'bell', options: { class: 'btn-circle__icon' }
+      - if @notifications_count.positive?
+        .absolute.badge.badge--danger.badge--circle.-left-2.-top-1= @notifications_count
+    .c-dropdown__menu.c-dropdown__menu--right-to-left.z-30{"data-dropdown-target": "menu",
+                      "data-transition-enter-from": "opacity-0 scale-95",
+                      "data-transition-enter-to": "opacity-100 scale-100",
+                      "data-transition-leave-from": "opacity-100 scale-100",
+                      "data-transition-leave-to": "opacity-0 scale-95"}
+      .profile-menu__group#notifications
+        - if @notifications_count.positive?
+          = button_to dismiss_all_notifications_path, method: :put, class: 'c-dropdown__item flex items-center space-x-2' do
+            .avatar.avatar--sm= heroicon 'x-mark', options: { class: 'h-5 w-5 flex-shrink-0 text-gray-400' }
+            .block.truncate
+              .paragraph-base= t('.dismiss_all')
+
+        = render @notifications
+
+        - if @notifications_count.zero?
+          .c-dropdown__item
+            .block.truncate
+              .paragraph-muted= t('.empty_state')

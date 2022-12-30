@@ -1,0 +1,14 @@
+= turbo_frame_tag :chart do
+  .flex.items-center.justify-center.sm:space-x-6.animate__fadeIn.animate__faster
+    .block.animate__animated.animate__pulse.animate__faster
+      %canvas.h-32.w-80.sm:w-96{ data: {
+        controller: 'transactions-chart',
+        transactions_chart_line_data_value: @line_data.to_json,
+        transactions_chart_column_data_value: @column_data.to_json,
+        transactions_chart_locale_value: I18n.locale,
+        transactions_chart_currency_value: Money.default_currency,
+        transactions_chart_paid_revenues_label_value: t('transactions.totalizer.revenue_paid'),
+        transactions_chart_unpaid_revenues_label_value: t('transactions.totalizer.revenue_unpaid'),
+        transactions_chart_paid_expenses_label_value: t('transactions.totalizer.expense_paid'),
+        transactions_chart_unpaid_expenses_label_value: t('transactions.totalizer.expense_unpaid'),
+        transactions_chart_outcome_label_value: t('.outcome') }}

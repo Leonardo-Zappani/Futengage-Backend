@@ -1,0 +1,15 @@
+%li{ id: dom_id(bank_account) }
+  = link_to edit_bank_account_path(bank_account), data: { turbo_frame: 'drawer' }, class: 'stacked-list__item' do
+    .stacked-list__layout
+      .stacked-list__left
+        .stacked-list__content
+          .stacked-list__details
+            .flex.items-center.space-x-2
+              %span= bank_account.name
+              - if bank_account.default?
+                %span.badge__primary= t('shared.default')
+            .paragraph-muted= te(bank_account, :account_type)
+      .stacked-list__actions
+        - if can?(:destroy, bank_account)
+          = button_to bank_account, method: :delete, onclick: "event.stopPropagation()", form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, class: 'btn-circle btn-circle--danger' do
+            = heroicon 'trash', options: { class: 'btn-circle__icon' }

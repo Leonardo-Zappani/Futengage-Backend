@@ -1,0 +1,21 @@
+= form_for @account_user do |f|
+  - if @account_user.errors.any?
+    = render 'errors', resource: @account_user
+  .flex.flex-col.space-y-4.sm:space-y-6.pb-6
+    = f.fields_for :user, f.object.user do |user_form|
+      .form-group
+        = user_form.label :first_name, class: 'form-label'
+        = user_form.text_field :first_name, class: 'form-control', disabled: true
+      .form-group
+        = user_form.label :last_name, class: 'form-label'
+        = user_form.text_field :last_name, class: 'form-control', disabled: true
+      .form-group
+        = user_form.label :email, class: 'form-label'
+        = user_form.email_field :email, autocomplete: "email", class: 'form-control', disabled: true
+
+    .form-group
+      = f.label :role, class: 'form-label'
+      = f.select :role, enum_option_pairs(AccountUser, :role), {}, disabled: @account_user.owner?, class: "form-control"
+
+    .form-group
+      = f.submit class: "btn btn--primary"
