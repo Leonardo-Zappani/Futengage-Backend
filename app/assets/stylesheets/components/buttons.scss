@@ -6,7 +6,7 @@
   }
 
   &--primary {
-    @apply text-white bg-primary-500 hover:bg-primary-600 border-transparent
+    @apply text-white bg-green-500 hover:bg-green-600 border-transparent
   }
 
   &--danger {
@@ -16,7 +16,7 @@
   &-solid {
     @apply cursor-pointer inline-flex flex-nowrap space-x-2 w-full sm:w-auto justify-center items-center rounded-full border-2 border-transparent bg-gray-100 hover:bg-gray-200 py-base px-base h-9 sm:h-8 xl:h-9 text-sm sm:text-xs xl:text-sm font-medium text-gray-700 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
     &--primary {
-      @apply bg-primary-500 hover:bg-primary-600 text-white hover:text-white
+      @apply bg-green-500 hover:bg-green-600 text-white hover:text-white
     }
     &--danger {
       @apply bg-danger-500 hover:bg-danger-600 text-white hover:text-white
@@ -58,7 +58,7 @@
       @apply h-5 w-5
     }
     &--primary {
-      @apply bg-primary-500 hover:bg-primary-600
+      @apply bg-green-500 hover:bg-green-600
     }
     &--success {
       @apply bg-success-500 hover:bg-success-600
@@ -73,7 +73,7 @@
 }
 
 .btn-link {
-  @apply inline-flex py-1 text-base sm:text-sm font-medium text-primary-600 hover:text-primary-500;
+  @apply inline-flex py-1 text-base sm:text-sm font-medium text-black hover:text-black;
 }
 
 
