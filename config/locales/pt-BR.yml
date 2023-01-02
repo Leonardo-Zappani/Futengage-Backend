@@ -627,6 +627,3 @@ pt-BR:
   delayed_transaction_notification:
     title: "Transação com %{days} dia(s) de atraso"
   open_sidenav: "Abrir menu de navegação"
-  invisible_captcha:
-    sentence_for_humans: "Se você é um humano, ignore este campo"
-    timestamp_error_message: "Desculpe, foi muito rápido! Reenvie novamente"
