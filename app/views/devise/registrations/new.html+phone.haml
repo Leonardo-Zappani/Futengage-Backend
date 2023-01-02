@@ -1,0 +1,35 @@
+%canvas.orb-canvas.devise__canvas
+.devise__layoutp.absolute
+  .devise__leftp
+    .devise__container
+      .devise__header.pl-1
+        %h2.devise__title= 'Criar Conta'
+      .devise__header
+        %img{:src => "/logo.png" , class: 'fill-primary-600 h-8 w-auto'}   
+      .devise__content
+        = form_for(resource, as: resource_name, url: registration_path(resource_name, invite: @account_invitation&.token), html: { class: 'devise__form', 'data-turbo': false }) do |f|
+          = render 'errors', resource: resource
+          .form-group
+            = f.label :first_name, class: 'form-label'
+            = f.text_field :first_name, class: 'form-control'
+          .form-group
+            = f.label :last_name, class: 'form-label'
+            = f.text_field :last_name, class: 'form-control'
+          .form-group
+            = f.label :email, class: 'form-label'
+            = f.email_field :email, autocomplete: "email", class: 'form-control'
+          .form-group
+            .flex.items-center.space-x-4
+              = f.label :password, class: 'form-label'
+              - if @minimum_password_length
+                %em.flex-1.text-sm.text-gray-500
+                  = t('devise.passwords.edit.minimum_password_length', value: @minimum_password_length)
+            = f.password_field :password, autocomplete: "new-password", class: 'form-control'
+          .form-group
+            = f.label :password_confirmation, class: 'form-label'
+            = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
+          .actions
+            = f.submit t('.sign_up'), class: "btn btn--primary"
+      = render "devise/shared/links"
+      = render 'devise/shared/footer'
+  
