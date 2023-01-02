@@ -1,3 +1,10 @@
+import { Controller } from '@hotwired/stimulus';
+import * as PIXI from 'pixi.js';
+import { KawaseBlurFilter } from '@pixi/filter-kawase-blur';
+import SimplexNoise from 'simplex-noise';
+import hsl from 'hsl-to-hex';
+import debounce from 'debounce';
+
 // return a random number within a range
 function random(min, max) {
   return Math.random() * (max - min) + min;
@@ -20,7 +27,7 @@ class ColorPalette {
 
   setColors() {
     // pick a random hue somewhere between 220 and 360
-    this.hue = ~~random(220, 360);
+    this.hue = ~~random(75, 100);
     this.complimentaryHue1 = this.hue + 30;
     this.complimentaryHue2 = this.hue + 60;
     // define a fixed saturation and lightness
