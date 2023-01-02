@@ -2,11 +2,6 @@
 import Rails from '@rails/ujs';
 import { Turbo } from '@hotwired/turbo-rails';
 import TurboPower from 'turbo_power'; // https://github.com/marcoroth/turbo_power-rails
-import * as PIXI from 'pixi.js';
-import { KawaseBlurFilter } from '@pixi/filter-kawase-blur';
-import SimplexNoise from 'simplex-noise';
-import hsl from 'hsl-to-hex';
-import debounce from 'debounce';
 
 TurboPower.initialize(Turbo.StreamActions);
 
