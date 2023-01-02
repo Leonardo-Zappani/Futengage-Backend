@@ -1,0 +1,31 @@
+%canvas.orb-canvas.devise__canvas
+.devise__layoutp.absolute
+  .devise__leftp
+    .devise__container
+      .devise__header.pl-1.5
+        %h2.devise__title= 'Entrar'
+      .devise__header
+        %img{:src => "/logo.png" , class: 'fill-primary-600 h-8 w-auto'}   
+      .devise__content
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'devise__form', 'data-turbo': false }) do |f|
+          = render 'alert'
+          = render 'notice'
+          .form-group
+            = f.label :email, class: 'form-label'
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+          .form-group
+            = f.label :password, class: 'form-label'
+            = f.password_field :password, autocomplete: "current-password", class: 'form-control'
+          - if devise_mapping.rememberable?
+            .form-group-checkbox
+              = f.check_box :remember_me, class: 'form-control-checkbox'
+              = f.label :remember_me, class: 'form-label-checkbox'
+          .form-group
+            = f.submit t('.enter'), class: "btn btn--primary"
+      = render "devise/shared/links"
+      = render 'devise/shared/footer'
+  .devise__right.relative
+    -#.flex.h-full.w-full.z-10.absolute
+    -#  .block.mx-auto.my-auto.text-right
+    -#    = inline_svg_tag 'logo.svg', class: "fill-white h-20 w-auto"
+    %img.absolute.inset-0.h-full.w-full.object-cover{ src: 'https://salient.tailwindui.com/_next/static/media/background-auth.4bcf3f4b.jpg' }
