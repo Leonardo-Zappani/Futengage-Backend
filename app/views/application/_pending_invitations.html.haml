@@ -6,5 +6,5 @@
         %p.sm:flex-1.text-sm.text-purple-700.sm:truncate
           = t('.instructions', inviter: account_invitation.invited_by.name, account: account_invitation.account.name).html_safe
         .sm:flex-shrink-0.mt-3.sm:mt-0.block.sm:flex.sm:items-center.sm:space-x-2.space-y-3.sm:space-y-0
-          = button_to t("account_invitations.show.accept"), accept_account_invitation_path(account_invitation.token), method: :put, class: "btn btn--primary"
+          = button_to t("account_invitations.show.accept"), accept_account_invitation_path(account_invitation.token), method: :put, class: "btn btn--green"
           = button_to t("account_invitations.show.decline"), reject_account_invitation_path(account_invitation.token), method: :delete, class: "btn btn--danger", data: {turbo_confirm: t("shared.are_you_sure?")}

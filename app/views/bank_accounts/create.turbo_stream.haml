@@ -1,4 +1,0 @@
-= turbo_stream.prepend :bank_accounts, @bank_account
-= turbo_stream.replace :transactions_index, turbo_frame_tag(:transactions_index, src: transactions_path(bank_account_id: @bank_account.id, month: Current.time, transaction_type: :revenue))
-= turbo_stream.update :drawer, ''
-= turbo_stream.update flash, render(FlashComponent.new(flash: flash))

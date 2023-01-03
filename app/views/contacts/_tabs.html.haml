@@ -1,6 +1,0 @@
-= render(Tabs::NavComponent.new) do |tabs|
-  - tabs.item(name: t('shared.all'), url: contacts_path(request.query_parameters.except(:contact_type).merge(page: 1)), active: active_tab?(nil, :contact_type))
-  - enum_option_pairs(Contact, :contact_type).sort_by { |item| item.first }.each do |item|
-    - tabs.item(name: item.first,
-                url: contacts_path(request.query_parameters.merge(contact_type: item.last, page: 1)),
-                active: active_tab?(item.last, :contact_type))

@@ -13,9 +13,9 @@
             %p.text-sm.text-gray-500.text-center.sm:text-left= defined?(description) ? description : t('.click_to_create_a_new_one')
         .mt-6.flex.sm:space-x-6.sm:pl-6
           - if defined?(is_search) && is_search
-            = link_to t('.clear_search'), clear_path, { class: 'btn btn--primary' }.merge(options)
+            = link_to t('.clear_search'), clear_path, { class: 'btn btn--green' }.merge(options)
           - else
-            = link_to add_path, { class: 'btn btn--primary' }.merge(options) do
+            = link_to add_path, { class: 'btn btn--green' }.merge(options) do
               = heroicon 'plus', options: { class: 'h-5 w-5' }
               = t('.add')
 

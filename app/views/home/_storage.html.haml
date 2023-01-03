@@ -1,8 +1,0 @@
-= turbo_frame_tag :storage do
-  %div.flex.justify-between.items-center
-    .block.text-gray-500.pb-3= number_to_percentage(Current.account.available_storage_in_percentage, precision: 2)
-    %span.flex-shrink-0.text-gray-500.font-medium.text-xs.pr-5.pb-3= t('home.storage.total') + (": " + number_to_human_size(Current.account.max_storage_size_in_bytes) + " / ") + t('home.stogare.consumed')+ (": " + number_to_human_size(Current.account.consumed_storage_size_in_bytes))
-  %div
-    .flex.items-center.w-full.animate__animated.animate__pulse.animate__faster
-      .flex-1.h-3.bg-gray-200.rounded-full.overflow-hidden.relative
-        .absolute.flex.items-center.h-3.bg-success-500.overflow-visible{ style: "width: #{number_to_percentage(Current.account.available_storage_in_percentage, precision: 0)}" }

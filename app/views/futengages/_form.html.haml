@@ -1,0 +1,13 @@
+= form_for @futengage do |f|
+  - if @futengage.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@futengage.errors.count, "error")} prohibited this futengage from being saved:"
+      %ul
+        - @futengage.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :user
+    = f.text_field :user
+  .actions
+    = f.submit 'Save'

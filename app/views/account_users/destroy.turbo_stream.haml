@@ -1,3 +1,0 @@
-= turbo_stream.remove @account_user
-= turbo_stream.update :flash, render(FlashComponent.new(flash: flash))
-= turbo_stream.remove_css_class '#empty_state', 'hidden md:hidden' unless @account_user.account.account_users.any?
