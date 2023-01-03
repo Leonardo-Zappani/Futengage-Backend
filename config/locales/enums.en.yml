@@ -1,0 +1,64 @@
+---
+en:
+  enums:
+    person_type:
+      undefined_person: Undefined
+      natural: Natural person
+      legal: Legal person
+    contact_type:
+      undefined_contact: Other
+      customer: Customer
+      employee: Employee
+      supplier: Supplier
+    account_type:
+      current_account: Current account      # conta corrente
+      savings_account: Save account         # conta poupança
+      salary_account: Salary account        # conta salário
+      investing_account: Investiment        # conta investimento
+      cash_account: Wallet                  # caixa / carteira
+      other: Other
+    preferred_language:
+      pt-BR: Portuguese (Brazil)
+      en: English
+    payment_type:
+      on_cash: Once
+      installment: Installment
+      recurrent: Recurrent
+    payment_method:
+      no_payment_method: Undefined
+      credit_card: Credit card
+      debit_card: Debit card
+      bank_slip: Bank slip
+      bank_transfer: Transfer
+      check: Check
+      cash: Cash
+      pix: Direct transfer
+    transaction_type:
+      revenue: Revenues
+      fixed_expense: Fixes expenses
+      variable_expense: Variable expenses
+      payroll: Payrolls
+      tax: Taxes
+      transfer: Transfers
+    currency:
+      BRL: BRL - Brazilian real
+      USD: USD - American Dolar
+      EUR: EUR - Euro
+      GBP: GBP - Pound sterling
+    installment_type:
+      daily: Daily
+      weekly: Weekly
+      monthly: Monthly
+      bimonthly: Bimonthly
+      quarterly: Quarterly
+      semiannual: Semiannual
+      annual: Annual
+    state:
+      in_progress: In progress
+      done: Done
+      waiting: Waiting
+      failed: Failed
+    role:
+      admin: Administrator
+      user: User
+      read_only: Read only
