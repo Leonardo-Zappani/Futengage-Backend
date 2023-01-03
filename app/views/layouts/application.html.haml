@@ -1,0 +1,27 @@
+!!!
+%html{:lang => "#{I18n.locale}"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title
+      - if content_for?(:title)
+        = yield :title
+        = ' | '
+      = 'FutEngage'
+
+    = stylesheet_link_tag "tailwind", "data-turbo-track": "reload", media: "all"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+
+    %link{rel: "preload", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap", as: "style", onload: "this.onload=null;this.rel='stylesheet'"}/
+
+    = render 'favicons'
+
+  %body.subpixel-antialiased
+    %main.layout
+      - if user_signed_in?
+        deu certo
+      - else
+        = yield
+
+    -# - if user_signed_in?
+    -#   .sr-only{ data: { controller: "pendo", pendo_visitor_id_value: Current.user.id, pendo_account_id_value: Current.account.id,pendo_user_name_value: Current.user.name,
+    -#   pendo_user_email_value: Current.user.email}}
