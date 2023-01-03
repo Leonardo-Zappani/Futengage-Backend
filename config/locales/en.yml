@@ -264,6 +264,10 @@ en:
       bank_accounts_description: "Alternate between bank accounts"
       storage_size: "Storage space"
       storage_size_description: "Storage space control"
+      delayed_payments_title: "Peding payments"
+      delayed_payments_description: "Payments that are close to due"
+    delayed_payments:  
+      no_delayed_payments: "There's no payments close to due or delayed"
     storage:
       total: "Total"
     stogare:

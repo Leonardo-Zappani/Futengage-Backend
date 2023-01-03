@@ -72,7 +72,7 @@ class BankAccountTest < ActiveSupport::TestCase
   test "should find an user by ID" do
     bank_account = BankAccount.find(@bank_account.id)
     assert_equal "User", bank_account.account.users.name
-    assert_equal "one@procfy.io", bank_account.account.users.first.email
+    assert_equal "one@FutEngage.io", bank_account.account.users.first.email
   end
 
   test "should create an bank:fail" do

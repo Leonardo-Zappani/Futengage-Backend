@@ -1,14 +1,14 @@
 databases:
 
-  - name: procfy_database_development
-    databaseName: procfy_development
+  - name: FutEngage_database_development
+    databaseName: FutEngage_development
     plan: free
     ipAllowList:
       - source: 0.0.0.0/0
         description: everywhere
 
-  - name: procfy_database_production
-    databaseName: procfy_production
+  - name: FutEngage_database_production
+    databaseName: FutEngage_production
     region: ohio
     plan: starter
     ipAllowList:
@@ -17,22 +17,22 @@ databases:
 
 services:
   - type: redis
-    name: procfy_redis_development
+    name: FutEngage_redis_development
     ipAllowList: [ ] # only allow internal connections
     plan: free # optional (defaults to starter)
     maxmemoryPolicy: noeviction # optional (defaults to allkeys-lru)
 
   - type: redis
-    name: procfy_redis_production
+    name: FutEngage_redis_production
     region: ohio
     plan: starter
     ipAllowList: [ ] # only allow internal connections
     maxmemoryPolicy: noeviction # optional (defaults to allkeys-lru)
 
   - type: web
-    name: procfy_web_development
+    name: FutEngage_web_development
     env: ruby
-    repo: https://github.com/codengage/procfy
+    repo: https://github.com/codengage/FutEngage
     buildCommand: "./bin/render-build-web-development.sh"
     startCommand: "bundle exec rails s -p 3000 -b '0.0.0.0'"
     envVars:
@@ -42,40 +42,40 @@ services:
         sync: false
       - key: DATABASE_NAME
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: database
       - key: DATABASE_HOST
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: host
       - key: DATABASE_PORT
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: port
       - key: DATABASE_USERNAME
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: user
       - key: DATABASE_PASSWORD
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: password
       - key: REDIS_URL
         fromService:
           type: redis
-          name: procfy_redis_development
+          name: FutEngage_redis_development
           property: connectionString
       - key: RAILS_MAX_THREADS
         sync: false
 
   - type: web
-    name: procfy_web_production
+    name: FutEngage_web_production
     env: ruby
     plan: starter
     region: ohio
     domains:
-      - app.procfy.io
-    repo: https://github.com/codengage/procfy
+      - app.FutEngage.io
+    repo: https://github.com/codengage/FutEngage
     buildCommand: "bin/render-build-web.sh"
     startCommand: "bin/rails s -p 3000 -b '0.0.0.0'"
     envVars:
@@ -85,37 +85,37 @@ services:
         sync: false
       - key: DATABASE_NAME
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: database
       - key: DATABASE_HOST
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: host
       - key: DATABASE_PORT
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: port
       - key: DATABASE_USERNAME
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: user
       - key: DATABASE_PASSWORD
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: password
       - key: REDIS_URL
         fromService:
           type: redis
-          name: procfy_redis_production
+          name: FutEngage_redis_production
           property: connectionString
       - key: RAILS_MAX_THREADS
         sync: false
 
 
   - type: worker
-    name: procfy_worker_development
+    name: FutEngage_worker_development
     env: ruby
-    repo: https://github.com/codengage/procfy
+    repo: https://github.com/codengage/FutEngage
     buildCommand: "./bin/render-build-sidekiq-development.sh"
     startCommand: bundle exec sidekiq
     envVars:
@@ -125,38 +125,38 @@ services:
         sync: false
       - key: DATABASE_NAME
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: database
       - key: DATABASE_HOST
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: host
       - key: DATABASE_PORT
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: port
       - key: DATABASE_USERNAME
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: user
       - key: DATABASE_PASSWORD
         fromDatabase:
-          name: procfy_database_development
+          name: FutEngage_database_development
           property: password
       - key: REDIS_URL
         fromService:
           type: redis
-          name: procfy_redis_development
+          name: FutEngage_redis_development
           property: connectionString
       - key: RAILS_MAX_THREADS
         sync: false
 
   - type: worker
-    name: procfy_worker_production
+    name: FutEngage_worker_production
     env: ruby
     region: ohio
     plan: starter
-    repo: https://github.com/codengage/procfy
+    repo: https://github.com/codengage/FutEngage
     buildCommand: "./bin/render-build-sidekiq.sh"
     startCommand: bundle exec sidekiq
     envVars:
@@ -166,28 +166,28 @@ services:
         sync: false
       - key: DATABASE_NAME
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: database
       - key: DATABASE_HOST
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: host
       - key: DATABASE_PORT
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: port
       - key: DATABASE_USERNAME
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: user
       - key: DATABASE_PASSWORD
         fromDatabase:
-          name: procfy_database_production
+          name: FutEngage_database_production
           property: password
       - key: REDIS_URL
         fromService:
           type: redis
-          name: procfy_redis_production
+          name: FutEngage_redis_production
           property: connectionString
       - key: RAILS_MAX_THREADS
         sync: false

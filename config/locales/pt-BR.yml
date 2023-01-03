@@ -417,6 +417,10 @@ pt-BR:
       bank_accounts_description: "Alterne entre contas bancárias"
       storage_size: "Armazenamento de arquivos"
       storage_size_description: "Status do consumo de armazenamento"
+      delayed_payments_title: "Pagamentos pendentes"
+      delayed_payments_description: "Pagamentos que estão vencidos ou próximos a data de vencimento" 
+    delayed_payments:  
+      no_delayed_payments: "Não há pagamentos com vencimento próximo ou com pagamento em atraso." 
     dre: 
       gross_income: "Receita Bruta"
       taxes: "Impostos"
@@ -627,3 +631,6 @@ pt-BR:
   delayed_transaction_notification:
     title: "Transação com %{days} dia(s) de atraso"
   open_sidenav: "Abrir menu de navegação"
+  invisible_captcha:
+    sentence_for_humans: "Se você é um humano, ignore este campo"
+    timestamp_error_message: "Desculpe, foi muito rápido! Reenvie novamente"

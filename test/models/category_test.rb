@@ -60,7 +60,7 @@ class DomainTest < ActiveSupport::TestCase
   test "should find an category by ID" do
     category = Category.find(@category.id)
     assert_equal "User", category.account.users.name
-    assert_equal "one@procfy.io", category.account.users.first.email
+    assert_equal "one@FutEngage.io", category.account.users.first.email
   end
 
   test "should create an category:fail" do

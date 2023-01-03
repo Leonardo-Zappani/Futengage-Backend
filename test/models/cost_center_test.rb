@@ -60,7 +60,7 @@ class CostCenterTest < ActiveSupport::TestCase
   test "should find an cost center by ID" do
     cost_center = CostCenter.find(@cost_center.id)
     assert_equal "User", cost_center.account.users.name
-    assert_equal "one@procfy.io", cost_center.account.users.first.email
+    assert_equal "one@FutEngage.io", cost_center.account.users.first.email
   end
 
   test "should create an user:fail" do

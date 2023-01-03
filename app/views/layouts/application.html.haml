@@ -6,12 +6,7 @@
       - if content_for?(:title)
         = yield :title
         = ' | '
-      = 'Procfy'
-
-    = viewport_meta_tag
-    = csrf_meta_tags
-    = csp_meta_tag
-    = action_cable_meta_tag
+      = 'FutEngage'
 
     = stylesheet_link_tag "tailwind", "data-turbo-track": "reload", media: "all"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
@@ -23,18 +18,7 @@
   %body.subpixel-antialiased
     %main.layout
       - if user_signed_in?
-        .layout__left
-          = render 'sidenav'
-        .layout__right
-          = render 'trial_notification'
-          = render 'pending_invitations'
-          .layout__container
-            = yield
-          = render 'footer'
-
-        = turbo_frame_tag "drawer"
-        = turbo_frame_tag "flash" do
-          = render(FlashComponent.new(flash: flash))
+        deu certo
       - else
         = yield
 
