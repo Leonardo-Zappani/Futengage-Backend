@@ -43,7 +43,7 @@
     "postcss-nested": "^5.0.6",
     "postcss-nesting": "^10.2.0",
     "postcss-scss": "^4.0.4",
-    "simplex-noise": "^3.0.0",
+    "simplex-noise": "^3.0.1",
     "slim-select": "^1.27.1",
     "stimulus-checkbox-select-all": "^5.1.0",
     "stimulus-dropdown": "^2.0.0",

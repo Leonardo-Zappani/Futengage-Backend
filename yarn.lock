@@ -1291,7 +1291,7 @@ pify@^2.3.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
-pixi.js@^5.0.1:
+pixi.js@^5.0.0:
   version "5.3.12"
   resolved "https://registry.yarnpkg.com/pixi.js/-/pixi.js-5.3.12.tgz#1ae667dc066665b536269b0695406811a63b92fe"
   integrity sha512-XZzUhrq/m6fx3E0ESv/zXKEVR/GW82dPmbwdapIqsgAldKT2QqBYMfz1WuPf+Q9moPapywVNjjyxPvh+DNPmIg==
@@ -1509,9 +1509,9 @@ select@^1.1.2:
   resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
   integrity sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==
 
-simplex-noise@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/simplex-noise/-/simplex-noise-3.0.0.tgz#ad94e7bb6e53a973139e8999348cb6123b3347ba"
+simplex-noise@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/simplex-noise/-/simplex-noise-3.0.1.tgz#ad94e7bb6e53a973139e8999348cb6123b3347ba"
   integrity sha512-eww0SFiWLyOaUKQMJ7gbdvQJvULeJdM/Y4BiC3rrOQnYHo+MSPh465/qeXSZkpTdB9/HthumpnYD3DobZweBBQ==
 
 slash@^4.0.0:
