@@ -16,23 +16,23 @@
                        "data-transition-leave-to": "opacity-0 scale-95"}
     .profile-menu__group
       = link_to user_settings_edit_path, class: 'profile-menu__item', data: { turbo_frame: 'drawer', action: 'sidebar#close' } do
-        = heroicon 'user-circle', options: { class: 'h-5 w-5  text-primary-500' }
+        = heroicon 'user-circle', options: { class: 'h-5 w-5  text-green-500' }
         %span= t('.user_settings')
 
       - if can?(:manage, Current.account)
         = link_to account_settings_edit_path, class: 'profile-menu__item', data: { turbo_frame: 'drawer', action: 'sidebar#close' } do
-          = heroicon 'cog-6-tooth', options: { class: 'h-5 w-5  text-primary-500' }
+          = heroicon 'cog-6-tooth', options: { class: 'h-5 w-5  text-green-500' }
           %span= t('.account_settings')
 
       -# Esconde se a conta for Pessoal
       - if can?(:manage, AccountUser)
         = link_to account_users_path, class: 'profile-menu__item', data: { turbo_frame: 'drawer', action: 'sidebar#close' } do
-          = heroicon 'users', options: { class: 'h-5 w-5  text-primary-500' }
+          = heroicon 'users', options: { class: 'h-5 w-5  text-green-500' }
           %span= AccountUser.model_name.human(count: 2)
 
       - if can?(:read, Import)
         = link_to imports_path, class: 'profile-menu__item' do
-          = heroicon 'arrow-up-on-square', options: { class: 'h-5 w-5  text-primary-500' }
+          = heroicon 'arrow-up-on-square', options: { class: 'h-5 w-5  text-green-500' }
           %span= Import.model_name.human(count: 2)
 
     -# se a conta é FREE, não exibe menu de cobranças da plataforma

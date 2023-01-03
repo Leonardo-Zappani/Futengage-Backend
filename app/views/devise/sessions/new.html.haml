@@ -1,10 +1,10 @@
-%canvas.orb-canvas.devise__canvas
+-# %canvas.orb-canvas.devise__canvas
 .devise__layout.absolute
   .devise__left
     .devise__container
       .devise__header
         %h2.devise__title= 'Entrar'
-        %img{:src => "/logo.png" , class: 'fill-primary-600 h-8 w-auto'} 
+        %img{:src => "/logo.png" , class: 'fill-green-600 h-8 w-auto'} 
       .devise__content
         = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'devise__form', 'data-turbo': false }) do |f|
           = render 'alert'
@@ -20,6 +20,6 @@
               = f.check_box :remember_me, class: 'form-control-checkbox'
               = f.label :remember_me, class: 'form-label-checkbox'
           .form-group
-            = f.submit t('.enter'), class: "btn btn--primary"
+            = f.submit t('.enter'), class: "btn btn--green"
       = render "devise/shared/links"
       = render 'devise/shared/footer'

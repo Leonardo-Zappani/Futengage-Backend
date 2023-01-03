@@ -1,9 +1,0 @@
-= render TurboDrawerComponent.new(title: t(".title")) do
-  .flex.flex-col.space-y-6
-    - if can?(:update, @record)
-      = turbo_frame_tag :new_attachment, src: [:new, @record, :attachment], loading: :lazy do
-        = render 'loading'
-    - if @attachments.any?
-      %ul.divide-y.divide-gray-200.rounded-md.border.border-gray-200{ id: :attachment_list }
-        = render partial: 'attachments/attachment', collection: @attachments, as: :attachment
-

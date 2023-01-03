@@ -5,5 +5,5 @@
         = t('.trial_period', count_down: Current.account.trial_period_in_days).html_safe
         = t('.trial_description')
       .sm:flex-shrink-0.mt-3.sm:mt-0.block.sm:flex.sm:items-center.sm:space-x-2.space-y-3.sm:space-y-0
-        = link_to new_checkout_portal_session_path, class: 'btn-sm btn--primary', data: { turbo_frame: 'drawer' } do
+        = link_to new_checkout_portal_session_path, class: 'btn-sm btn--green', data: { turbo_frame: 'drawer' } do
           %span= t('checkout_portal_sessions.form.subscribe')

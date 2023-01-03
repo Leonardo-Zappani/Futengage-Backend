@@ -3,7 +3,7 @@
     .devise__container
       .devise__header
         %h3.devise__title= t('.change_your_password')
-        = inline_svg_tag 'logo.svg', class: 'fill-primary-600 h-8 w-auto'
+        = inline_svg_tag 'logo.svg', class: 'fill-green-600 h-8 w-auto'
       .devise__content
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'devise__form', 'data-turbo': false  }) do |f|
           = render 'errors', resource: resource
@@ -18,7 +18,7 @@
             = f.label :password_confirmation, class: 'form-label'
             = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
           .form-group
-            = f.submit t('.change_my_password'),  class: "btn btn--primary"
+            = f.submit t('.change_my_password'),  class: "btn btn--green"
         = render "devise/shared/links"
   .devise__right
     %img.absolute.inset-0.h-full.w-full.object-cover{ src: 'https://salient.tailwindui.com/_next/static/media/background-auth.4bcf3f4b.jpg' }

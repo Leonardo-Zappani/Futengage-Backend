@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '326669d65ad317c81530cc17cf23be81d684f3cd3d392b50437e1953baa538bb90eaf0e67fb9cf2ca8243802505df4fbce7766888855ec88ebbea039bc7a7209'
+  # config.secret_key = '4df5a70c14fff5ea20cdd264c6572832f1c2508d8d29fbf9367a084d02530b1d1f089e4a50d838174f86815282436fa48efd2b2ede2db512bdedcd2a2dad4409'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,13 +24,13 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  # config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'Devise::Mailer'
+  # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
-  config.parent_mailer = 'ApplicationMailer'
+  # config.parent_mailer = 'ActionMailer::Base'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '1693a6a7b6ff64ea803a5a1b45079008fc74c8ab535339faf6c4d4c8727d137349fa1095dd97473167ed7630a45d96d5113bb85956bc8e173844dd4d3109a045'
+  # config.pepper = '7a1adb95d4110c62f99f95efd82ee533fc591b7078589e72662c66e072ed3a1fbb07b712472e947abae9c8ac9915e498b06ce80ca308ec1e3bb21b48a9f22d8c'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -143,7 +143,7 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-  config.allow_unconfirmed_access_for = 7.days
+  # config.allow_unconfirmed_access_for = 2.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -157,7 +157,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = false
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -178,7 +178,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..128
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -188,7 +188,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  config.timeout_in = 1.day
+  # config.timeout_in = 30.minutes
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.

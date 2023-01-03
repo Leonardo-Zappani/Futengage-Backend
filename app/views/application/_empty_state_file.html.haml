@@ -3,6 +3,6 @@
     %h5.font-semibold.text-center= defined?(title) ? title : t('.import_external_file')
     %p.text-sm.text-gray-500.text-center= defined?(description) ? description : t('.click_to_upload')
   .min-h-full.px-3.py-3.sm:px-6.sm:py-4.md:grid.md:place-items-center.lg:px-8
-    = link_to add_path, { class: 'btn btn--primary' }.merge(options) do
+    = link_to add_path, { class: 'btn btn--green' }.merge(options) do
       = heroicon 'arrow-up-on-square', options: { class: 'h-5 w-5' }
       %span= defined?(add_label) ? add_label : t('shared.new_import')
