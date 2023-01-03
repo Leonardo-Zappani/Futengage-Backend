@@ -1,5 +1,5 @@
 {
-  "name": "procfy",
+  "name": "FutEngage",
   "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.1.0",
