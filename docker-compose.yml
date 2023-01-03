@@ -1,17 +1,17 @@
 version: '3.2'
 services:
-  procfy-mail:
+  FutEngage-mail:
     image: 'sj26/mailcatcher'
     ports:
       - "1080:1080"
       - "1025:1025"
 
-  procfy-redis:
+  FutEngage-redis:
     image: redis:alpine
     ports:
       - "6379:6379"
 
-  procfy-db:
+  FutEngage-db:
     image: postgres:14-alpine
     environment:
       - POSTGRES_PASSWORD=postgres

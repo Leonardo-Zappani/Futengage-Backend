@@ -50,8 +50,8 @@
             %span= t('.change_payment_method')
 
     .profile-menu__group
-      -# Exibe somente quando a conta for do procfy
-      - if Current.account.procfy?
+      -# Exibe somente quando a conta for do FutEngage
+      - if Current.account.FutEngage?
         = link_to rails_admin_path, class: 'profile-menu__item', data: { turbo_frame: 'drawer', action: 'sidebar#close' } do
           %span= t('.rails_admin')
 
