@@ -3,9 +3,6 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
     %title
-      - if content_for?(:title)
-        = yield :title
-        = ' | '
       = 'FutEngage'
 
     = stylesheet_link_tag "tailwind", "data-turbo-track": "reload", media: "all"
@@ -18,6 +15,12 @@
   %body.subpixel-antialiased
     %main.layout
       - if user_signed_in?
-        deu certo
+        .grid.grid-cols-5
+          .col-span-5
+            = render 'header'
+          .col-span-2
+            = render 'visualization'
+          .col-span-3  
+            = render 'right_list'
       - else
         = yield
