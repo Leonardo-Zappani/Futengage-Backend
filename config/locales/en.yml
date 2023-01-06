@@ -1,447 +1,636 @@
 ---
-en:
-  true: Yes
-  false: No
+pt-BR:
+  true: Sim
+  false: Não
   activerecord:
     models:
       active_storage/attachment:
-        one: Attachment
-        other: Attachments
+        one: Anexo
+        other: Anexos
       active_storage/blob:
-        one: File
-        other: Files
+        one: Arquivo
+        other: Arquivos
       active_storage/variant_record:
-        one: Variant
-        other: Variants
+        one: Variação
+        other: Variações
       action_text/rich_text:
-        one: Rich text
-        other: Rich texts
+        one: Texto rico
+        other: Textos ricos
       bank_account:
-        one: Bank account
-        other: Bank accounts
+        one: Conta Bancária
+        other: Contas Bancárias
       category:
-        one: Category
-        other: Categories
+        one: Categoria
+        other: Categorias
       cost_center:
-        one: Cost center
-        other: Cost centers
+        one: Centro de Custo
+        other: Centros de Custo
       company:
-        one: Company
-        other: Companies
+        one: Empresa
+        other: Empresas
       contact:
-        one: Contact
-        other: Contacts
+        one: Contato
+        other: Contatos
       transaction:
-        one: Transaction
-        other: Transactions
+        one: Transação
+        other: Transações
       domain:
-        one: Domain
-        other: Domains
+        one: Domínio
+        other: Domínios
       account_user:
-        one: Member
-        other: Members
+        one: Usuário
+        other: Usuários
       person:
-        one: Person
-        other: People
+        one: Pessoa
+        other: Pessoas
       account_invitation:
-        one: Invitation
-        other: Invitations
+        one: Convite
+        other: Convites pendentes
       account:
-        one: Account
-        other: Accounts
+        one: Conta
+        other: Contas
       exchange_rate:
-        one: Exchange rate
-        other: Exchange rates
-
+        one: Fator de conversão
+        other: Fatores de conversão
+      plan:
+        one: Plano
+        other: Planos
+      import:
+        one: Importar
+        other: Importações
+      user:
+        one: Usuário
+        other: Usuários
     attributes:
       account:
-        default_currency: Default currency
-        country_code: Country code
+        default_currency: Moeda padrão
+        processor_plan_name: Plano
+        processor_plan_id: Plano
+      account_user:
+        role: Papel
+        owner: Dono
+        updated_at: Autalizado em
+      account_invitation:
+        name: Nome
+        email: E-mail
+        role: Papel
+        updated_at: Enviado em
       bank_account:
-        name: Name
-        account_type: Account type
-        balance_cents: Current balance
-        balance: Current balance
-        initial_balance_cents: Initial balance
-        updated_at: Updated at
-        default: Default?
+        name: Nome
+        account_type: Tipo de conta
+        balance_cents: Saldo atual
+        balance: Saldo atual
+        initial_balance_cents: Saldo inicial
+        updated_at: Atualizado em
+        default: Principal?
       category:
-        name: Name
-        description: Description
-        updated_at: Updated at
+        name: Nome
+        description: Descrição
+        updated_at: Atualizado em
       cost_center:
-        name: Name
-        description: Description
-        updated_at: Updated at
+        name: Nome
+        description: Descrição
+        updated_at: Atualizado em
       company:
-        name: Company name
-        document_1: Document ID
-        document_2: Document ID 2
-        email: E-mail
-        phone_number: Contact phone number
-        description: Observations
-        updated_at: Updated at
+        name: Nome da empresa
+        document_1: CNPJ
+        document_2: Inscrição estadual
+        name_pf: Nome completo
+        document_1_pf: CPF
+        document_2_pf: RG
+        email: Email
+        phone_number: Telefone de contato
+        description: Observações
+        updated_at: Atualizado em
       contact:
-        contact_type: Contact type
-        person_type: Person type
-        name: Name
-        document_1: Document ID
-        document_2: Document ID 2
-        email: E-mail
-        phone_number: Phone number
-        description: Observations
-        updated_at: Updated at
+        contact_type: Tipo do contato
+        person_type: Tipo de pessoa
+        name: Nome
+        document_1: CPF/CNPJ
+        document_2: RG/Inscrição estadual
+        email: Email
+        phone_number: Telefone
+        description: Observações
+        updated_at: Atualizado em
       transaction:
-        transaction_type: Transaction type
-        due_date: Date
-        name: Description
-        contact_id: Contact
-        receipted_from: Receipt from
-        paid_to: Paid to
-        category_id: Category
-        payment_type: Type
-        paid: Paid?
-        paid_at: Paid on
-        amount: Amount
-        exchanged_amount: Exchanged amount
-        competency_date: Competency date
-        document_number: Document number
-        cost_center_id: Cost center
-        bank_account_id: Source account
-        payment_method: Payment method
-        description: Observations / Considerations
-        attachments: Payment Proofs & Attachments
-        transfer_to_id: Target account
-        installment_type: Frequency
-        installment_total: Total installments
-        installment_number: Installment number
+        transaction_type: Tipo de transação
+        due_date: Data
+        name: Descrição
+        contact_id: Contato
+        receipted_from: Recebido de
+        paid_to: Pago a
+        category_id: Categoria
+        payment_type: Tipo
+        paid: Pago?
+        paid_at: Pago em
+        amount: Valor
+        exchanged_amount: Valor confirmado
+        competency_date: Competência
+        document_number: Número de Documento / Nosso número
+        cost_center_id: Centro de Custo
+        bank_account_id: Conta de origem
+        payment_method: Modo de pagamento
+        description: Observações
+        attachments: Comprovantes e Anexos
+        transfer_to_id: Conta de destino
+        installment_type: Frequência
+        installment_total: Número de parcelas
+        installment_number: Número da parcela
+      import:
+        file_name: Nome do arquivo
+        account: Conta
+        source: Origem
+        state: Situação
+        progress_number: Transações importadas
+        progress_total: Transações totais
+        file: Arquivo
+        updated_at: Importado em
+
+  bank_accounts:
+    new:
+      title: "Nova conta bancária"
+    index:
+      new: "Nova conta bancária"
+      add: "Adicionar"
+    edit:
+      title: "Editar conta bancária"
+    show:
+      title: "Detalhes da conta bancária"
+    update:
+      success: "Conta bancária atualizada com sucesso."
+    create:
+      success: "Conta bancária cadastrada com sucesso."
+    destroy:
+      success: "Conta bancária deletada com sucesso."
+    default_name: "Conta Principal"
+    bank_account:
+      this_is_default: "Sim"
+      turn_to_default: "Usar como conta principal"
+    turn_default:
+      success: "Conta principal definida com sucesso"
+  categories:
+    new:
+      title: "Nova categoria"
+    index:
+      new: "Nova categoria"
+      add: "Adicionar"
+    edit:
+      title: "Editar categoria"
+    show:
+      title: "Detalhes da categoria"
+    update:
+      success: "Categoria atualizada com sucesso."
+    create:
+      success: "Categoria cadastrada com sucesso."
+    destroy:
+      success: "Categoria deletada com sucesso."
+  cost_centers:
+    new:
+      title: "Novo centro de custo"
+    index:
+      new: "Novo centro de custo"
+    edit:
+      title: "Editar centro de custo"
+    show:
+      title: "Detalhes do centro de custo"
+    create:
+      success: "Centro de custo cadastrado com sucesso."
+    update:
+      success: "Centro de custo atualizado com sucesso"
+    destroy:
+      success: "Centro de custo deletado com sucesso."
+  contacts:
+    new:
+      title: "Novo contato"
+    index:
+      new: "Novo contato"
+    edit:
+      title: "Editar contato"
+    show:
+      title: "Detalhes do contato"
+    create:
+      success: "Contato cadastrado com sucesso."
+    update:
+      success: "Contato atualizado com sucesso"
+    destroy:
+      success: "Contato deletado com sucesso."
+  imports:
+    create:
+      success: "Importação iniciada com sucesso"
+      fail_import: "Não foi possível importar este arquivo, nenhuma transação encontrada, tente novamente mais tarde"
+      error: "Arquivo não compativel"
+    destroy:
+      success: "Importação deletada com sucesso e todas as transações foram revertidas."
+    update:
+      error: "Você nao tem permissão para editar"
+    show:
+      error: "Você nao tem permissão para ver"
+    find:
+      error: "Não foi possível encontrar"
+    import:
+      are_you_sure?: "As transações importadas serão revertidas! Deseja continuar?"
+    form:
+      select_file: "Selecione o arquivo a ser importado"
+      start_import: "Iniciar importação"
+      select_source: "Selecione a origem do arquivo"
+    new:
+      title: "Nova importação"
+
   application:
     profile_menu:
-      sign_out: "Logout"
-      user_settings: "User settings"
-      account_settings: "Account settings"
-      billing: "Billing"
-      change_plan: "Change my plan"
-      change_payment_method: "Change payment method"
-      checkout: "Subscribe..."
-      rails_admin: "Administration (Rails Admin)"
+      sign_out: "Sair"
+      user_settings: "Perfil do usuário"
+      account_settings: "Configurações da conta"
+      checkout: "Assinar..."
+      billing: "Minhas cobranças"
+      change_plan: "Trocar meu plano"
+      change_payment_method: "Alterar método de pagamento"
+      rails_admin: "Administração (Rails Admin)"
     sidenav_content:
-      configurations: "Settings"
-      dashboard: "Home"
-      settings: "Settings"
+      configurations: "Configurações"
+      home: "Dashboard"
+      dashboard: "Página inicial"
+      settings: "Configurações"
     empty_state:
-      empty_result: "Empty result"
-      click_to_create_a_new_one: "Click below to add a new item"
-      add: "New"
-      clear_search: "Clear search"
+      empty_result: "Esta lista está vazia"
+      empty_search: "Nenhum resultado encontrado"
+      click_to_create_a_new_one: "Clique no botão abaixo para adicionar o seu primeiro item"
+      click_to_clear_search: "Clique no botão abaixo para limpar a sua pesquisa"
+      add: "Adicionar"
+      clear_search: "Limpar pesquisa"
     empty_search:
-      search_not_found: "No results found"
-      please_check_your_search: "Could not find any record with term: %{term}"
-      clear_all: "Clear search"
+      search_not_found: "Nenhum resultado encontrado"
     footer:
-      about: "About"
-      privacy: "Privacy"
-      terms: "Terms"
-    billing_status:
-      current_plan: "My current plan"
-      trial_period: "You trial period ends in <strong>%{count_down}</strong> days"
+      about: "Sobre"
+      privacy: "Privacidade"
+      terms: "Termos de uso"
+    mailer_footer:
+      lgpd: "ATENÇÃO: Em consonância com a Lei Geral de Proteção de Dados, todas as informações adquiridas nesta mensagem são de cunho confidencial, destinada exclusivamente ao(s) interessado(s) destinatário(s) ou empresa(s). Nas circunstâncias de um equívoco, em que a presente tenha sido recebida por terceiros não interessados, comunicamos que sua divulgação é proibida por lei, ocorrendo tal fato, peçamos o favor de apagar as informações e notificar o remetente imediatamente. Ainda, instruímos que o uso impróprio será tratado conforme as normas da empresa e a legislação em vigor Lei n. 13.709/2018. Além disso, o titular poderá solicitar qualquer informação relacionada ao seu exercício de direitos dos dados pessoais, como acesso aos dados, retificação ou eliminação, por meio do Encarregado de Proteção de Dados, através do e-mail contato@procfy.io."
+    trial_notification:
+      current_plan: "Meu plano atual"
+      trial_period: "Seu período de testes termina em <strong>%{count_down}</strong> dias."
+      trial_description: "Você pode efetivar a sua assinatura a qualquer momento dentro deste período clicando no botão Assinar."
     switch_account:
-      switch_account: "Switch account"
-      current_account: "Current"
+      switch_account: "Trocar de conta"
+      current_account: "Atual"
     pending_invitations:
-      view_invitation: "You can accept/reject this invite"
-      instructions: "%{inviter} invite you to participate %{account}."
+      view_invitation: "Você pode aceitar/rejeitar este convite"
+      instructions: "<strong>%{inviter}</strong> convidou você para participar do time <strong>%{account}</strong>."
+    empty_state_file:
+      click_to_upload: "Clique aqui para enviar um arquivo externo"
+      import_external_file: "Importar arquivo externo"
+      select_file: "Selecionar arquivo"
   shared:
-    are_you_sure?: "Are you sure?"
+    are_you_sure?: "Você tem certeza?"
     error: "%{count} prohibited this domain from being saved:"
-    search: "Search..."
-    all: "All"
-    not_informed: "Not informed"
-    default: "Default"
-    edit: "Edit"
-    remove: "Remove"
-    date_format: "MM/dd/yyyy"
+    search: "Pesquisar..."
+    all: "Todos"
+    not_informed: "Não informado"
+    default: "Padrão"
+    edit: "Editar"
+    remove: "Excluir"
+    date_format: "dd/MM/yyyy"
     date_pattern: "00/00/0000"
-    upload_a_file: "Click here"
-    or_drag_and_drop: "Click here or drop your files"
-    accepted_formats: "PNG, JPG, PDF, DOC e XLS until 2MB"
-    details: "Details"
-    loading: "Loading..."
-    duplicate: "Duplicate"
-    move_to: "Move to..."
-    yes: "Yes"
-    no: "No"
-    setup_installments: "Setup installments..."
-    create_installments: "Create installments"
-    setup_recurrence: "Turn recurrent..."
-    create_transactions: "Create transactions"
-    delete: "Remove"
-    destroy_dialog: "Remove..."
-    turn_default: "Turn default"
-    main: "Main"
-    turn_main: "Turn main"
-    download: "Download"
-    import: "Import"
-    new_import: "New import"
-    you_are_not_authorized_to_access_this_page: "<strong>Access forbidden!</strong><br>You are not authorized to access this page or execute this action."
-    good_morning: "Good morning, %{name}"
-    good_afternoon: "Good afternoon, %{name}"
-    good_evening: "Good evening, %{name}"
-    good_night: "Good night, %{name}"
-    attachments: "Attachments"
-    attach: "Attach files"
-    send_files: "Send files"
-    guest: "Guest"
+    upload_a_file: "Clique aqui"
+    or_drag_and_drop: "Clique aqui ou arraste e solte os arquivos que deseja enviar"
+    accepted_formats: "PNG, JPG, PDF, DOC e XLS até 2MB"
+    details: "Editar detalhes"
+    loading: "Carregando..."
+    duplicate: "Duplicar"
+    move_to: "Mover para ..."
+    yes: "Sim"
+    no: "Não"
+    setup_installments: "Parcelar..."
+    create_installments: "Criar parcelas"
+    setup_recurrence: "Tornar recorrente..."
+    create_transactions: "Criar transações"
+    delete: "Excluir"
+    destroy_dialog: "Excluir..."
+    turn_default: "Tornar padrão"
+    main: "Principal"
+    turn_main: "Tornar principal"
+    download: "Baixar"
+    import: "Importar"
+    new_import: "Nova importação"
+    you_are_not_authorized_to_access_this_page: "<strong>Acesso negado!</strong><br>Você não tem permissão para acessar esta página ou executar esta ação."
+    good_morning: "Bom dia, %{name}."
+    good_afternoon: "Boa tarde, %{name}."
+    good_evening: "Boa tarde, %{name}."
+    good_night: "Boa noite, %{name}."
+    attachments: "Anexos"
+    attach: "Anexar arquivos"
+    send_files: "Enviar arquivos"
+    guest: "Convidado"
+  error: "Erro"
+  user_settings:
+    edit:
+      title: "Perfil do usuário"
+    update:
+      success: "Perfil atualizado com sucesso"
+    form:
+      update: "Atualizar perfil"
+    switch_account:
+      success: "Conta trocada com sucesso"
   transactions:
     new:
-      title: "New transaction"
+      new_transaction: "Nova transação"
+      title: "Nova transação"
+    index:
+      empty_state_title: "Sua lista de transações está vazia."
+      empty_state_description: "Clique abaixo para adicionar a sua primeira transação."
     create:
-      success: "Transaction created successfully"
+      success: "Transação cadastrada com sucesso"
     update:
-      success: "Transaction updated successfully"
+      success: "Transação atualizada com sucesso"
     destroy:
-      success: "Transaction removed successfully"
+      success: "Transação deletada com sucesso"
     toggle:
-      success: "Transaction updated successfully"
-      error: "Transaction update failed"
+      success: "Transação atualizada com sucesso"
+      error: "Erro ao atualizar a transação"
     details:
-      title: "Transaction details"
+      title: "Detalhes da transação"
     totalizer:
       total: "Total"
-      revenue_paid: "Paid"
-      revenue_unpaid: "Unpaid yet"
-      expense_paid: "Paid"
-      expense_unpaid: "Unpaid yet"
-      transfer_paid: "Done"
-      transfer_unpaid: "Not done yet"
+      revenue_paid: "Recebido"
+      revenue_unpaid: "A Receber"
+      expense_paid: "Pago"
+      expense_unpaid: "A Pagar"
+      transfer_paid: "Transferido"
+      transfer_unpaid: "A Transferir"
     outcome:
-      outcome: "Expected result in this month"
+      outcome: "Resultado previsto no mês"
     revenues:
-      revenues: "Revenues"
-      paid_revenues: "Paid"
-      prev_revenues: "Unpaid yet"
+      revenues: "Recebimentos"
+      paid_revenues: "Recebido"
+      prev_revenues: "Previsto"
+      lack: "Falta"
     expenses:
-      expenses: "Expenses"
-      paid_expenses: "Paid"
-      prev_expenses: "Unpaid yet"
+      expenses: "Despesas"
+      paid_expenses: "Pago"
+      prev_expenses: "Previsto"
+      lack: "Falta"
     chart:
-      outcome: "Result"
+      outcome: "Resultado"
     duplicate:
-      success: "Transaction duplicated successfully"
+      success: "Transação duplicada com sucesso"
     move_to:
-      title: "Move to..."
+      title: "Mover para"
     balance:
-      new_bank_account: "Add bank account"
+      new_bank_account: "Adicionar conta"
     goto:
-      goto: "Go to %{month} and show me this transaction"
+      goto: "Visualizar a transação no mês %{month}"
     goto_bank_account:
-      goto_bank_account: "Switch to %{name} and show me this transaction"
+      goto_bank_account: "Visualizar transação em %{name}"
+    installments_config:
+      title: "Configurar parcelas"
     setup_installments:
-      title: "Setup installments"
+      title: "Configurar parcelamento"
     setup_recurrence:
-      title: "Setup recurrence"
+      title: "Configurar recorrência"
     destroy_dialog:
-      title: "Exclusion of installment item"
-      how_do_you_prefer_delete_it: "This transaction is part of an installment. <strong>What do you want remove?</strong>"
-      only_this_installment: "Only this installment"
-      this_and_next_installments: "This installment and the next ones"
-      prev_and_next_installments: "The previous installments and the next ones"
-      this_and_prev_installments: "This installment and the previous ones"
+      title: "Exclusão de item parcelado"
+      how_do_you_prefer_delete_it: "Esta transação é parte de um parcelamento. <strong>O que você deseja excluir?</strong>"
+      only_this_installment: "Somente esta parcela"
+      this_and_next_installments: "Esta parcela e as próximas"
+      prev_and_next_installments: "As parcelas anteriores e as próximas"
+      this_and_prev_installments: "Esta parcela e as anteriores"
     tabs:
-      next_month: "Next month"
-      prev_month: "Previous month"
-      current_month: "Current month"
+      next_month: "Próximo mês"
+      prev_month: "Mês anterior"
+      current_month: "Mês atual"
     transaction:
-      paid: Paid
-      not_paid: Not Paid 
+      paid: Pago
+      not_paid: Não Pago
   home:
     index:
-      dashboard: "Home"
-      title: "Home"
-      expected_and_accomplished: ""
-      subtitle: ""
-      bank_accounts: "Bank accounts"
-      bank_accounts_description: "Alternate between bank accounts"
-      storage_size: "Storage space"
-      storage_size_description: "Storage space control"
-      delayed_payments_title: "Peding payments"
-      delayed_payments_description: "Payments that are close to due"
+      dashboard: "Páginal inicial"
+      title: "Página inicial"
+      expected: "Previsto"
+      accomplished: "Realizado"
+      semester_cash_flow: "Fluxo de caixa (últimos 6 meses)"
+      results: "Resultados"
+      dre: "DRE"
+      voucher_space: "Espaço de comprovantes"
+      expected_and_accomplished: "Previsto / realizado no mês"
+      subtitle: "Este é o resumo do mês atual"
+      bank_accounts: "Contas bancárias"
+      bank_accounts_description: "Alterne entre contas bancárias"
+      storage_size: "Armazenamento de arquivos"
+      storage_size_description: "Status do consumo de armazenamento"
+      delayed_payments_title: "Pagamentos pendentes"
+      delayed_payments_description: "Pagamentos que estão vencidos ou próximos a data de vencimento" 
     delayed_payments:  
-      no_delayed_payments: "There's no payments close to due or delayed"
+      no_delayed_payments: "Não há pagamentos com vencimento próximo ou com pagamento em atraso." 
+    dre: 
+      gross_income: "Receita Bruta"
+      taxes: "Impostos"
+      gross_profit: "LUCRO BRUTO"
+      total_variable_expenses: "Total de Despesas Variáveis"
+      operating_profit: "LUCRO OPERACIONAL"
+      total_fixed_expenses: "Total de Despesas Fixas"
+      personnel_expenses: "Gastos com Pessoal"
+      net_profit: "RESULTADO DO MÊS"
+    receipts:
+      total: "Total"
+      available: "Disponível"
+    chart:
+      outcome: "Resultado"
     storage:
       total: "Total"
     stogare:
-      consumed: "Consumed"
+      consumed: "Consumido"
   reports:
-    descriptions:
-      nil: "Without description"
+    description:
+      nil: "Sem descrição"
     index:
-      title: "Reports"
+      title: "Relatórios"
     in_description_graph:
-      title: "Per description "
-      subtitle: "Description"
-      description: "Value"
-      recipe: "(Income)"
+      title: "Recebimentos por descrição"
+      subtitle: "Descrição"
+      description: "Valor"
+      recipe: "(Recebimento)"
     in_per_category_graph:
-      title: "Per category "
-      subtitle: "Category"
-      description: "Value"
-      recipe: "(Income)"
+      title: "Recebimentos por categoria "
+      subtitle: "Categoria"
+      description: "Valor"
+      recipe: "(Recebimento)"
     in_per_cost_center_graph:
-      title: "Per cost center "
-      subtitle: "Cost Center"
-      description: "Value"
-      recipe: "(Income)"
+      title: "Recebimentos por centro de custo "
+      subtitle: "Centro de custo"
+      description: "Valor"
+      recipe: "(Recebimento)"
     in_per_day_graph:
-      title: "Per day "
-      subtitle: "Day"
-      description: "Value"
-      recipe: "(Income)"
+      title: "Recebimentos por dia "
+      subtitle: "Dia"
+      description: "Valor"
+      recipe: "(Recebimento)"
     in_per_type_graph:
-      title: "Per type "
-      subtitle: "Type"
-      description: "Value"
-      recipe: "(Income)"
+      title: "Recebimentos por tipo "
+      subtitle: "Tipo"
+      description: "Valor"
+      recipe: "(Recebimento)"
     out_description_graph:
-      title: "Per description "
-      subtitle: "Description"
-      description: "Value"
-      recipe: "(Expense)"
+      title: "Despesas por descrição "
+      subtitle: "Descrição"
+      description: "Valor"
+      recipe: "(Despesa)"
     out_per_category_graph:
-      title: "Per category "
-      subtitle: "Category"
-      description: "Value"
-      recipe: "(Expense)"
+      title: "Despesas por categoria "
+      subtitle: "Categoria"
+      description: "Valor"
+      recipe: "(Despesa)"
     out_per_cost_center_graph:
-      title: "Per cost center "
-      subtitle: "Cost center"
-      description: "Value"
-      recipe: "(Expense)"
+      title: "Despesas por centro de custo "
+      subtitle: "Centro de custo"
+      description: "Valor"
+      recipe: "(Despesa)"
     out_per_day_graph:
-      title: "Per day "
-      subtitle: "Day"
-      description: "Value"
-      recipe: "(Expense)"
+      title: "Despesas por dia "
+      subtitle: "Dia"
+      description: "Valor"
+      recipe: "(Despesa)"
     out_per_type_graph:
-      title: "Per type "
-      subtitle: "Type"
-      description: "Value"
-      recipe: "(Expense)"
+      title: "Despesas por tipo "  
+      subtitle: "Tipo"
+      description: "Valor"
+      recipe: "(Despesa)"
     dre_graph:
-      title: "Income Statement"
-      gross_income: "Gross income"
-      taxes: "Taxes"
-      brute_profit: "Brute Profit"
-      total_variable_expenses: "Total Variable Expenses"
-      operating_profit: "Operational Profit"
-      total_fixed_expenses: "Fixed Expenses"
-      personnel_expenses: "Personnel Expenses"
-      net_profit: "Outcome"
-      gross_profit: "Gross profit"
+      title: "Demonstrativo de resultado"
+      gross_income: "Receita bruta"
+      taxes: "Impostos"
+      total_variable_expenses: "Total De Despesas Variáveis"
+      operating_profit: "Lucro Operacional"
+      total_fixed_expenses: "Despesa Fixas"
+      personnel_expenses: "Gastos com Pessoal"
+      net_profit: "Resultado do exercício"
+      gross_profit: "Lucro bruto"
     header_reports:
-      starting_date: "Start inicial"
-      ending_date: "Final Date"
-      select_bank_account: "Select Bank Account" 
-      select_cost_center: "Select Cost Center" 
-      include: "Include"
-      paid: "Paid"
-      not_paid: "Not Paid"
-      apply: "Apply"
-      clear: "Clear"
+      starting_date: "Data inicial"
+      ending_date: "Data final"
+      select_bank_account: "Selecionar contas bancárias"
+      select_cost_center: "Selecionar centros de custos"
+      include: "Incluir lançamentos"
+      paid: "Pagos"
+      not_paid: "Não pagos"
+      apply: "Aplicar"
+      clear: "Limpar"
     side_menu:
-      title: "Cash Flow"
-      dre: "Results (DRE)"
-      expenses: "Expenses"
-      income:  "receipts"
-      description: "Per Description"
-      day: "Per Day"
-      type: "Per Type"   
-      category: "Per Category"
-      cost_center: "Per Cost Center"   
+      title: "Fluxo De Caixa"
+      dre: "Resultados (DRE)"
+      expenses: "Despesas"
+      income:  "Recebimentos"
+      description: "Por Descrição"
+      day: "Por Dia"
+      type: "Por Tipo"
+      category: "Por Categoria"
+      cost_center: "Por Centro De Custo"
+
+  accounts:
+    edit:
+      title: "Configurações da conta"
   account_settings:
     edit:
-      title: "Account settings"
+      title: "Configurações da conta"
     update:
-      success: "Account settings updated successfully"
-  user_settings:
-    edit:
-      title: "User settings"
-    update:
-      success: "User settings updated successfully"
-    form:
-      update: "Save settings"
-    switch_account:
-      success: "Current account switched successfully"
-
-  imports:
-    create:
-      success: "Importation created successfully"
-      fail_import: "Unable to import this file, no transactions found,please try again later"
-      error: "Unsupported file"
-    destroy:
-      success: "Import successfully deleted and all transactions have been rolled back"
-    update:
-      error: "You don't have permission to edit"
-    show:
-      error: "You don't have permission to vew"
-    find:
-      error: "Cannot find"
-    import:
-      are_you_sure?: "All imported transactions will be reverted. Do you want to continue?"
-    form:
-      select_file: "Select the file to be imported"
-      start_import: "Start import"
-      select_source: "Select the source of the file"
-    new:
-      title: "New import"
-
+      success: "Configurações atualizadas com sucesso"
   dre:
     title:
-      statement: "Income Statement"
-
-     
-
+      statement: "Demonstrativo de Resultados"
+  devise:
+    registrations:
+      new:
+        find_your_best_plan: "Encontre o melhor plano para você ou sua empresa"
   checkout_portal_sessions:
+    success:
+      success: "Assinatura realizada com sucesso"
     new:
-      title: "Subscription"
+      title: "Selecione o plano"
     form:
-      pricing_plans: "Pricing plans"
-      month_plans: "Monthly Plans"
-      year_plans: "Annual Plans"
-      subscribe: "Subscribe"
+      pricing_plans: "Planos de preços"
+      month_plans: "Planos Mensais"
+      year_plans: "Planos Anuais"
+      subscribe: "Assinar"
+  account_invitations_mailer:
+    invite:
+      subject: "%{inviter} convidou você para juntar-se ao Procfy"
+      header_html: "<strong>%{inviter}</strong> convidou você para acessar o Procfy e participar do time <strong>%{account}</strong>."
+      description_html: "Você pode aceitar o convite clicando no botão abaixo."
+      accept_or_decline: "aceitar ou rejeitar"
+      view_invitation: "Visualizar convite"
+      hi_there: "Olá %{name}!"
+      ignore: "Se você não quer aceitar esse convite, por favor ignore esse e-mail.<br />Sua conta não será criada até você acessar o link abaixo e cadastrar sua conta."
+
+  account_invitation:
+    create:
+      success: "Convite enviado com sucesso"
+  account_invitations:
+    show:
+      invited_you_to_join_html: "<strong>%{inviter}</strong> convidou você para juntar-se à conta <strong>%{account}</strong>."
+      accept: "Aceitar"
+      decline: "Rejeitar"
+      join: "Junte-se à %{account}"
+    accept:
+      success: "Convite aceito com sucesso"
+    update:
+      success: "Convite atualizado com sucesso"
+    not_found: "Convite não encontrado"
+    authenticate: "Para aceitar o convite é necessário estar logado"
+    register: "Para aceitar o convite é necessário cadastrar seu usuário"
+    new:
+      title: "Novo convidado"
+    edit:
+      title: "Editar convidado"
+    index:
+      new: "Novo convite"
+      there_are_not_pending_invites: "Não há convites pendentes."
+    create:
+      success: "Convite enviado com sucesso"
+    destroy:
+      success: "Convite excluído com sucesso"
+    form:
+      invite: "Enviar convite"
+  layouts:
+    mailer:
+      copyright_html: "Copyright &copy; Procfy %{year}, todos os direitos reservados."
+      address_line1: "Av Dedi Barrichello Montagner, 250 - Térreo - Centro"
+      address_line2: "85660-000 - Dois Vizinhos - Paraná - Brasil"
+      mailing_address: "Nosso endereço de e-mail é:"
+      view_in_browser: "View this in your browser"
+      unsubscribe: "Unsubscribe from this list"
+      preferences: "Update subscription preferences"
   account_users:
     update:
-      success: "User updated successfully"
+      success: "Usuário atualizado com sucesso"
     destroy:
-      success: "User removed successfully"
-  account_invitations:
-    update:
-      success: "Invitation updated sucessfully"
-    index:
-      there_are_not_pending_invites: "There aren't pending invitations"
-  delayed: "Delayed"
-  due_today: "Due today"
-  on_time: "On time"
-  paid: "Paid"
+      success: "Usuário excluído com sucesso"
+  delayed: "Em atraso"
+  due_today: "Vence hoje"
+  on_time: "No prazo"
+  paid: "Pago"
   attachments:
     destroy:
-      success: "Attachment removed successfully"
+      success: "Anexo excluído com sucesso"
     index:
-      title: "Attachments"
+      title: "Anexos e comprovantes"
     create:
-      success: "Attachment created successfully"
+      success: "Anexo(s) criado(s) com sucesso"
   notifications:
     destroy:
-      success: "Notification removed successfully"
+      success: "Notificação excluída com sucesso"
     mark_as_read:
-      success: "Notification read successfully"
+      success: "Notificação marcada como lida com sucesso"
     mark_as_unread:
-      success: "Notification unread successfully"
+      success: "Notificação marcada como não lida com sucesso"
     index:
-      empty_state: "You have no notifications"
-      my_notifications: "My notifications"
-      dismiss_all: "Dismiss all"
+      empty_state: "Você não possui novas notificações"
+      my_notifications: "Minhas notificações"
+      dismiss_all: "Marcar todas como lida"
     dismiss_all:
-      success: "Notifications updated successfully"
-  message: "Delayed transactions"
-  open_sidenav: "Open sidenav"
+      success: "Notificações atualizadas com sucesso"
+
+  delayed_transaction_notification:
+    title: "Transação com %{days} dia(s) de atraso"
+  open_sidenav: "Abrir menu de navegação"
+  invisible_captcha:
+    sentence_for_humans: "Se você é um humano, ignore este campo"
+    timestamp_error_message: "Desculpe, foi muito rápido! Reenvie novamente"
