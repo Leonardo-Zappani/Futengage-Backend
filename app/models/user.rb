@@ -26,5 +26,6 @@ class User < ApplicationRecord
 
   has_person_name
   has_many :futengages
+  has_one_attached :avatar
 
 end
