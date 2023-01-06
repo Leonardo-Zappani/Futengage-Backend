@@ -11,10 +11,10 @@
     %link{rel: "preload", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap", as: "style", onload: "this.onload=null;this.rel='stylesheet'"}/
 
     = render 'favicons'
-
   %body.subpixel-antialiased
     %main.layout
       - if user_signed_in?
+        = render 'sidenav'
         .grid.grid-cols-5
           .col-span-5
             = render 'header'
