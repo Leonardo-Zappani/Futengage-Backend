@@ -14,8 +14,9 @@
   %body.subpixel-antialiased
     %main.layout
       - if user_signed_in?
-        = render 'sidenav'
-        .grid.grid-cols-5
+        .flex
+          = render 'sidenav'
+        .grid.grid-cols-5.ml-20
           .col-span-5
             = render 'header'
           .col-span-2
