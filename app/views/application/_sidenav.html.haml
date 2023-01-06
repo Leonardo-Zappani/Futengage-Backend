@@ -46,15 +46,15 @@
       %span.tooltip Setting
     %li.profile
       .profile-details
-        -# -if current_user.profile_photo.attached?
-        -#   = image_tag current_user.profile_photo, class: "profile-image"   
-        -# -else
-        = image_tag '/picture.png', class: "profile-image"
+        -if current_user.avatar.attached?
+          = image_tag current_user.avatar, class: "profile-image"   
+        -else
+          = image_tag '/picture.png', class: "profile-image"
         .name_position
           .name_position
-            = current_user.name
+            = current_user.first_name
           .name_position 
-            = current_user.position
+            = current_user.last_name
       = button_to destroy_user_session_path, method: :delete, form: {  data: { turbo: false }} do    
         %i#log_out.bx.bx-log-out
 
