@@ -1,0 +1,81 @@
+%link{href: "https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css", rel: "stylesheet"}/
+.sidebar
+  .logo-details
+    %i.bx.bxl-c-plus-plus.icon
+    .logo_name Futengage
+    %i#btn.bx.bx-menu
+  %ul.nav-list
+    %li
+      %a{href: "#"}
+        %i.bx.bx-grid-alt
+        %span.links_name Dashboard
+      %span.tooltip Dashboard
+    %li
+      %a{href: "#"}
+        %i.bx.bx-user
+        %span.links_name User
+      %span.tooltip User
+    %li
+      %a{href: "#"}
+        %i.bx.bx-chat
+        %span.links_name Messages
+      %span.tooltip Messages
+    %li
+      %a{href: "#"}
+        %i.bx.bx-pie-chart-alt-2
+        %span.links_name Analytics
+      %span.tooltip Analytics
+    %li
+      %a{href: "#"}
+        %i.bx.bx-folder
+        %span.links_name File Manager
+      %span.tooltip Files
+    %li
+      %a{href: "#"}
+        %i.bx.bx-cart-alt
+        %span.links_name Order
+      %span.tooltip Order
+    %li
+      %a{href: "#"}
+        %i.bx.bx-heart
+        %span.links_name Saved
+      %span.tooltip Saved
+    %li
+      %a{href: "#"}
+        %i.bx.bx-cog
+        %span.links_name Setting
+      %span.tooltip Setting
+    %li.profile
+      .profile-details
+        -# = image_tag current_user.avatar, class: "profile-image"
+        .name_job
+          .name 
+          = current_user.first_name
+          .job 
+          = current_user.last_name
+      = button_to destroy_user_session_path, method: :delete, form: {  data: { turbo: false }} do    
+        %i#log_out.bx.bx-log-out
+
+:javascript
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+    if(sidebar.classList.contains("open")){
+      closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+    }else {
+      closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+    }
+  }
