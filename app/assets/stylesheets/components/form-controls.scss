@@ -50,7 +50,7 @@
 }
 
 .form-input-file {
-  @apply block text-base sm:text-xs xl:text-sm w-full bg-white border border-gray-300 rounded-md py-1 px-2 pl-1 h-10 sm:h-8 xl:text-sm file:mb-0 file:h-full file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary-500 file:text-white hover:file:bg-primary-600 shadow-sm hover:shadow focus:ring-1 focus:border-primary-500 focus:outline-none focus:ring-primary-500;
+  @apply block text-base sm:text-xs xl:text-sm w-full bg-white border border-gray-300 rounded-md py-1 px-2 pl-1 h-10 sm:h-8 xl:text-sm file:mb-0 file:h-full file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-green-500 file:text-white hover:file:bg-green-600 shadow-sm hover:shadow focus:ring-1 focus:border-green-500 focus:outline-none focus:ring-green-500;
 }
 
 .form-actions {}
