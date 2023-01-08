@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "futengages#index"
+  get "home" => "futengages#index"
 
 end
