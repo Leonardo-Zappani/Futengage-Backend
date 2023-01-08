@@ -1,7 +1,7 @@
 .devise__links
   - if controller_name != 'sessions'
     .block
-      = link_to "Criar conta", new_session_path(resource_name), class: 'btn-link'
+      = link_to "Entrar", new_session_path(resource_name), class: 'btn-link'
   - if devise_mapping.registerable? && controller_name != 'registrations'
     .block
       = link_to "Criar conta", new_registration_path(resource_name), class: 'btn-link'
