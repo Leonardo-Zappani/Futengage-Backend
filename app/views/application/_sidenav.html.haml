@@ -4,21 +4,42 @@
     = image_tag '/logo-w.png', class: 'h-8 icon'
     %i#btn.bx.bx-menu
   %ul.nav-list
-    %li
-      %a{href: ""}
-        %i.bx.bx-football
-        %span.links_name Dashboard
-      %span.tooltip Dashboard
-    %li
-      %a{href: "#"}
-        %i.bx.bx-history
-        %span.links_name Ultimos jogos
-      %span.tooltip Ultimos jogos
-    %li
-      %a{href: "/settings"}
-        %i.bx.bx-cog
-        %span.links_name Configurações
-      %span.tooltip Configurações
+    -if request.path != "/history" && request.path != "/config"
+      %li
+        %a{href: "home", class: "active"}
+          %i.bx.bx-football.iconactive
+          %span.links_name.nameactive Dashboard 
+        %span.tooltip.nameactive Dashboard
+    -else
+      %li
+        %a{href: "home"}
+          %i.bx.bx-football
+          %span.links_name Dashboard 
+        %span.tooltip Dashboard
+    -if request.path == "/history"
+      %li
+        %a{href: "history", class: "active"}
+          %i.bx.bx-history.iconactive
+          %span.links_name.nameactive Ultimos jogos 
+        %span.tooltip.nameactive Ultimos jogos
+    -else
+      %li
+        %a{href: "history"}
+          %i.bx.bx-history
+          %span.links_name Ultimos jogos 
+        %span.tooltip Ultimos jogos  
+    -if request.path == "/config"
+      %li
+        %a{href: "config", class: "active"}
+          %i.bx.bx-cog.iconactive
+          %span.links_name.nameactive Configurações 
+        %span.tooltip.nameactive Configurações
+    -else
+      %li
+        %a{href: "config"}
+          %i.bx.bx-cog
+          %span.links_name Configurações
+        %span.tooltip Configurações          
     %li.profile
       .profile-details
         -if current_user.avatar.attached?
@@ -32,27 +53,3 @@
             = current_user.last_name
       = button_to destroy_user_session_path, method: :delete, form: {  data: { turbo: false }} do    
         %i#log_out.bx.bx-log-out
-
-:javascript
-  let sidebar = document.querySelector(".sidebar");
-  let closeBtn = document.querySelector("#btn");
-  let searchBtn = document.querySelector(".bx-search");
-
-  closeBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("open");
-    menuBtnChange();//calling the function(optional)
-  });
-
-  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-    sidebar.classList.toggle("open");
-    menuBtnChange(); //calling the function(optional)
-  });
-
-  // following are the code to change sidebar button(optional)
-  function menuBtnChange() {
-    if(sidebar.classList.contains("open")){
-      closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-    }else {
-      closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-    }
-  }
