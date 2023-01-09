@@ -5,12 +5,7 @@ class ConfigsController < ApplicationController
 
   # GET /configs
   def index
-    query = current_account.configs.order(created_at: :asc)
-    query = query.search_by_q(params[:q]) if params[:q].present?
-
-    @pagy, @records = pagy(query)
-
-    @records.load
+   
   end
 
   # GET /configs/1 or /configs/1.json
