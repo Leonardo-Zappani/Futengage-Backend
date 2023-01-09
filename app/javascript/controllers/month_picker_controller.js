@@ -1,23 +1,20 @@
-let sidebar = document.querySelector('.sidebar');
-let closeBtn = document.querySelector('#btn');
-let searchBtn = document.querySelector('.bx-search');
+import { Controller } from '@hotwired/stimulus';
+import AirDatepicker from 'air-datepicker';
+import localePtBR from 'air-datepicker/locale/pt-BR';
+import localeEn from 'air-datepicker/locale/en';
+import 'air-datepicker/air-datepicker.css';
 
-closeBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('open');
-  menuBtnChange(); //calling the function(optional)
-});
+export default class extends Controller {
+  static values = {
+    locale: { type: String, default: 'pt-BR' },
+  };
 
-searchBtn.addEventListener('click', () => {
-  // Sidebar open when you click on the search iocn
-  sidebar.classList.toggle('open');
-  menuBtnChange(); //calling the function(optional)
-});
-
-// following are the code to change sidebar button(optional)
-function menuBtnChange() {
-  if (sidebar.classList.contains('open')) {
-    closeBtn.classList.replace('bx-menu', 'bx-menu-alt-right'); //replacing the iocns class
-  } else {
-    closeBtn.classList.replace('bx-menu-alt-right', 'bx-menu'); //replacing the iocns class
+  connect() {
+    new AirDatepicker(this.element, {
+      view: 'months',
+      minView: 'months',
+      dateFormat: 'MMMM/yyyy',
+      locale: localePtBR,
+    });
   }
 }

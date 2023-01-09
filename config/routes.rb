@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :histories
+  resources :configs
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :futengages
   devise_for :users
