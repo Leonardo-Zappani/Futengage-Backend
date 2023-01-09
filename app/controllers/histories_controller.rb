@@ -5,12 +5,7 @@ class HistoriesController < ApplicationController
 
   # GET /histories
   def index
-    query = current_account.histories.order(created_at: :asc)
-    query = query.search_by_q(params[:q]) if params[:q].present?
-
-    @pagy, @records = pagy(query)
-
-    @records.load
+   
   end
 
   # GET /histories/1 or /histories/1.json
