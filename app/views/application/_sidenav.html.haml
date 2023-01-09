@@ -4,7 +4,7 @@
     = image_tag '/logo-w.png', class: 'h-8 icon'
     %i#btn.bx.bx-menu
   %ul.nav-list
-    -if request.path != "/history" && request.path != "/config"
+    -if request.path != "/histories" && request.path != "/configs"
       %li
         %a{href: "home", class: "active"}
           %i.bx.bx-football.iconactive
@@ -16,36 +16,36 @@
           %i.bx.bx-football
           %span.links_name Dashboard 
         %span.tooltip Dashboard
-    -if request.path == "/history"
+    -if request.path == "/histories"
       %li
-        %a{href: "history", class: "active"}
+        %a{href: "histories", class: "active"}
           %i.bx.bx-history.iconactive
           %span.links_name.nameactive Ultimos jogos 
         %span.tooltip.nameactive Ultimos jogos
     -else
       %li
-        %a{href: "history"}
+        %a{href: "histories"}
           %i.bx.bx-history
           %span.links_name Ultimos jogos 
         %span.tooltip Ultimos jogos  
-    -if request.path == "/config"
+    -if request.path == "/configs"
       %li
-        %a{href: "config", class: "active"}
+        %a{href: "configs", class: "active"}
           %i.bx.bx-cog.iconactive
           %span.links_name.nameactive Configurações 
         %span.tooltip.nameactive Configurações
     -else
       %li
-        %a{href: "config"}
+        %a{href: "configs"}
           %i.bx.bx-cog
-          %span.links_name Configurações
-        %span.tooltip Configurações          
+          %span.links_name Configurações 
+        %span.tooltip Configurações     
     %li.profile
       .profile-details
         -if current_user.avatar.attached?
-          = image_tag current_user.avatar, class: "profile-image"   
-        -else
-          = image_tag '/picture.png', class: "profile-image"
+          = image_tag url_for(current_user.avatar), class: 'profile-image'
+        -else 
+          = image_tag '/avatar.png', class: 'profile-image'  
         .name_position
           .name_position
             = current_user.first_name
