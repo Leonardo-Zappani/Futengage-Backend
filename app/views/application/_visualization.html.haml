@@ -39,3 +39,6 @@
 
     -# -if current.futengage.players.count == 12 || current.futengages.players.count > 12
     -#   = image_tag '/12.png'  
+    .flex.flex-col.pt-4.pl-4
+      = button_to "confirm_presence_path", class: "btn btn--primary h-10 w-full", method: :post do
+        %span.text-white Confirmar presença              
