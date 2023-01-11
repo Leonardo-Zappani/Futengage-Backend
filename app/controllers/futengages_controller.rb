@@ -6,6 +6,8 @@ class FutengagesController < ApplicationController
     
   end
 
+  
+
   # GET /futengages/1 or /futengages/1.json
   def show
   end
