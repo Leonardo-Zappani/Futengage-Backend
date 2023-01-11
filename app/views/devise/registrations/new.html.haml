@@ -4,7 +4,7 @@
     .devise__container
       .devise__header
         %h2.devise__title= 'Criar Conta'
-        %img{:src => "/logo.png" , class: 'fill-green-600 h-8 w-auto'} 
+        %img{:src => "/logo1.png" , class: 'fill-green-600 h-8 w-auto'} 
       .devise__content
         = form_for(resource, as: resource_name, url: registration_path(resource_name, invite: @account_invitation&.token), html: { class: 'devise__form', 'data-turbo': false }) do |f|
           = render 'errors', resource: resource
