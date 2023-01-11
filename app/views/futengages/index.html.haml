@@ -1,21 +1,5 @@
-%h1 Listing futengages
-
-%table
-  %thead
-    %tr
-      %th User
-      %th
-      %th
-      %th
-
-  %tbody
-    - @futengages.each do |futengage|
-      %tr
-        %td= futengage.user
-        %td= link_to 'Show', futengage
-        %td= link_to 'Edit', edit_futengage_path(futengage)
-        %td= link_to 'Destroy', futengage, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Futengage', new_futengage_path
+.grid.grid-cols-5.ml-20.h-full.devise__background
+  .col-span-2
+    = render 'visualization'
+  .col-span-3  
+    = render 'right_list'
