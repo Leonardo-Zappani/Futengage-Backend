@@ -3,7 +3,7 @@ class FutengagesController < ApplicationController
 
   # GET /futengages or /futengages.json
   def index
-    @futengages = Futengage.all
+    
   end
 
   # GET /futengages/1 or /futengages/1.json
