@@ -1,8 +1,8 @@
 .btn {
-  @apply h-10 sm:h-8 shadow-sm hover:shadow cursor-pointer inline-flex flex-nowrap space-x-1.5 w-full sm:w-auto justify-center items-center rounded-md border border-gray-300 py-1 px-3 text-base sm:text-sm xl:text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2;
+  @apply h-10 sm:h-8 shadow-sm hover:shadow cursor-pointer inline-flex flex-nowrap space-x-1.5 w-full sm:w-auto justify-center items-center rounded-md border border-gray-300 py-1 px-3 text-base sm:text-sm xl:text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2;
 
   &-sm {
-    @apply h-8 sm:h-6 shadow-sm hover:shadow cursor-pointer inline-flex flex-nowrap space-x-1.5 w-full sm:w-auto justify-center items-center rounded-md border border-gray-300 py-1 px-3 text-base sm:text-sm xl:text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply h-8 sm:h-6 shadow-sm hover:shadow cursor-pointer inline-flex flex-nowrap space-x-1.5 w-full sm:w-auto justify-center items-center rounded-md border border-gray-300 py-1 px-3 text-base sm:text-sm xl:text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
 
   &--primary {
@@ -14,7 +14,7 @@
   }
 
   &-solid {
-    @apply cursor-pointer inline-flex flex-nowrap space-x-2 w-full sm:w-auto justify-center items-center rounded-full border-2 border-transparent bg-gray-100 hover:bg-gray-200 py-base px-base h-9 sm:h-8 xl:h-9 text-sm sm:text-xs xl:text-sm font-medium text-gray-700 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply cursor-pointer inline-flex flex-nowrap space-x-2 w-full sm:w-auto justify-center items-center rounded-full border-2 border-transparent bg-gray-100 hover:bg-gray-200 py-base px-base h-9 sm:h-8 xl:h-9 text-sm sm:text-xs xl:text-sm font-medium text-white hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
     &--primary {
       @apply bg-green-500 hover:bg-green-600 text-white hover:text-white
     }
@@ -53,7 +53,7 @@
   }
 
   &-circle-solid {
-    @apply bg-gray-100 leading-4 hover:bg-gray-200 text-gray-700 hover:text-gray-800 inline-flex items-center rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply bg-gray-100 leading-4 hover:bg-gray-200 text-white hover:text-gray-800 inline-flex items-center rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
     &__icon {
       @apply h-5 w-5
     }
@@ -73,7 +73,7 @@
 }
 
 .btn-link {
-  @apply inline-flex py-1 text-base sm:text-sm font-medium text-black hover:text-black;
+  @apply inline-flex py-1 text-base sm:text-sm font-medium text-white hover:text-gray-600;
 }
 
 

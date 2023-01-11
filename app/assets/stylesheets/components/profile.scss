@@ -2,7 +2,7 @@
   @apply relative inline-block text-left mb-3 w-full overflow-visible;
 
   &__activator {
-    @apply w-full bg-transparent px-base py-base text-left text-gray-700 hover:bg-gray-200 focus:outline-none
+    @apply w-full bg-transparent px-base py-base text-left text-white hover:bg-gray-200 focus:outline-none
   }
 
   &__layout {
@@ -54,7 +54,7 @@
   }
 
   &__item {
-    @apply flex relative items-center w-auto space-x-2 w-full font-medium text-left pl-3 pr-4 py-base text-gray-700 hover:bg-gray-100 whitespace-nowrap;
+    @apply flex relative items-center w-auto space-x-2 w-full font-medium text-left pl-3 pr-4 py-base text-white hover:bg-gray-100 whitespace-nowrap;
 
   }
 }

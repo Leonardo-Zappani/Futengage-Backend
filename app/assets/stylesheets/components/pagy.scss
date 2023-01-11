@@ -56,10 +56,10 @@
 .pagy-combo-nav-js .page.prev,
 .pagy-combo-nav-js .page.next {
   &:hover {
-    @apply text-gray-700;
+    @apply text-white;
   }
   &:active {
-    @apply text-gray-700;
+    @apply text-white;
   }
 }
 

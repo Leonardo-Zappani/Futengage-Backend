@@ -1,5 +1,5 @@
 .ss-main {
-  @apply relative w-full inline-block text-sm sm:text-xs text-gray-700
+  @apply relative w-full inline-block text-sm sm:text-xs text-white
 }
 
 .ss-main .ss-single-selected {
@@ -222,7 +222,7 @@
 }
 
 .ss-content .ss-search .ss-addable {
-  @apply flex-shrink-0 cursor-pointer text-xl leading-4 text-gray-700 bg-transparent hover:bg-gray-200 inline-flex items-center justify-center rounded-full h-10 w-10 sm:h-8 sm:w-8 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  @apply flex-shrink-0 cursor-pointer text-xl leading-4 text-white bg-transparent hover:bg-gray-200 inline-flex items-center justify-center rounded-full h-10 w-10 sm:h-8 sm:w-8 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   padding-bottom: 0.15rem;
   /*display: inline-flex;
   justify-content: center;
@@ -268,7 +268,7 @@
 }
 
 .ss-content .ss-list .ss-option {
-  @apply flex flex-nowrap whitespace-nowrap select-none items-center space-x-2 w-full text-left px-2 py-1 h-10 sm:h-8 font-medium text-base sm:text-sm text-gray-700
+  @apply flex flex-nowrap whitespace-nowrap select-none items-center space-x-2 w-full text-left px-2 py-1 h-10 sm:h-8 font-medium text-base sm:text-sm text-white
 }
 
 .ss-content .ss-list .ss-option * {
