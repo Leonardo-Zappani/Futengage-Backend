@@ -1,23 +1,32 @@
 .grid.grid-flow-row.auto-rows-max.devise__background.max-h-screen.pt-14.auto-rows-auto.gap-10.overflow-auto
-  .flex.flex-col.max-h-16
-    .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[120px]"}
-      %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
+  .flex.flex-col.max-h-12
+    .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6.justify-between.pr-14{class: "w-[900px] h-[80px]"}
       .pl-0.p-5{class: "sm:w-8/12"}
-        %h4.text-md.font-semibold.text-white.text-justify
-          = current_user.first_name
-        .flex.items-center.space-x-4.justify-between
-          .flex
-            %span.text-sm 
-            = current_user.last_name
-      .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm Próximo Futengage
+        .flex.items-center
+          = heroicon "hashtag", options: { class: "h-4 w-4 text-white" }  
+          %span.text-xs.pl-1 2
+      .pl-0.p-5{class: "sm:w-8/12"}
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm.pl-8 Local
+        .flex.items-center.pl-8
+          = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
+          %span.text-xs.pl-1 Clubinho 
+      .pl-0.p-5{class: "sm:w-8/12"}
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm Horário
+        .flex.items-center
+          = heroicon "clock", options: { class: "h-5 w-5 text-white" }  
+          %span.text-xs.pl-1 20H  
+      .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-4
         .pr-5{class: "sm:w-8/12"}
-        %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
-        .flex.items-center.space-x-4.justify-between
-          = heroicon "clock", options: { class: "h-5 w-5 text-white" }
-          %p.text-xs 
-            = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm Confirmados
+        .flex.items-center.space-x-4.place-content-start
+          = heroicon "user", options: { class: "h-5 w-5 text-white" }
+          %p.text-xs 9/12
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -30,12 +39,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -48,12 +57,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -66,12 +75,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -84,12 +93,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")                   
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -102,12 +111,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -120,12 +129,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -138,12 +147,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -156,12 +165,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -174,12 +183,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -192,12 +201,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -210,12 +219,12 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
             = current_user.created_at.strftime("%d/%m/%Y")
-  .flex.flex-col.max-h-12.pt-6
+  .flex.flex-col.max-h-12
     .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
       %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
       .pl-0.p-5{class: "sm:w-8/12"}
@@ -228,8 +237,26 @@
       .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
         .pr-5{class: "sm:w-8/12"}
         %h4.text-md.font-semibold.text-white.text-justify
-          %span.text-sm confirmado em
+          %span.text-sm Confirmado em
         .flex.items-center.space-x-4.justify-between
           = heroicon "clock", options: { class: "h-5 w-5 text-white" }
           %p.text-xs 
-            = current_user.created_at.strftime("%d/%m/%Y")                 
+            = current_user.created_at.strftime("%d/%m/%Y")
+  .flex.flex-col.max-h-12
+    .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
+      %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
+      .pl-0.p-5{class: "sm:w-8/12"}
+        %h4.text-md.font-semibold.text-white.text-justify
+          = current_user.first_name
+        .flex.items-center.space-x-4.justify-between
+          .flex
+            %span.text-sm 
+            = current_user.last_name
+      .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
+        .pr-5{class: "sm:w-8/12"}
+        %h4.text-md.font-semibold.text-white.text-justify
+          %span.text-sm Confirmado em
+        .flex.items-center.space-x-4.justify-between
+          = heroicon "clock", options: { class: "h-5 w-5 text-white" }
+          %p.text-xs 
+            = current_user.created_at.strftime("%d/%m/%Y")            
