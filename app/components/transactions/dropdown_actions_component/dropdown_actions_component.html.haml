@@ -8,25 +8,25 @@
                                  "data-transition-leave-to": "opacity-0 scale-95"}
     .profile-menu__group
       = button_to details_transaction_path(@transaction), id: "details_#{dom_id(@transaction)}", method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
-        = heroicon 'pencil', options: { class: 'h-4 w-4 text-primary-500' }
+        = heroicon 'pencil', options: { class: 'h-4 w-4 text-green-500' }
         %span.whitespace-nowrap= t('shared.details')
       = button_to [@transaction, :attachments], id: "attachments_#{dom_id(@transaction)}", method: :get, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
-        = heroicon 'paper-clip', options: { class: 'h-4 w-4 text-primary-500' }
+        = heroicon 'paper-clip', options: { class: 'h-4 w-4 text-green-500' }
         %span.whitespace-nowrap= t('shared.attachments')
       = button_to duplicate_transaction_path(@transaction), method: :patch, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
-        = heroicon 'document-duplicate', options: { class: 'h-4 w-4  text-primary-500' }
+        = heroicon 'document-duplicate', options: { class: 'h-4 w-4  text-green-500' }
         %span= t('shared.duplicate')
       = button_to move_to_transaction_path(@transaction), method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
-        = heroicon 'arrows-right-left', options: { class: 'h-4 w-4  text-primary-500' }
+        = heroicon 'arrows-right-left', options: { class: 'h-4 w-4  text-green-500' }
         %span= t('shared.move_to')
 
     - if @transaction.on_cash?
       .profile-menu__group
         = button_to setup_installments_transaction_path(@transaction), method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
-          = heroicon 'banknotes', options: { class: 'h-4 w-4  text-primary-500' }
+          = heroicon 'banknotes', options: { class: 'h-4 w-4  text-green-500' }
           %span.whitespace-nowrap= t('shared.setup_installments')
         = button_to setup_recurrence_transaction_path(@transaction), method: :get, params: { bank_account_id: @transaction.bank_account_id, month: @month, transaction_type: @transaction.transaction_type }, form: { data: { turbo_frame: :drawer } }, onclick: 'event.stopPropagation()', class: 'c-dropdown__item flex items-center' do
-          = heroicon 'clock', options: { class: 'h-4 w-4  text-primary-500' }
+          = heroicon 'clock', options: { class: 'h-4 w-4  text-green-500' }
           %span.whitespace-nowrap= t('shared.setup_recurrence')
 
     .profile-menu__group
