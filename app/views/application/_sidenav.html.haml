@@ -4,42 +4,54 @@
     = image_tag '/logo-w.png', class: 'h-8 icon'
     %i#btn.bx.bx-menu
   %ul.nav-list
-    -if request.path != "/histories" && request.path != "/configs"
+    -if request.path == "/home"
       %li
-        %a{href: "home", class: "active"}
+        %a{href: "/home", class: "active"}
           %i.bx.bx-football.iconactive
           %span.links_name.nameactive Dashboard 
         %span.tooltip.nameactive Dashboard
     -else
       %li
-        %a{href: "home"}
+        %a{href: "/home"}
           %i.bx.bx-football
           %span.links_name Dashboard 
         %span.tooltip Dashboard
     -if request.path == "/histories"
       %li
-        %a{href: "histories", class: "active"}
+        %a{href: "/histories", class: "active"}
           %i.bx.bx-history.iconactive
           %span.links_name.nameactive Ultimos jogos 
         %span.tooltip.nameactive Ultimos jogos
     -else
       %li
-        %a{href: "histories"}
+        %a{href: "/histories"}
           %i.bx.bx-history
           %span.links_name Ultimos jogos 
         %span.tooltip Ultimos jogos  
     -if request.path == "/configs"
       %li
-        %a{href: "configs", class: "active"}
+        %a{href: "/configs", class: "active"}
           %i.bx.bx-cog.iconactive
           %span.links_name.nameactive Configurações 
         %span.tooltip.nameactive Configurações
     -else
       %li
-        %a{href: "configs"}
+        %a{href: "/configs"}
           %i.bx.bx-cog
           %span.links_name Configurações 
         %span.tooltip Configurações     
+    -if request.path == "/futengages/new"
+      %li
+        %a{href: "/futengages/new", class: "active"}
+          %i.bx.bx-plus-circle.iconactive
+          %span.links_name.nameactive Criar jogo
+        %span.tooltip.nameactive Criar jogo
+    -else
+      %li
+        %a{href: "/futengages/new"}
+          %i.bx.bx-plus-circle
+          %span.links_name Criar jogo 
+        %span.tooltip Criar jogo         
     %li.profile
       .profile-details
         -if current_user.avatar.attached?
