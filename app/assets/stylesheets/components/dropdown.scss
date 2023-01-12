@@ -18,6 +18,6 @@
   }
 
   &__item {
-    @apply flex items-center space-x-2 w-full text-left block px-base py-base font-medium text-white hover:bg-gray-100
+    @apply flex items-center space-x-2 w-full text-left block px-base py-base font-medium text-gray-700 hover:bg-gray-100
   }
 }
