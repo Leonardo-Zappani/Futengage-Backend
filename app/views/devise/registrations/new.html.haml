@@ -1,4 +1,4 @@
-%canvas.orb-canvas.devise__canvas
+=render 'canvas'
 .devise__layout.absolute
   .devise__left
     .devise__container
@@ -9,26 +9,26 @@
         = form_for(resource, as: resource_name, url: registration_path(resource_name, invite: @account_invitation&.token), html: { class: 'devise__form', 'data-turbo': false }) do |f|
           = render 'errors', resource: resource
           .form-group
-            = f.label "Nome Completo", class: 'form-label'
+            = f.label "Nome Completo", class: 'form-label text-white'
             = f.text_field :first_name, class: 'form-control'
           .form-group
-            = f.label "Posição no campo", class: 'form-label'
+            = f.label "Posição no campo", class: 'form-label text-white text-white'
             = f.text_field :last_name, class: 'form-control'
           .form-group
-            = f.label :email, class: 'form-label'
+            = f.label :email, class: 'form-label text-white'
             = f.email_field :email, autocomplete: "email", class: 'form-control'
-          .form-group
+          .form-group 
             .flex.items-center.space-x-4
-              = f.label "Senha", class: 'form-label'
+              = f.label "Senha", class: 'form-label text-white'
               - if @minimum_password_length
-                %em.flex-1.text-sm.text-gray-500
+                %em.flex-1.text-sm.text-slate-500
                   = "(8 caracteres no mínimo)"
             = f.password_field :password, autocomplete: "new-password", class: 'form-control'
           .form-group
-            = f.label "Confirme a senha", class: 'form-label'
+            = f.label "Confirme a senha", class: 'form-label text-white'
             = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
           .form-group
-            = f.label "Foto de perfil", class: 'form-label'
+            = f.label "Foto de perfil", class: 'form-label text-white'
             = f.file_field :avatar, required: true, class: 'form-input-file', direct_upload: true
           .actions
             = f.submit "Criar", class: "btn btn--primary"

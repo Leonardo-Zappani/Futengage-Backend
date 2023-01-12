@@ -22,7 +22,7 @@
             .flex.items-center.space-x-4
               = f.label :password, class: 'form-label'
               - if @minimum_password_length
-                %em.flex-1.text-sm.text-gray-500
+                %em.flex-1.text-sm.text-slate-500
                   = t('devise.passwords.edit.minimum_password_length', value: @minimum_password_length)
             = f.password_field :password, autocomplete: "new-password", class: 'form-control'
           .form-group
