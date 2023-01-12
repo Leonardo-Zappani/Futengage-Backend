@@ -2,10 +2,18 @@
 #
 # Table name: futengages
 #
-#  id         :bigint           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id           :bigint           not null, primary key
+#  confirmed_at :datetime
+#  day          :datetime         not null
+#  place        :string           default("Clubinho"), not null
+#  team_name_1  :string           default("Time 1"), not null
+#  team_name_2  :string           default("Time 2"), not null
+#  team_score_1 :bigint           default(0), not null
+#  team_score_2 :bigint           default(0), not null
+#  time         :string           default("20h"), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :bigint
 #
 # Indexes
 #
@@ -16,5 +24,5 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Futengage < ApplicationRecord
-  belongs_to :user
+  has_many :users
 end

@@ -25,7 +25,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_person_name
-  has_many :futengages
   has_one_attached :avatar
+
+  belongs_to :futengage, optional: true
 
 end
