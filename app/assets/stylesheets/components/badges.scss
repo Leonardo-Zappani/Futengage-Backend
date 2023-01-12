@@ -1,8 +1,8 @@
 .badge {
-  @apply inline-flex items-center justify-center rounded-full bg-gray-100 px-1.5 py-0.5 text-xs text-white overflow-hidden border-2 border-white;
+  @apply inline-flex items-center justify-center rounded-full bg-gray-100 px-1.5 py-0.5 text-xs text-gray-700 overflow-hidden border-2 border-white;
 
   &--primary {
-    @apply bg-primary-500 group-hover:bg-primary-600 text-white
+    @apply bg-green-500 group-hover:bg-primary-600 text-white
   }
   &--success {
     @apply bg-success-500 group-hover:bg-success-600 text-white
