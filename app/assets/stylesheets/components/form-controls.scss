@@ -1,12 +1,12 @@
 .form-control {
-  @apply block text-base sm:text-xs xl:text-sm w-full bg-white text-left appearance-none rounded-md border border-gray-300 px-2 py-1 h-10 sm:h-8 placeholder-gray-400 shadow-sm hover:shadow focus:ring-1 focus:border-primary-500 focus:outline-none focus:ring-primary-500;
+  @apply block text-base sm:text-xs xl:text-sm w-full bg-white text-left appearance-none rounded-md border border-gray-300 px-2 py-1 h-10 sm:h-8 placeholder-gray-400 shadow-sm hover:shadow focus:ring-1 focus:border-green-500 focus:outline-none focus:ring-green-500;
   &:disabled {
-    @apply text-gray-500 bg-gray-50 cursor-not-allowed
+    @apply text-white bg-gray-50 cursor-not-allowed
   }
 }
 
 .form-control-multiselect {
-  @apply block text-base sm:text-xs xl:text-sm w-full bg-white text-left appearance-none rounded-md border border-gray-300 px-2 py-1.5 placeholder-gray-400 shadow-sm hover:shadow focus:ring-1 focus:border-primary-500 focus:outline-none focus:ring-primary-500;
+  @apply block text-base sm:text-xs xl:text-sm w-full bg-white text-left appearance-none rounded-md border border-gray-300 px-2 py-1.5 placeholder-gray-400 shadow-sm hover:shadow focus:ring-1 focus:border-green-500 focus:outline-none focus:ring-green-500;
   &:disabled {
     @apply text-gray-500 bg-gray-50 cursor-not-allowed
   }
@@ -25,7 +25,7 @@
 }
 
 .form-control-checkbox {
-  @apply h-5 w-5 rounded-md border-gray-300 text-primary-500 focus:ring-primary-500 shadow-sm hover:shadow
+  @apply h-5 w-5 rounded-md border-gray-300 text-green-500 focus:ring-green-500 shadow-sm hover:shadow
 }
 
 .form-label-checkbox {
@@ -51,7 +51,6 @@
 
 .form-input-file {
   @apply block text-base sm:text-xs xl:text-sm w-full bg-white border border-gray-300 rounded-md py-1 px-2 pl-1 h-10 sm:h-8 xl:text-sm file:mb-0 file:h-full file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-white hover:file:bg-black shadow-sm hover:shadow focus:ring-1 focus:border-green-500 focus:outline-none focus:ring-green-500;
-  
 }
 
 .form-actions {}

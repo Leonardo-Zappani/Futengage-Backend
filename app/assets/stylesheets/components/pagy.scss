@@ -11,12 +11,12 @@
 .pagy-nav-js .page.active,
 .pagy-nav-js .page.prev.disabled,
 .pagy-nav-js .page.next.disabled {
-  @apply block rounded-full px-4 py-1.5 text-base sm:text-sm text-primary-500 font-medium bg-gray-100;
+  @apply block rounded-full px-4 py-1.5 text-base sm:text-sm text-green-500 font-medium bg-gray-200;
   &:hover{
-    @apply bg-gray-200 text-primary-600;
+    @apply bg-gray-300 text-primary-600;
   }
   &:active{
-    @apply bg-primary-500 text-white;
+    @apply bg-green-500 text-white;
   }
 }
 
@@ -26,10 +26,10 @@
 .pagy-nav-js .page.next.disabled {
   @apply text-gray-400 cursor-default;
   &:hover {
-    @apply text-gray-400 bg-gray-100;
+    @apply text-gray-400 bg-gray-200;
   }
   &:active {
-    @apply text-gray-400 bg-gray-100;
+    @apply text-gray-400 bg-gray-200;
   }
 }
 
@@ -56,10 +56,10 @@
 .pagy-combo-nav-js .page.prev,
 .pagy-combo-nav-js .page.next {
   &:hover {
-    @apply text-white;
+    @apply text-gray-700;
   }
   &:active {
-    @apply text-white;
+    @apply text-gray-700;
   }
 }
 

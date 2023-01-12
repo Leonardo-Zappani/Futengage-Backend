@@ -1,5 +1,5 @@
 .transactions-list {
-  @apply flex flex-col divide-y;
+  @apply flex flex-col divide-y divide-gray-200;
 
   &__new {
     @apply flex items-center h-12 px-base py-1.5 px-base w-full bg-gray-100
@@ -10,11 +10,11 @@
   }
 
   &__add {
-    @apply font-medium w-full h-8 flex items-center justify-center space-x-2 border-2 border-dashed text-primary-500 hover:text-primary-600 border-primary-500 hover:border-primary-600 bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+    @apply font-medium w-full h-8 flex items-center justify-center space-x-2 border-2 border-dashed text-green-500 hover:text-primary-600 border-green-500 hover:border-primary-600 bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2
   }
 
   &__go {
-    @apply font-medium w-full h-8 flex items-center justify-center space-x-2 border-2 text-primary-500 hover:text-primary-600 border-primary-500 hover:border-primary-600 bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+    @apply font-medium w-full h-8 flex items-center justify-center space-x-2 border-2 text-green-500 hover:text-primary-600 border-green-500 hover:border-primary-600 bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2
   }
 
   &__header, &__item {
@@ -22,11 +22,12 @@
   }
 
   & &__item {
-    @apply hover:bg-gray-100 hover:rounded-b-md
+    @apply hover:bg-gray-50
   }
 
-  & &__item:last-child {
-    @apply rounded-b-md
+  & > turbo-frame:last-of-type > li > &__item,
+  & > turbo-frame:last-of-type > &__item {
+    @apply rounded-b-lg
   }
 
   &__header {
@@ -73,15 +74,15 @@
       @apply text-right justify-end pr-3;
       width: 6rem;
     }
-  }
+  } 
 }
 
 .summarizer {
-  @apply sticky bottom-3 mt-3 flex justify-end block bg-white p-3 rounded-md border w-80;
-  margin-left: calc(100% - 39rem);
-  min-height: 6.25rem;
+  @apply sticky bottom-3 mt-3 flex justify-end block bg-white p-3 rounded-md w-80 sm:shadow;
+  margin-left: calc(100% - 38.25rem);
+  min-height: 5.6rem;
 }
 
 .summarizer-phone {
-  @apply sticky bottom-3 m-3 flex justify-end block bg-white p-3 rounded-md border w-auto;
+  @apply sticky bottom-3 flex justify-end block bg-white mt-3 p-3 w-full;
 }
