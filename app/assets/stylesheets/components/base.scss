@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  @apply text-white block h-full bg-white text-base sm:text-xs xl:text-sm;
+  @apply text-gray-700 block h-full bg-gray-100 text-base sm:text-xs xl:text-sm;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,11 +51,11 @@ form {
 }
 
 [type='checkbox'],[type='radio'] {
-  @apply h-5 w-5 text-primary-500 focus:ring-primary-500;
+  @apply h-5 w-5 text-green-500 focus:ring-green-500;
 }
 
 turbo-frame {
-  @apply flex flex-col sm:w-full box-content self-stretch justify-start
+  @apply flex flex-col w-full box-content self-stretch justify-start
 }
 
 li {
@@ -79,5 +79,5 @@ input, select, button {
 }
 
 .turbo-progress-bar {
-  @apply bg-primary-500 h-0.5
+  @apply bg-green-500 h-0.5
 }
