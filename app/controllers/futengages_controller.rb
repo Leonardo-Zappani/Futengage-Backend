@@ -67,6 +67,6 @@ class FutengagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def futengage_params
-      params.require(:futengage).permit(:user_id)
+      params.require(:futengage).permit(:user_id, :time, :day, :place, :scoreboard, :team_name_2, :team_name_1)
     end
 end
