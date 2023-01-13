@@ -524,7 +524,8 @@ pt-BR:
       type: "Por Tipo"
       category: "Por Categoria"
       cost_center: "Por Centro De Custo"
-
+  futengage:
+        tuesday: Quinta feira
   accounts:
     edit:
       title: "Configurações da conta"
