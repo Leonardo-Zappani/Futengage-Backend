@@ -16,6 +16,23 @@
           %i.bx.bx-football
           %span.links_name Dashboard 
         %span.tooltip Dashboard
+    - Futengage.where('day >= ?', Time.now).each do |futengage|    
+      - if request.path == "/futengages/#{futengage.id}"
+        %li
+          %a{href: "/futengages/#{futengage.id}", class: "active"}
+            %i.bx.bx-calendar-event.iconactive
+            %span.links_name.nameactive 
+              = futengage.name
+          %span.tooltip.nameactive 
+            = futengage.name
+      -else
+        %li
+          %a{href: "/futengages/#{futengage.id}"}
+            %i.bx.bx-calendar-event
+            %span.links_name 
+              = futengage.name
+          %span.tooltip 
+            = futengage.name
     -if request.path == "/histories"
       %li
         %a{href: "/histories", class: "active"}
