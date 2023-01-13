@@ -1,45 +1,44 @@
 .devise__background
   .flex.devise__soccerfield.place-content-center.min-h-full.animate__animated.animate__pulse.animate__faster
     .absolute.pt-10
-      = image_tag '/9.png'
-      -# -if current.futengage.users.count == 0  
-      -#   = image_tag '/0.png'
+      -if User.count == 0  
+        = image_tag '/0.png'
 
-      -# -if current.futengage.users.count == 1  
-      -#   = image_tag '/1.png'
+      -if User.count == 1  
+        = image_tag '/1.png'
 
-      -# -if current.futengage.users.count == 2
-      -#   = image_tag '/2.png'
+      -if User.count == 2
+        = image_tag '/2.png'
 
-      -# -if current.futengage.users.count == 3
-      -#   = image_tag '/3.png'      
+      -if User.count == 3
+        = image_tag '/3.png'      
 
-      -# -if current.futengage.users.count == 4
-      -#   = image_tag '/4.png'
+      -if User.count == 4
+        = image_tag '/4.png'
 
-      -# -if current.futengage.users.count == 5 
-      -#   = image_tag '/5.png'
+      -if User.count == 5 
+        = image_tag '/5.png'
 
-      -# -if current.futengage.users.count == 6
-      -#   = image_tag '/6.png'
+      -if User.count == 6
+        = image_tag '/6.png'
 
-      -# -if current.futengage.users.count == 7
-      -#   = image_tag '/7.png'    
+      -if User.count == 7
+        = image_tag '/7.png'    
         
-      -# -if current.futengage.users.count == 8
-      -#   = image_tag '/8.png'      
+      -if User.count == 8
+        = image_tag '/8.png'      
 
-      -# -if current.futengage.users.count == 9
-      -#   = image_tag '/9.png'
+      -if User.count == 9
+        = image_tag '/9.png'
 
-      -# -if current.futengage.users.count == 10 
-      -#   = image_tag '/10.png'
+      -if User.count == 10 
+        = image_tag '/10.png'
 
-      -# -if current.futengage.users.count == 11
-      -#   = image_tag '/11.png'
+      -if User.count == 11
+        = image_tag '/11.png'
 
-      -# -if current.futengage.users.count == 12 || current.futengages.users.count > 12
-      -#   = image_tag '/12.png'  
+      -if User.count == 12 || User.count > 12
+        = image_tag '/12.png'  
       .flex.flex-col.pt-4.pl-4.pr-6
         = button_to "confirm_presence_path", class: "btn btn--primary h-10 w-full", method: :post do
           %span.text-white Confirmar presença              
