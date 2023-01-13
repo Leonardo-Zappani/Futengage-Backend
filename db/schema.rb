@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_102223) do
     t.datetime "updated_at", null: false
     t.datetime "confirmed_at"
     t.datetime "day", null: false
+    t.string "name", default: "Futengage", null: false
     t.string "time", default: "20h", null: false
     t.string "place", default: "Clubinho", null: false
     t.string "team_name_1", default: "Time 1", null: false

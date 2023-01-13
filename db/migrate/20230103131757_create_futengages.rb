@@ -5,6 +5,7 @@ class CreateFutengages < ActiveRecord::Migration[7.0]
       t.datetime :updated_at, null: false
       t.datetime :confirmed_at
       t.datetime :day, null: false 
+      t.string :name, null: false, default: "Futengage"
       t.string :time, null: false, default: "20h"
       t.string :place, null: false, default: "Clubinho"
       t.string :team_name_1, null: false, default: "Time 1"
