@@ -9,6 +9,9 @@
             = f.label "Data do jogo", class: 'form-label text-white'
             = f.date_field :day,value: "#{Time.now.year}-0#{Time.now.month}-#{Time.now.day}", class: 'form-control'
           .form-group.pt-4
+            = f.label "Nome do jogo" ,placeholder: "Futengage", class: 'form-label text-white'
+            = f.text_field :name, class: 'form-control'
+          .form-group.pt-4
             = f.label "Horário", placeholder: "20h", class: 'form-label text-white text-white'
             = f.text_field :time, class: 'form-control'
           .form-group.pt-4
@@ -22,4 +25,4 @@
             = f.text_field :team_name_2, class: 'form-control'
           .actions.pt-4
             = f.submit "Criar", class: "btn btn--primary"
-.h-full.w-full.devise__background            
+.flex.h-full.w-full.devise__background            
