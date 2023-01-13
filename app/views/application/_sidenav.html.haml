@@ -16,7 +16,7 @@
           %i.bx.bx-football
           %span.links_name Dashboard 
         %span.tooltip Dashboard
-    - Futengage.where('day >= ?', Time.now).each do |futengage|    
+    - @list_futengages.each do |futengage|    
       - if request.path == "/futengages/#{futengage.id}"
         %li
           %a{href: "/futengages/#{futengage.id}", class: "active"}
