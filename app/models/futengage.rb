@@ -5,6 +5,7 @@
 #  id           :bigint           not null, primary key
 #  confirmed_at :datetime
 #  day          :datetime         not null
+#  name         :string           default("Futengage"), not null
 #  place        :string           default("Clubinho"), not null
 #  team_name_1  :string           default("Time 1"), not null
 #  team_name_2  :string           default("Time 2"), not null
@@ -25,4 +26,8 @@
 #
 class Futengage < ApplicationRecord
   has_many :users
+  def callbacks
+    @current_futengage = Futengage.where(futengage.day > Time.now)
+  end
+
 end
