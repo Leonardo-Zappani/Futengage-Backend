@@ -112,6 +112,8 @@ pt-BR:
         phone_number: Telefone
         description: Observações
         updated_at: Atualizado em
+      futengage:
+        tuesday: Quinta feira 
       transaction:
         transaction_type: Tipo de transação
         due_date: Data
