@@ -1,0 +1,6 @@
+= form_for @team do |f|
+  - if @team.errors.any?
+    = render 'errors', errors: @team.errors
+  .flex.flex-col.space-y-4.sm:space-y-6
+    .form-group
+      = f.submit class: "btn btn--primary"
