@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :teams
+  resources :places
+  resources :plaes
+  resources :members
+  resources :confirmations
+  resources :matches
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :histories
   resources :configs
