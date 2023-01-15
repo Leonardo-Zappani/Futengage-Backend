@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_102223) do
+ActiveRecord::Schema[7.0].define(version: 10) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_102223) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "confirmations", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "match_id", null: false
+    t.datetime "confirmed_at", null: false
+    t.boolean "confirmed", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_confirmations_on_match_id"
+    t.index ["member_id"], name: "index_confirmations_on_member_id"
+  end
+
   create_table "futengages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -68,6 +79,53 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_102223) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "place_id", null: false
+    t.bigint "owner_id", null: false
+    t.string "team_one_name", null: false
+    t.string "team_two_name", null: false
+    t.string "team_one_score", null: false
+    t.string "team_two_score", null: false
+    t.datetime "scheduled_at"
+    t.datetime "confirmed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_matches_on_owner_id"
+    t.index ["place_id"], name: "index_matches_on_place_id"
+    t.index ["team_id"], name: "index_matches_on_team_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_members_on_team_id"
+    t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "time", null: false
+    t.string "day", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_places_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.string "group_name", null: false
+    t.string "team_one_name", default: "Time 1", null: false
+    t.string "team_two_name", default: "Time 2", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_teams_on_owner_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,5 +142,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_102223) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "confirmations", "matches"
+  add_foreign_key "confirmations", "members"
   add_foreign_key "futengages", "users"
+  add_foreign_key "matches", "places"
+  add_foreign_key "matches", "teams"
+  add_foreign_key "matches", "users", column: "owner_id"
+  add_foreign_key "members", "teams"
+  add_foreign_key "members", "users"
+  add_foreign_key "places", "teams"
+  add_foreign_key "teams", "users", column: "owner_id"
 end
