@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include SetCurrent
   before_action :current_match
   before_action :list_match
+  before_action :current_teams
   protected
 
   def configure_permitted_parameters

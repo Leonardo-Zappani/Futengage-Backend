@@ -6,6 +6,10 @@ module SetCurrent
     
   end
 
+  def current_teams 
+    @list_teams = Team.all
+  end
+
   def list_match
     @list_match = Match.where('scheduled_at >= ?', Time.now).all
   end
