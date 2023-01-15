@@ -18,10 +18,10 @@
   border-right-color: #1d1b31;
   padding: 6px 14px;
   z-index: 99;
-  transition: all 0.5s ease;
+  transition: width 0.5s ease;
 }
 .sidebar.open{
-  width: 250px;
+  width: 300px;
 }
 .sidebar .logo-details{
   height: 60px;
@@ -31,14 +31,14 @@
 }
 .sidebar .logo-details .icon{
   opacity: 0;
-  transition: all 0.5s ease;
+
 }
 .sidebar .logo-details .logo_name{
   color: #fff;
   font-size: 20px;
   font-weight: 600;
   opacity: 0;
-  transition: all 0.5s ease;
+  transition: widht, 0.5s ease;
 }
 .sidebar.open .logo-details .icon,
 .sidebar.open .logo-details .logo_name{
@@ -50,11 +50,11 @@
   right: 0;
   transform: translateY(-50%);
   font-size: 22px;
-  transition: all 0.4s ease;
+  transition: widht, 0.4s ease;
   font-size: 23px;
   text-align: center;
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: widht, 0.5s ease;
 }
 .sidebar.open .logo-details #btn{
   text-align: right;
@@ -96,7 +96,7 @@
 .sidebar li:hover .tooltip{
   opacity: 1;
   pointer-events: auto;
-  transition: all 0.4s ease;
+  transition: widht, 0.4s ease;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -113,7 +113,7 @@
   width: 50px;
   border: none;
   border-radius: 12px;
-  transition: all 0.5s ease;
+  transition: widht, 0.5s ease;
   background: #1d1b31;
 }
 .sidebar.open input{
@@ -144,7 +144,7 @@
   border-radius: 12px;
   align-items: center;
   text-decoration: none;
-  transition: all 0.4s ease;
+  transition: widht, 0.4s ease;
   background: #11101D;
 }
 .sidebar li a:hover{
@@ -168,15 +168,21 @@
 }
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i{
-  transition: all 0.5s ease;
+  transition: widht, 0.5s ease;
   color: #11101D;
 }
 .sidebar li a .nameactive{
   color: #11101D;
 }
 
+.submenu{
+  border-left: white;
+  border-left-width: 1px; 
+  border-left-style: solid;
+}
+
 .sidebar li .iconactive{
-  transition: all 0.5s ease;
+  transition: widht, 0.5s ease;
   color: #11101D;
 }
 .sidebar li i{
@@ -193,11 +199,11 @@
   bottom: -8px;
   padding: 10px 14px;
   background: #1d1b31;
-  transition: all 0.5s ease;
+  transition: widht, 0.5s ease;
   overflow: hidden;
 }
 .sidebar.open li.profile{
-  width: 220px;
+  width: 270px;
 }
 .sidebar li .profile-details{
   display: flex;
@@ -230,7 +236,7 @@
   height: 60px;
   line-height: 60px;
   border-radius: 0px;
-  transition: all 0.5s ease;
+  transition: widht, 0.5s ease;
 }
 .sidebar.open .profile #log_out{
   width: 50px;
@@ -243,12 +249,12 @@
   top: 0;
   left: 78px;
   width: calc(100% - 78px);
-  transition: all 0.5s ease;
+  transition: widht, 0.5s ease;
   z-index: 2;
 }
 .sidebar.open ~ .home-section{
-  left: 250px;
-  width: calc(100% - 250px);
+  left: 300px;
+  width: calc(100% - 300px);
 }
 .home-section .text{
   display: inline-block;
