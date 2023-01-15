@@ -1,16 +1,11 @@
 # frozen_string_literal: true
 
 class TeamsController < ApplicationController
-  before_action :set_team, only: %i[show edit update destroy]
+  before_action  only: %i[show edit update destroy]
 
   # GET /teams
   def index
-    query = current_user.teams.order(created_at: :asc)
-    query = query.search_by_q(params[:q]) if params[:q].present?
-
-    @pagy, @records = pagy(query)
-
-    @records.load
+ 
   end
 
   # GET /teams/1 or /teams/1.json
@@ -33,7 +28,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         notice = t('.success')
-        format.html { redirect_to teams_url, notice: notice }
+        redirect_to "/teams/" + @team.id.to_s
         format.json { render :show, status: :created, location: @team }
         format.turbo_stream { flash.now.notice = notice }
       else
@@ -48,8 +43,8 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.update(team_params)
         notice = t('.success')
-        format.html { redirect_to teams_url, notice: notice }
         format.json { render :show, status: :ok, location: @team }
+        format.html { redirect_to teams_url, notice: notice }
         format.turbo_stream { flash.now.notice = notice }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -72,12 +67,8 @@ class TeamsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_team
-    @team = current_user.teams.find(params[:id])
-  end
-
   # Only allow a list of trusted parameters through.
   def team_params
-    params.require(:team).permit(:name, :description)
+    params.require(:team).permit(:group_name,:team_one_name, :team_two_name, :description)
   end
 end
