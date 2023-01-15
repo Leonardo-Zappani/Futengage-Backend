@@ -1,5 +1,4 @@
 class FutengagesController < ApplicationController
-  before_action :set_futengage, only: %i[ show edit update destroy ]
 
   # GET /futengages or /futengages.json
   def index
@@ -60,10 +59,6 @@ class FutengagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_futengage
-      @futengage = Futengage.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def futengage_params
