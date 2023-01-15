@@ -2,9 +2,15 @@ import { Controller } from '@hotwired/stimulus';
 import SlimSelect from 'slim-select';
 import { post } from '@rails/request.js';
 
-let sidebar = document.querySelector('.sidebar');
-let closeBtn = document.querySelector('#btn');
-let searchBtn = document.querySelector('.bx-search');
+
+
+updateBtn.addEventListener('click', () => {
+  let sidebar = document.querySelector('.sidebar');
+  let closeBtn = document.querySelector('#btn');
+  let searchBtn = document.querySelector('.bx-search');
+}  
+
+
 
 closeBtn.addEventListener('click', () => {
   sidebar.classList.toggle('open');
