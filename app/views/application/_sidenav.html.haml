@@ -4,71 +4,46 @@
     = image_tag '/logo-w.png', class: 'h-8 icon'
     %i#btn.bx.bx-menu
   %ul.nav-list
-    -if request.path == "/home"
+    %li
+      %a{href: "/home", class: request.fullpath.include?('home') && "active"} 
+        %i.bx.bx-grid{class: request.fullpath.include?('home') && "iconactive"}
+        .links_name{class: request.fullpath.include?('home') && "nameactive"} Dashboard 
+        .tooltip Dashboard
+    - @list_teams.each do |teams|    
       %li
-        %a{href: "/home", class: "active"}
-          %i.bx.bx-football.iconactive
-          %span.links_name.nameactive Dashboard 
-        %span.tooltip.nameactive Dashboard
-    -else
-      %li
-        %a{href: "/home"}
-          %i.bx.bx-football
-          %span.links_name Dashboard 
-        %span.tooltip Dashboard
-    - @list_match.each do |futengage|    
-      - if request.path == "/futengages/#{futengage.id}"
-        %li
-          %a{href: "/futengages/#{futengage.id}", class: "active"}
-            %i.bx.bx-calendar-event.iconactive
-            %span.links_name.nameactive 
-              = futengage.name
-          %span.tooltip.nameactive 
-            = futengage.name
-      -else
-        %li
-          %a{href: "/futengages/#{futengage.id}"}
-            %i.bx.bx-calendar-event
-            %span.links_name 
-              = futengage.name
-          %span.tooltip 
-            = futengage.name
-    -if request.path == "/histories"
-      %li
-        %a{href: "/histories", class: "active"}
-          %i.bx.bx-history.iconactive
-          %span.links_name.nameactive Ultimos jogos 
-        %span.tooltip.nameactive Ultimos jogos
-    -else
-      %li
-        %a{href: "/histories"}
-          %i.bx.bx-history
-          %span.links_name Ultimos jogos 
-        %span.tooltip Ultimos jogos  
-    -if request.path == "/configs"
-      %li
-        %a{href: "/configs", class: "active"}
-          %i.bx.bx-cog.iconactive
-          %span.links_name.nameactive Configurações 
-        %span.tooltip.nameactive Configurações
-    -else
-      %li
-        %a{href: "/configs"}
-          %i.bx.bx-cog
-          %span.links_name Configurações 
-        %span.tooltip Configurações     
-    -if request.path == "/teams/new"
-      %li
-        %a{href: "/teams/new", class: "active"}
-          %i.bx.bx-plus-circle.iconactive
-          %span.links_name.nameactive Criar nova equipe
-        %span.tooltip.nameactive Criar nova equipe
-    -else
-      %li
-        %a{href: "/teams/new"}
-          %i.bx.bx-plus-circle
-          %span.links_name Criar nova equipe 
-        %span.tooltip Criar nova equipe
+        %a{href: "/teams/#{teams.id}", class: request.fullpath.include?(teams.id.to_s) && "active "}
+          -if request.fullpath.include?(teams.id.to_s)
+            %i.bx.bx-down-arrow{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
+          -else
+            %i.bx.bx-football{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
+          .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.group_name 
+          .tooltip= teams.group_name 
+      - if request.fullpath.include?(teams.id.to_s)
+        %li.submenu
+          %a{href: "/places/new", class: request.fullpath.include?("places/new") && "active"}
+            %i.bx.bx-plus-circle{class: request.fullpath.include?("places/new") && "iconactive"}
+            %span.links_name{class: request.fullpath.include?("places/new") && "nameactive"} Adicionar novo local
+          %span.tooltip Adicioanr novo local
+        %li.submenu
+          %a{href: "/matches/new", class: request.fullpath.include?("matches/new") && "active"}
+            %i.bx.bx-plus-circle{class: request.fullpath.include?("matches/new") && "iconactive"}
+            %span.links_name{class: request.fullpath.include?("matches/new") && "nameactive"} Criar nova partida
+          %span.tooltip Adicioanr novo local      
+    %li
+      %a{href: "/histories", class: request.fullpath.include?("histories") && "active"}
+        %i.bx.bx-history{class: request.fullpath.include?("histories") && "iconactive"}
+        %span.links_name{class: request.fullpath.include?("histories") && "nameactive"} Ultimos jogos 
+      %span.tooltip Ultimos jogos  
+    %li
+      %a{href: "/configs", class: request.fullpath.include?("configs") && "active"}
+        %i.bx.bx-cog{class: request.fullpath.include?("configs") && "iconactive"}
+        %span.links_name{class: request.fullpath.include?("configs") && "nameactive"} Configurações 
+      %span.tooltip Configurações     
+    %li
+      %a{href: "/teams/new", class: request.fullpath.include?("teams/new") && "active"}
+        %i.bx.bx-plus-circle{class: request.fullpath.include?("teams/new") && "iconactive"}
+        %span.links_name{class: request.fullpath.include?("teams/new") && "nameactive"} Criar nova equipe 
+      %span.tooltip Criar nova equipe
     %li.profile
       .profile-details
         -if current_user.avatar.attached?
