@@ -16,7 +16,7 @@
           %i.bx.bx-football
           %span.links_name Dashboard 
         %span.tooltip Dashboard
-    - @list_futengages.each do |futengage|    
+    - @list_match.each do |futengage|    
       - if request.path == "/futengages/#{futengage.id}"
         %li
           %a{href: "/futengages/#{futengage.id}", class: "active"}
@@ -57,18 +57,18 @@
           %i.bx.bx-cog
           %span.links_name Configurações 
         %span.tooltip Configurações     
-    -if request.path == "/futengages/new"
+    -if request.path == "/teams/new"
       %li
-        %a{href: "/futengages/new", class: "active"}
+        %a{href: "/teams/new", class: "active"}
           %i.bx.bx-plus-circle.iconactive
-          %span.links_name.nameactive Criar jogo
-        %span.tooltip.nameactive Criar jogo
+          %span.links_name.nameactive Criar nova equipe
+        %span.tooltip.nameactive Criar nova equipe
     -else
       %li
-        %a{href: "/futengages/new"}
+        %a{href: "/teams/new"}
           %i.bx.bx-plus-circle
-          %span.links_name Criar jogo 
-        %span.tooltip Criar jogo         
+          %span.links_name Criar nova equipe 
+        %span.tooltip Criar nova equipe
     %li.profile
       .profile-details
         -if current_user.avatar.attached?
