@@ -1,6 +1,18 @@
 = form_for @team do |f|
-  - if @team.errors.any?
-    = render 'errors', errors: @team.errors
-  .flex.flex-col.space-y-4.sm:space-y-6
-    .form-group
-      = f.submit class: "btn btn--primary"
+  .devise__layout.absolute.devise__background
+    .devise__left
+      .devise__container
+        .devise__header
+          %h2.devise__title= 'Nova Equipe'
+        .devise__content
+          .form-group
+            = f.label "Nome da equipe",placeholder: "Digite o nome", class: 'form-label text-white'
+            = f.text_field :group_name, class: 'form-control'
+          .form-group.pt-4
+            = f.label "Nome do primeiro time" ,placeholder: "Time 1", class: 'form-label text-white'
+            = f.text_field :team_one_name, class: 'form-control'
+          .form-group.pt-4
+            = f.label "Nome do segundo time" ,placeholder: "Time 2", class: 'form-label text-white'
+            = f.text_field :team_two_name, class: 'form-control'
+          .actions.pt-4
+            = f.submit "Criar", class: "btn btn--primary"            
