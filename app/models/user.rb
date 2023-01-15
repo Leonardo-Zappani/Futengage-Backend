@@ -29,4 +29,24 @@ class User < ApplicationRecord
 
   belongs_to :futengage, optional: true
 
+  has_many :members, dependent: :destroy
+  has_many :teams, through: :members
+  has_many :owned_teams, class_name: 'Team', foreign_key: 'owner_id', dependent: :destroy
+  has_many :owned_matches, class_name: 'Match', foreign_key: 'owner_id', dependent: :destroy
+  has_many :places, through: :teams
+  has_many :matches, through: :teams
+  has_many :pending_confirmations, -> { where(confirmations: { confirmed: false }) }, through: :members, source: :confirmations
+  has_many :confirmed_confirmations, -> { where(confirmations: { confirmed: true }) }, through: :members, source: :confirmations
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def avatar_url
+    if avatar.attached?
+      avatar.variant(resize_to_fill: [100, 100]).processed
+    else
+      "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?s=100&d=identicon"
+    end
+  end
 end
