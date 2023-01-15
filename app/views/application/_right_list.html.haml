@@ -7,22 +7,22 @@
             %span.text-sm.text-white Próximo jogo
           .flex.items-center
             = heroicon "play", options: { class: "h-4 w-4 text-white" }  
-            %span.text-xs.text-white.pl-1 
-              = @current_futengage ? @current_futengage.name : "Não há jogo marcado"
+            %span.text-xs.text-white.pl-1
+              = @current_match ? @current_match.name : "Nenhum jogo agendado"
         .pl-0.p-5{class: "sm:w-8/12"}
           %h4.text-md.font-semibold.text-white
             %span.text-sm.text-white.pl-8 Local
           .flex.items-center.pl-8
             = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
             %span.text-xs.text-white.pl-1 
-              = @current_futengage ? @current_futengage.place : ""
+              = @current_match ? @current_match.place : ""
         .pl-0.p-5{class: "sm:w-8/12"}
           %h4.text-md.font-semibold.text-white
             %span.text-sm.text-white Horário
           .flex.items-center
             = heroicon "clock", options: { class: "h-5 w-5 text-white" }  
             %span.text-xs.text-white.pl-1 
-              = @current_futengage ? (t(@current_futengage.day.strftime("%A").to_s)) +" "+ (@current_futengage.time.to_s) : ""  
+              = @current_match ? (t(@current_match.scheduled_at.strftime("%A").to_s)) +" "+ (@current_match.time.to_s) : ""  
         .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-4
           .pr-5{class: "sm:w-8/12"}
           %h4.text-md.font-semibold.text-white
@@ -30,7 +30,7 @@
           .flex.items-center.space-x-4.place-content-start
             = heroicon "user", options: { class: "h-5 w-5 text-white" }
             %p.text-xs.text-white 
-              = @current_futengage ? (User.count.to_s) + "/12" : ""
+              = @current_match ? (User.count.to_s) + "/12" : ""
     - User.all.each do |player|
       .flex.flex-col.max-h-12
         .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
