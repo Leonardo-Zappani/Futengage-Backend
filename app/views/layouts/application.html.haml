@@ -15,7 +15,8 @@
     %main.layout
       - if user_signed_in?
         .flex
-          = render 'sidenav'
+          = turbo_frame_tag :sidenav do
+            = render 'sidenav'
         = yield
       - else
         = yield
