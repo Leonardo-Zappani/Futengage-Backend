@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   # GET /teams
   def index
-    query = current_account.teams.order(created_at: :asc)
+    query = current_user.teams.order(created_at: :asc)
     query = query.search_by_q(params[:q]) if params[:q].present?
 
     @pagy, @records = pagy(query)
@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
 
   # POST /teams or /teams.json
   def create
-    @team = current_account.teams.new(team_params)
+    @team = current_user.owned_teams.new(team_params)
 
     respond_to do |format|
       if @team.save
@@ -73,11 +73,11 @@ class TeamsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_team
-    @team = current_account.teams.find(params[:id])
+    @team = current_user.teams.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def team_params
-    params.fetch(:team, {})
+    params.require(:team).permit(:name, :description)
   end
 end
