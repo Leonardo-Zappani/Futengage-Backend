@@ -1,0 +1,22 @@
+- content_for(:title, Pagamento.model_name.human(count: 2))
+= turbo_frame_tag :pagamentos_index do
+  = render(Page::HeaderComponent.new(title: Pagamento.model_name.human(count: 2))) do |header|
+    - header.search do
+      = render 'search_form', search_path: pagamentos_path
+    - header.action do
+      = button_to new_pagamento_path, class: 'btn-circle btn-circle--primary', method: :get, data: { turbo_frame: 'drawer' } do
+        = heroicon 'plus', options: { class: 'btn-circle__icon' }
+
+  .card
+    = render(Table::TableComponent.new) do |table|
+      - table.header do |header|
+        - header.col(classes: 'c-table__column--actions')
+      - table.body(id: :pagamentos) do
+        - if @records.any?
+          = render @records
+        - elsif params[:q].present?
+          = render 'empty_search', clear_path: pagamentos_path, term: params[:q]
+        - else
+          = render 'empty_state', add_path: new_pagamento_path, options: { data: { turbo_frame: 'drawer' } }
+
+  = render(Page::PaginatorComponent.new(paginator: @pagy))
