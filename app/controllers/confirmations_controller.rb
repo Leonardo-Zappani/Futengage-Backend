@@ -45,17 +45,8 @@ class ConfirmationsController < ApplicationController
 
   # PATCH/PUT /confirmations/1 or /confirmations/1.json
   def update
-    respond_to do |format|
-      if @confirmation.update(confirmation_params)
-        notice = t('.success')
-        format.html { redirect_to confirmations_url, notice: notice }
-        format.json { render :show, status: :ok, location: @confirmation }
-        format.turbo_stream { flash.now.notice = notice }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @confirmation.errors, status: :unprocessable_entity }
-      end
-    end
+    @confirmation.update(confirmed: true)
+    redirect_to root_path
   end
 
   # DELETE /confirmations/1 or /confirmations/1.json
@@ -73,11 +64,11 @@ class ConfirmationsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_confirmation
-    @confirmation = current_account.confirmations.find(params[:id])
+    @confirmation = @current_peding_confirmation
   end
 
   # Only allow a list of trusted parameters through.
   def confirmation_params
-    params.fetch(:confirmation, {})
+    params.require(:confirmation).permit(:confirmed, :confirmed_at, :match_id, :member_id, :id)
   end
 end

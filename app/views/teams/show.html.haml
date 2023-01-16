@@ -1,1 +1,11 @@
-VAI DAR O CU
+.flex.h-full.w-full.devise__background
+  .devise__layout.absolute.devise__background
+    .devise__left
+      .devise__container
+        .devise__header
+          %h2.devise__title= Team.where('id = ?', params[:id]).first.group_name
+        .devise__content
+          .form-group
+            .label.form-label.text-white= "Nome da equipe"
+            .text_field.form-control= Team.where('id = ?', params[:id]).first.group_name
+          

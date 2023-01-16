@@ -117,3 +117,5 @@ gem 'simple_enum', github: 'felipevenancio/simple_enum'
 gem 'simple_xlsx_reader', '~> 2.0'
 gem 'stripe', '~> 7.1'
 gem 'view_component', '~> 2.71'
+gem 'devise_invitable', '~> 2.0.1'
+
