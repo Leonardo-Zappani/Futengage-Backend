@@ -16,8 +16,8 @@
             %i.bx.bx-down-arrow{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
           -else
             %i.bx.bx-football{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
-          .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.group_name 
-          .tooltip= teams.group_name 
+          .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.team.group_name 
+          .tooltip= teams.team.group_name 
       - if request.fullpath.include?(teams.id.to_s)
         %li.submenu
           %a{href: "/places/new", class: request.fullpath.include?("places/new") && "active"}
