@@ -21,7 +21,7 @@
 #  index_matches_on_place_id  (place_id)
 #  index_matches_on_team_id   (team_id)
 #
-# Foreign Keys 
+# Foreign Keys
 #
 #  fk_rails_...  (owner_id => users.id)
 #  fk_rails_...  (place_id => places.id)
