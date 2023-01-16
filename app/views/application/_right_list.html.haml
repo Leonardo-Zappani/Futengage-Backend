@@ -8,21 +8,21 @@
           .flex.items-center
             = heroicon "play", options: { class: "h-4 w-4 text-white" }  
             %span.text-xs.text-white.pl-1
-              = @current_match ? @current_match.name : "Nenhum jogo agendado"
+              = @current_match ? @current_match.team.group_name : "Nenhum jogo agendado"
         .pl-0.p-5{class: "sm:w-8/12"}
           %h4.text-md.font-semibold.text-white
             %span.text-sm.text-white.pl-8 Local
           .flex.items-center.pl-8
             = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
             %span.text-xs.text-white.pl-1 
-              = @current_match ? @current_match.place : ""
+              = @current_match ? @current_match.place.name : ""
         .pl-0.p-5{class: "sm:w-8/12"}
           %h4.text-md.font-semibold.text-white
             %span.text-sm.text-white Horário
           .flex.items-center
             = heroicon "clock", options: { class: "h-5 w-5 text-white" }  
             %span.text-xs.text-white.pl-1 
-              = @current_match ? (t(@current_match.scheduled_at.strftime("%A").to_s)) +" "+ (@current_match.time.to_s) : ""  
+              = @current_match ? (t(@current_match.scheduled_at.strftime("%A").to_s)) +" "+ (@current_match.place.time.to_s) : ""  
         .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-4
           .pr-5{class: "sm:w-8/12"}
           %h4.text-md.font-semibold.text-white
@@ -30,24 +30,25 @@
           .flex.items-center.space-x-4.place-content-start
             = heroicon "user", options: { class: "h-5 w-5 text-white" }
             %p.text-xs.text-white 
-              = @current_match ? (User.count.to_s) + "/12" : ""
-    - User.all.each do |player|
-      .flex.flex-col.max-h-12
-        .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
-          %img.w-16.h-16.rounded-full{ src: url_for(current_user.avatar)}
-          .pl-0.p-5{class: "sm:w-8/12"}
-            %h4.text-md.font-semibold.text-white.text-justify
-              = player.first_name
-            .flex.items-center.space-x-4.justify-between
-              .flex
-                %span.text-sm.text-white 
-                  = current_user.last_name
-          .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
-            .pr-5{class: "sm:w-8/12"}
-            %h4.text-md.font-semibold.text-white.text-justify
-              %span.text-sm.text-white Confirmado em
-            .flex.items-center.space-x-4.justify-between
-              = heroicon "clock", options: { class: "h-5 w-5 text-white" }
-              %p.text-xs.text-white 
-                = current_user.created_at.strftime("%d/%m/%Y")
-      
+              = @current_match ? (@current_confirmed_player_count.to_s) + "/" + (@current_player_count.to_s) : ""
+    - unless @current_match.nil?
+      - @current_match.confirmations.each do |member|
+        -if member.confirmed?
+          .flex.flex-col.max-h-12
+            .p-4.items-center.justify-start.rounded-3xl.group.sm:flex.space-x-6.bg-white.bg-opacity-10.shadow-xl.pl-6{class: "w-[900px] h-[80px]"}
+              %img.w-16.h-16.rounded-full{ src: url_for(member.user.avatar)}
+              .pl-0.p-5{class: "sm:w-8/12"}
+                %h4.text-md.font-semibold.text-white.text-justify
+                  = member.user.first_name
+                .flex.items-center.space-x-4.justify-between
+                  .flex
+                    %span.text-sm.text-white 
+                      = member.user.last_name
+              .grid.grid-flow-row.auto-rows-max.justify-end.items-center.pl-12
+                .pr-5{class: "sm:w-8/12"}
+                %h4.text-md.font-semibold.text-white.text-justify
+                  %span.text-sm.text-white Confirmado em
+                .flex.items-center.space-x-4.justify-between
+                  = heroicon "clock", options: { class: "h-5 w-5 text-white" }
+                  %p.text-xs.text-white= member.confirmed_at.strftime("%d/%m/%Y")
+                  
