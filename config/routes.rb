@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pagamentos
   resources :teams
   resources :places
   resources :plaes
