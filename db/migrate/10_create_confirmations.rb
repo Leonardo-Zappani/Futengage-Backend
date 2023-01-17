@@ -4,7 +4,7 @@ class CreateConfirmations < ActiveRecord::Migration[7.0]
       t.references :member,              null: false, foreign_key: true
       t.references :match,               null: false, foreign_key: true
 
-      t.datetime :confirmed_at,            null: false
+      t.datetime :confirmed_at   
       t.boolean :confirmed,                null: false, default: false
 
       t.timestamps
