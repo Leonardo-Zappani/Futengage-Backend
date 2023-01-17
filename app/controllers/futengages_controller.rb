@@ -1,8 +1,19 @@
 class FutengagesController < ApplicationController
 
+  include SetCurrent
+  
+  before_action :current_teams
+  before_action :current_match
+  before_action :list_match
+  before_action :current_confirmation
+  before_action :current_member
+  before_action :current_player_count
+  before_action :current_peding_confirmation
+
   # GET /futengages or /futengages.json
   def index
     
+
   end
 
   
