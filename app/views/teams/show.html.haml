@@ -4,8 +4,11 @@
       .devise__container
         .devise__header
           %h2.devise__title= Team.where('id = ?', params[:id]).first.group_name
+        .devise__header.pt-1  
+          .devise__title= "Gerenciamento do time"
         .devise__content
-          .form-group
-            .label.form-label.text-white= "Nome da equipe"
-            .text_field.form-control= Team.where('id = ?', params[:id]).first.group_name
-          
+          =render "form_user" 
+          .pt-2
+          =render "form_place"  
+          .pt-2
+          =render "form_match" 
