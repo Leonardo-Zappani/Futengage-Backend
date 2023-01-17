@@ -21,6 +21,28 @@ class TeamsController < ApplicationController
   def edit
   end
 
+  # POST /teams/create_match 
+  def create_match
+    @team = Team.find(params[:team_id])
+    @match = @team.matches.create(match_params)
+    redirect_to "/teams/" + @team.id.to_s
+  end
+
+
+  # POST /teams/create_place
+  def create_place
+    @team = Team.find(params[:team_id])
+    @place = @team.places.create(place_params)
+    redirect_to "/teams/" + @team.id.to_s
+  end
+
+  # POST /teams/add_member
+  def add_member
+    @team = Team.find(params[:team_id])
+    @member = @team.members.create(user_id: params[:user_id])
+    redirect_to "/teams/" + @team.id.to_s
+  end
+
   # POST /teams or /teams.json
   def create
     @team = current_user.owned_teams.new(team_params)
@@ -70,5 +92,9 @@ class TeamsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def team_params
     params.require(:team).permit(:group_name,:team_one_name, :team_two_name, :description)
+  end
+
+  def user_id
+    params.require(:user_id)
   end
 end
