@@ -35,4 +35,15 @@ class Match < ApplicationRecord
   has_many :confirmations, dependent: :destroy
   # has_many :confirmed_members, through: :confirmations, -> { where(confirmations: { confirmed: true }) }, source: :member
   # has_many :unconfirmed_members, through: :confirmations, -> { where(confirmations: { confirmed: false }) }, source: :member
+
+
+  after_create :add_confirmations_to_members
+
+  private
+
+  def add_confirmations_to_members
+    team.members.each do |member|
+      confirmations.create(member: member)
+    end
+  end
 end
