@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
   create_table "confirmations", force: :cascade do |t|
     t.bigint "member_id", null: false
     t.bigint "match_id", null: false
-    t.datetime "confirmed_at", null: false
+    t.datetime "confirmed_at"
     t.boolean "confirmed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -141,7 +141,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.integer "invited_by_id"
+    t.string "invited_by_type"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
