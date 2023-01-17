@@ -1,25 +1,28 @@
 module SetCurrent
   extend ActiveSupport::Concern
 
+  def current_teams 
+    @list_teams = Team.joins(:members).where("members.user_id = ?", current_user.id).all
+  end
+
   def current_match
-    @all_matches = Match.where('scheduled_at >= ?', Time.now).first.team.members.where(id: current_user.id).all
-    @current_match = @all_matches.first
+    @current_match = current_user.teams.joins(:matches).where("matches.scheduled_at > ?", Time.now).order("matches.scheduled_at ASC").first.matches.where("matches.scheduled_at > ?", Time.now).order("matches.scheduled_at ASC").first
   end
 
   def current_member
     @current_member = @current_match.team.members.where(user_id: current_user.id)
   end
 
-  def current_teams 
-    @list_teams = Member.where(user_id: current_user.id)
-  end
-
   def list_match
     @list_match = @all_matches
   end
+  
+  def current_confirmation
+    @current_confirmation = Confirmation.joins(match: [team: :members]).where("members.user_id = ?", params[:user_id]).order("matches.scheduled_at ASC").first
+  end
 
   def current_peding_confirmation
-    @current_peding_confirmation = Confirmation.where(member_id: @current_member.ids).first
+    @current_peding_confirmation = current_match.confirmations.first
   end
 
   def current_player_count
