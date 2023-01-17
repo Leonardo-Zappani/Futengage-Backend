@@ -4,7 +4,7 @@
 #
 #  id           :bigint           not null, primary key
 #  confirmed    :boolean          default(FALSE), not null
-#  confirmed_at :datetime         not null
+#  confirmed_at :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  match_id     :bigint           not null
