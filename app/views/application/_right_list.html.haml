@@ -30,7 +30,7 @@
           .flex.items-center.space-x-4.place-content-start
             = heroicon "user", options: { class: "h-5 w-5 text-white" }
             %p.text-xs.text-white 
-              = @current_match ? (@current_confirmed_player_count.to_s) + "/" + (@current_player_count.to_s) : ""
+              = @current_match ? (@current_confirmed_count.to_s) + "/" + (@current_player_count.to_s) : ""
     - unless @current_match.nil?
       - @current_match.confirmations.each do |member|
         -if member.confirmed?
@@ -50,5 +50,5 @@
                   %span.text-sm.text-white Confirmado em
                 .flex.items-center.space-x-4.justify-between
                   = heroicon "clock", options: { class: "h-5 w-5 text-white" }
-                  %p.text-xs.text-white= member.confirmed_at.strftime("%d/%m/%Y")
+                  %p.text-xs.text-white= member.updated_at.strftime("%d/%m/%Y %H:%M")
                   
