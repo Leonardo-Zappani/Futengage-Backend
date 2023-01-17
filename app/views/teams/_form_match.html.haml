@@ -1,0 +1,12 @@
+=turbo_frame_tag "create_match" do 
+  =form_for :team, html: { class: 'devise__form pt-6', 'data-turbo': false } do |f|
+    .devise__form
+      .form-group.border-t-2.pt-4
+        %h4.text-white.devise__header.pb-2 Criar nova partida
+        = f.label "Local da partida",placeholder: "Digite o nome", class: 'form-label text-white'
+        = f.select :place_id, Team.where("id = ?", params[:id]).first.places.ids, {}, { class: "form-control" }
+      .form-group
+        = f.label "Dia",placeholder: "Dia da partida", class: 'form-label text-white'
+        = f.date_field :time, value: "#{Time.now.year}-0#{Time.now.month}-#{Time.now.day}", class: 'form-control'
+      .actions.pt-4
+        = f.submit "Agendar", class: "btn btn--primary" 
