@@ -64,11 +64,11 @@ class ConfirmationsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_confirmation
-    @confirmation = @current_peding_confirmation
+    @confirmation = current_user.teams.joins(:matches).where("matches.scheduled_at > ?", Time.now).order("matches.scheduled_at ASC").first.matches.where("matches.scheduled_at > ?", Time.now).order("matches.scheduled_at ASC").first.confirmations.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def confirmation_params
-    params.require(:confirmation).permit(:confirmed, :confirmed_at, :match_id, :member_id, :id)
+    params.fetch(:confirmation, {})
   end
 end
