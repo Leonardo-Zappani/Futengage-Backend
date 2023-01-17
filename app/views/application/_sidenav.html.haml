@@ -9,15 +9,15 @@
         %i.bx.bx-grid{class: request.fullpath.include?('home') && "iconactive"}
         .links_name{class: request.fullpath.include?('home') && "nameactive"} Dashboard 
         .tooltip Dashboard
-    - @list_teams.each do |teams|    
+    - Team.joins(:members).where("members.user_id = ?", current_user.id).all.each do |teams|    
       %li
         %a{href: "/teams/#{teams.id}", class: request.fullpath.include?(teams.id.to_s) && "active "}
           -if request.fullpath.include?(teams.id.to_s)
             %i.bx.bx-down-arrow{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
           -else
             %i.bx.bx-football{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
-          .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.team.group_name 
-          .tooltip= teams.team.group_name 
+          .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.group_name 
+          .tooltip= teams.group_name 
       - if request.fullpath.include?(teams.id.to_s)
         %li.submenu
           %a{href: "/places/new", class: request.fullpath.include?("places/new") && "active"}
