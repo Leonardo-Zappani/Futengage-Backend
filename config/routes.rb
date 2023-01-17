@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "futengages#index"
   get "home" => "futengages#index"
+  post "teams/create_match" => "teams#create_match"
+  post "teams/create_place" => "teams#create_place"
+  post "teams/add_member" => "teams#add_member"
 
 end
