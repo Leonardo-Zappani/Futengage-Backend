@@ -3,11 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  include SetCurrent
-  before_action :current_teams
-  before_action :current_match
-  before_action :list_match
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token 
 
 
   protected
