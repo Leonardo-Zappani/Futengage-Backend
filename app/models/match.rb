@@ -5,10 +5,10 @@
 #  id             :bigint           not null, primary key
 #  confirmed_at   :datetime
 #  scheduled_at   :datetime
-#  team_one_name  :string           not null
-#  team_one_score :string           not null
-#  team_two_name  :string           not null
-#  team_two_score :string           not null
+#  team_one_name  :string           default("team one"), not null
+#  team_one_score :string           default("0"), not null
+#  team_two_name  :string           default("team two"), not null
+#  team_two_score :string           default("0"), not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  owner_id       :bigint           not null
