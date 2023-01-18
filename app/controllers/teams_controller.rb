@@ -23,8 +23,13 @@ class TeamsController < ApplicationController
 
   # POST /teams/create_match 
   def create_match
-    @team = Team.find(params[:team_id])
-    @match = @team.matches.create(match_params)
+    @place = Place.where("name = ?", params[:place_id]).first.id
+    @team_id = Team.find(params[:team_id]).id
+    @team = Team.where("id = ?", @team_id).first
+    puts @team_id
+    @defined_user = current_user
+    @match_params = {team_id: @team_id, place: @place_id, scheduled_at: params[:time]}
+    @match = @team.matches.create(@match_params)
     redirect_to "/teams/" + @team.id.to_s
   end
 
@@ -38,11 +43,19 @@ class TeamsController < ApplicationController
 
   # POST /teams/add_member
   def add_member
-    @team = Team.find(params[:team_id])
-    @member = @team.members.create(user_id: params[:user_id])
-    redirect_to "/teams/" + @team.id.to_s
+    @team = (Team.find(params[:team_id])).id
+    @new_member = (User.find(User.where("email = ?", params[:user_id]).ids.first)).id
+    @member = Team.find(@team).members.create(user_id: @new_member)
+    respond_to do |format|
+      if @new_member.present?
+        notice = t('.success')
+        format.html { redirect_to "/teams/" + @team.to_s, notice: notice }
+      else
+        notice = t('.error')
+        format.html { render :new, status: :unprocessable_entity, notice: notice }
+      end
+    end
   end
-
   # POST /teams or /teams.json
   def create
     @team = current_user.owned_teams.new(team_params)
