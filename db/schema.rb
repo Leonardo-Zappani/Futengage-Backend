@@ -83,10 +83,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
     t.bigint "team_id", null: false
     t.bigint "place_id", null: false
     t.bigint "owner_id", null: false
-    t.string "team_one_name", null: false
-    t.string "team_two_name", null: false
-    t.string "team_one_score", null: false
-    t.string "team_two_score", null: false
+    t.string "team_one_name", default: "team one", null: false
+    t.string "team_two_name", default: "team two", null: false
+    t.string "team_one_score", default: "0", null: false
+    t.string "team_two_score", default: "0", null: false
     t.datetime "scheduled_at"
     t.datetime "confirmed_at"
     t.datetime "created_at", null: false
