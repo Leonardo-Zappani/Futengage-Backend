@@ -14,8 +14,7 @@
             %span.text-sm.text-white.pl-8 Local
           .flex.items-center.pl-8
             = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
-            %span.text-xs.text-white.pl-1 
-              = @current_match ? @current_match.place.name : ""
+            %span.text-xs.text-white.pl-1= @current_match ? @current_match.place.name : ""
         .pl-0.p-5{class: "sm:w-8/12"}
           %h4.text-md.font-semibold.text-white
             %span.text-sm.text-white Horário
