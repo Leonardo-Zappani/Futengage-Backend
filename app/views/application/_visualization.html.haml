@@ -3,42 +3,10 @@
     .absolute.pt-10
       -if @current_confirmed_count == 0 || @current_confirmed_count.nil? 
         = image_tag '/0.png'
-
-      -if @current_confirmed_count  == 1  
-        = image_tag '/1.png'
-
-      -if @current_confirmed_count  == 2
-        = image_tag '/2.png'
-
-      -if @current_confirmed_count  == 3
-        = image_tag '/3.png'      
-
-      -if @current_confirmed_count  == 4
-        = image_tag '/4.png'
-
-      -if @current_confirmed_count  == 5 
-        = image_tag '/5.png'
-
-      -if @current_confirmed_count  == 6
-        = image_tag '/6.png'
-
-      -if @current_confirmed_count  == 7
-        = image_tag '/7.png'    
-        
-      -if @current_confirmed_count  == 8
-        = image_tag '/8.png'      
-
-      -if @current_confirmed_count  == 9
-        = image_tag '/9.png'
-
-      -if @current_confirmed_count  == 10 
-        = image_tag '/10.png'
-
-      -if @current_confirmed_count  == 11
-        = image_tag '/11.png'
-
-      -if @current_confirmed_count  == 12
-        = image_tag '/12.png'  
+      -elsif @current_confirmed_count > 12
+        = image_tag '/12.png'
+      -else 
+        = image_tag '/' + @current_confirmed_count.to_s + '.png'
       .flex.flex-col.pt-4.pl-4.pr-6
       -if @current_peding_confirmation.nil?
         = button_to "confirm_presence_path", class: "btn btn--primary h-10 w-full bg-slate-700 hover:bg-black", disabled: true, method: :post do
