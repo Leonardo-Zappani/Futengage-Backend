@@ -13,22 +13,11 @@
       %li
         %a{href: "/teams/#{teams.id}", class: request.fullpath.include?(teams.id.to_s) && "active "}
           -if request.fullpath.include?(teams.id.to_s)
-            %i.bx.bx-down-arrow{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
+            %i.bx.bx-right-arrow{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
           -else
             %i.bx.bx-football{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
           .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.group_name 
-          .tooltip= teams.group_name 
-      -# - if request.fullpath.include?(teams.id.to_s)
-      -#   %li.submenu
-      -#     %a{href: "/places/new", class: request.fullpath.include?("places/new") && "active"}
-      -#       %i.bx.bx-plus-circle{class: request.fullpath.include?("places/new") && "iconactive"}
-      -#       %span.links_name{class: request.fullpath.include?("places/new") && "nameactive"} Adicionar novo local
-      -#     %span.tooltip Adicioanr novo local
-      -#   %li.submenu
-      -#     %a{href: "/matches/new", class: request.fullpath.include?("matches/new") && "active"}
-      -#       %i.bx.bx-plus-circle{class: request.fullpath.include?("matches/new") && "iconactive"}
-      -#       %span.links_name{class: request.fullpath.include?("matches/new") && "nameactive"} Criar nova partida
-      -#     %span.tooltip Adicioanr novo local      
+          .tooltip= teams.group_name    
     %li
       %a{href: "/histories", class: request.fullpath.include?("histories") && "active"}
         %i.bx.bx-history{class: request.fullpath.include?("histories") && "iconactive"}
