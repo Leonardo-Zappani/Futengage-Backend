@@ -1,0 +1,11 @@
+=form_with url: teams_add_member_path, method: :post  do |f|
+  .form-group.pt-2
+    %h4.text-white.devise__header.pb-2 Adicionar novo membro
+    = f.label "Selecione o usuário",placeholder: "Digite o nome", class: 'form-label text-white'
+    = f.select :user_id, User.ids, {}, { class: "form-control" }
+    = f.hidden_field :team_id, :value => request.path.gsub(/[^0-9]/, '')
+  .actions.pt-4
+    = f.submit "Adicionar", class: "btn btn--primary"
+  %button.mt-3.w-full.sm:mt-0.sm:col-start-1.mb-4.bg-gray-100.hover:bg-gray-200.rounded-sm.px-4.py-2{"data-action" => "click->extended-modal#close"}
+    Cancel
+  
