@@ -23,14 +23,23 @@ class TeamsController < ApplicationController
 
   # POST /teams/create_match 
   def create_match
-    @place = Place.where("name = ?", params[:place_id]).first.id
-    @team_id = Team.find(params[:team_id]).id
-    @team = Team.where("id = ?", @team_id).first
-    puts @team_id
-    @defined_user = current_user
-    @match_params = {team_id: @team_id, place: @place_id, scheduled_at: params[:time]}
-    @match = @team.matches.create(@match_params)
-    redirect_to "/teams/" + @team.id.to_s
+    puts params
+    @team = Team.find(params[:team_id])
+    @place = Place.where("name = ?", params[:place_id]).first
+    puts @place 
+    puts @team
+    @match = @team.matches.new(scheduled_at: params[:scheduled_at], place: @place, owner_id: params[:owner_id], team_one_name: params[:team_one_name], team_two_name: params[:team_two_name], team_one_score: params[:team_one_score], team_two_score: params[:team_two_score], confirmed_at: params[:confirmed_at])
+      respond_to do |format|
+        if @match.save
+          notice = t('.success')
+          format.html { redirect_to matches_url, notice: notice }
+          format.json { render :show, status: :created, location: @match }
+          format.turbo_stream { flash.now.notice = notice }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @match.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 
@@ -69,7 +78,25 @@ class TeamsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @team.errors, status: :unprocessable_entity }
-      end
+      end  
+
+    end
+  end
+
+  def create_everything
+    @team = current_user.owned_teams.new(team_params)
+
+    respond_to do |format|
+      if @team.save
+        notice = t('.success')
+        redirect_to "/teams/" + @team.id.to_s
+        format.json { render :show, status: :created, location: @team }
+        format.turbo_stream { flash.now.notice = notice }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @team.errors, status: :unprocessable_entity }
+      end  
+      
     end
   end
 
@@ -105,6 +132,14 @@ class TeamsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def team_params
     params.require(:team).permit(:group_name,:team_one_name, :team_two_name, :description)
+  end
+
+  def match_params
+    params.require(:match).permit(:scheduled_at, :team_id, :place_id, :owner_id, :team_one_name, :team_two_name, :team_one_score, :team_two_score, :confirmed_at)
+  end
+
+  def place_params
+    params.permit(:name, :address, :time, :day)
   end
 
   def user_id
