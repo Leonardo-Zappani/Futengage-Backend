@@ -27,7 +27,7 @@
 class Futengage < ApplicationRecord
   has_many :users
   def callbacks
-    @current_futengage = Futengage.where(futengage.day > Time.now).first
+    @current_futengage = Futengage.where(futengage.day > Time.now-84640).first
   end
 
 end
