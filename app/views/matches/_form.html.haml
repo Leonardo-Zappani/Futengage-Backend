@@ -7,22 +7,30 @@
         .devise__content
           .form-group
             = f.label "Data do jogo", class: 'form-label text-white'
-            = f.date_field :day,value: "#{Time.now.year}-0#{Time.now.month}-#{Time.now.day}", class: 'form-control'
+            = f.date_field :scheduled_at ,value: "#{Time.now.year}-0#{Time.now.month}-#{Time.now.day}", class: 'form-control'
           .form-group.pt-4
-            = f.label "Nome do jogo" ,placeholder: "Futengage", class: 'form-label text-white'
-            = f.text_field :name, class: 'form-control'
+            = f.hidden_field :team_id, :value => request.path.gsub(/[^0-9]/, '')
           .form-group.pt-4
-            = f.label "Horário", placeholder: "20h", class: 'form-label text-white text-white'
-            = f.text_field :time, class: 'form-control'
+            = f.label "Local", placeholder: "20h", class: 'form-label text-white text-white'
+            = f.select :place_id, Team.find(params[:id]).places.pluck(:name), {}, { class: "form-control" }
           .form-group.pt-4
-            = f.label "Local", placeholder: "Clubinho", class: 'form-label text-white text-white'
-            = f.text_field :place, class: 'form-control'  
+            = f.label "usuario id owner", placeholder: "Clubinho", class: 'form-label text-white text-white'
+            = f.select :owner_id,  User.ids, {}, { class: "form-control" }
           .form-group.pt-4
-            = f.label "Nome do primeiro time", placeholder: "Time 1", class: 'form-label text-white'
-            = f.text_field :team_name_1, class: 'form-control'
-          .form-group.pt-4 
-            = f.label "Nome do segundo time", placeholder: "Time 2", class: 'form-label text-white'
-            = f.text_field :team_name_2, class: 'form-control'
+            = f.label "Team name one" ,placeholder: "Futengage", class: 'form-label text-white'
+            = f.text_field :team_one_name, class: 'form-control'
+          .form-group.pt-4
+            = f.label "team two name", placeholder: "20h", class: 'form-label text-white text-white'
+            = f.text_field :team_two_name, class: 'form-control'
+          .form-group.pt-4
+            = f.label "team one score", placeholder: "Clubinho", class: 'form-label text-white text-white'
+            = f.text_field :team_one_score, class: 'form-control'   
+          .form-group.pt-4
+            = f.label "team two score", placeholder: "Clubinho", class: 'form-label text-white text-white'
+            = f.text_field :team_two_score, class: 'form-control'
+          .form-group.pt-4
+            = f.label "confirmed_at", placeholder: "Clubinho", class: 'form-label text-white text-white'
+            = f.text_field :confirmed_at, class: 'form-control'       
           .actions.pt-4
             = f.submit "Criar", class: "btn btn--primary"
 .flex.h-full.w-full.devise__background            
