@@ -8,7 +8,7 @@
           .flex.items-center
             = heroicon "play", options: { class: "h-4 w-4 text-white" }  
             %span.text-xs.text-white.pl-1
-              = Team.find(params[:id]).matches.any? ? Team.find(params[:id]).matches.where("scheduled_at > ?", Time.now).order(scheduled_at: :asc).first.scheduled_at.strftime("%d/%m/%Y") : "Nenhum jogo agendado"
+              = Team.find(params[:id]).matches.any? ? Team.find(params[:id]).matches.where("scheduled_at > ?", Time.now-84640).order(scheduled_at: :asc).first.scheduled_at.strftime("%d/%m/%Y") : "Nenhum jogo agendado"
         .pl-0.p-5.pr-0{class: "sm:w-8/12"}
           %h4.text-md.font-semibold.text-white
             %span.text-sm.text-white.pl-2 Número de jogos
@@ -67,3 +67,18 @@
         = f.hidden_field :team_id, :value => request.path.gsub(/[^0-9]/, '')
       .actions.pt-4
         = f.submit "Adicionar", class: "btn btn--primary"
+        :javascript
+          const modal = document.getElementById('modal');
+          const button = document.getElementById('add-button');
+          const close = document.getElementById('close');
+          button.onclick = function() {
+            modal.classList.remove('hidden');
+          }
+          close.onclick = function() {
+            modal.classList.add('hidden');
+          }
+          window.onclick = function(event) {
+            modal.classList.remove('hidden');
+            
+          }
+
