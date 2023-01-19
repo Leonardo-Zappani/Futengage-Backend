@@ -2,8 +2,34 @@
 
 class HistoriesController < ApplicationController
   before_action :set_history, only: %i[show edit update destroy]
+  
+  include SetCurrent
+  
+  before_action :current_teams
+  before_action :current_match
+  before_action :list_match
+  before_action :current_confirmation
+  before_action :current_member
+  before_action :current_player_count
+  before_action :current_peding_confirmation
+  before_action :all_matches
 
   # GET /histories
+
+  def all_matches
+    @all_matches = Confirmation.joins(:match, team: :members).where(members: {user_id: current_user.id})
+  end
+
+  def member_ids
+    @member_ids = current_user.teams.map{|t| t.members.pluck(:id) }.flatten
+  end
+
+  def teams
+   @all_teamss = Member.where(user_id: current_user.id).map(&:team)
+  end
+
+  
+
   def index
    
   end
