@@ -7,9 +7,8 @@
         .devise__header.pt-1  
           .devise__title= "Gerenciamento do time"
         .devise__content
-          -# .pt-2
-          -# =render "form_place"  
-          -# .pt-2
-          =render "form_match" 
+          =render "form_match"
+        .pt-2
+          =render "form_place"  
     .flex.pl-20
       = render "team_viewer"
