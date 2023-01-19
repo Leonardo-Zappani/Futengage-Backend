@@ -17,7 +17,7 @@ module SetCurrent
 
   def current_match
     if current_user.teams.present? && current_user.teams.joins(:matches).any?
-      @current_match = current_user.teams.joins(:matches).where("matches.scheduled_at > ?", Time.now).order("matches.scheduled_at ASC").first.matches.where("matches.scheduled_at > ?", Time.now).order("matches.scheduled_at ASC").first  
+      @current_match = current_user.teams.joins(:matches).where("matches.scheduled_at > ?", Time.now-84640).order("matches.scheduled_at ASC").first.matches.where("matches.scheduled_at > ?", Time.now-84640).order("matches.scheduled_at ASC").first  
     end
   end
 
