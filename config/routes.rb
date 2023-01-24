@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   post "teams/create_place" => "teams#create_place"
   post "teams/add_member" => "teams#add_member"
   post "teams/new_both" => "teams#create_everything"
+  post "teams/create" => "teams#create"
 end
