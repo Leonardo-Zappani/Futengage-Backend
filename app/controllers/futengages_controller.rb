@@ -9,6 +9,7 @@ class FutengagesController < ApplicationController
   before_action :current_member
   before_action :current_player_count
   before_action :current_peding_confirmation
+  before_action :all_matches
 
   # GET /futengages or /futengages.json
   def index
