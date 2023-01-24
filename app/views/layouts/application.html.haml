@@ -14,9 +14,11 @@
   %body.subpixel-antialiased
     %main.layout
       - if user_signed_in?
-        .flex
-          = turbo_frame_tag :sidenav do
-            = render 'sidenav'
-        = yield
+        .grid.grid-cols-5.h-full.devise__background
+          .col-span-1
+            = turbo_frame_tag :sidenav do
+              = render 'sidenav'
+          .col-span-4    
+            = yield
       - else
         = yield
