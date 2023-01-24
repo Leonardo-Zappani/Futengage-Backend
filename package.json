@@ -28,6 +28,7 @@
     "esbuild": "^0.15.10",
     "esbuild-rails": "^1.0.3",
     "flatpickr": "^4.6.13",
+    "flowbite": "^1.6.3",
     "glob": "^8.0.3",
     "hsl-to-hex": "^1.0.0",
     "jquery": "^3.6.1",
