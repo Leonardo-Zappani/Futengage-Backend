@@ -1,18 +1,12 @@
-= form_for @team do |f|
-  .devise__layout.absolute.devise__background
-    .devise__left
-      .devise__container
-        .devise__header
-          %h2.devise__title= 'Nova Equipe'
-        .devise__content
-          .form-group
-            = f.label "Nome da equipe",placeholder: "Digite o nome", class: 'form-label text-white'
-            = f.text_field :group_name, class: 'form-control'
-          .form-group.pt-4
-            = f.label "Nome do primeiro time" ,placeholder: "Time 1", class: 'form-label text-white'
-            = f.text_field :team_one_name, class: 'form-control'
-          .form-group.pt-4
-            = f.label "Nome do segundo time" ,placeholder: "Time 2", class: 'form-label text-white'
-            = f.text_field :team_two_name, class: 'form-control'
-          .actions.pt-4
-            = f.submit "Criar", class: "btn btn--primary"            
+= form_with(model: @teams) do |f|
+  .form-group
+    = f.label "Nome da equipe",placeholder: "Digite o nome", class: 'form-label text-white'
+    = f.text_field :group_name, placeholder: "Nome do seu time" ,class: 'form-control'
+  .form-group.pt-4
+    = f.label "Nome do primeiro time", class: 'form-label text-white'
+    = f.text_field :team_one_name,placeholder: "Time 1", class: 'form-control'
+  .form-group.pt-4
+    = f.label "Nome do segundo time" , class: 'form-label text-white'
+    = f.text_field :team_two_name,placeholder: "Time 2", class: 'form-control'
+  .actions.pt-6
+    = f.submit "Criar", class: "btn btn--primary"            
