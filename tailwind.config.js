@@ -1,37 +1,38 @@
 // See the Tailwind default theme values here:
 // https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
-const colors = require('tailwindcss/colors')
-const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
+    './node_modules/flowbite/**/*.js',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/assets/stylesheets/**/*.{scss,sass,css}',
     './app/views/**/*.{erb,haml,html,slim}',
-    './app/components/**/*.{rb,erb,haml,html,slim}'
+    './app/components/**/*.{rb,erb,haml,html,slim}',
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans]
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       ringOffsetWidth: {
-        '2': '2px',
-        '4': '4px',
-        '8': '8px',
+        2: '2px',
+        4: '4px',
+        8: '8px',
       },
       screens: {
-        'sm': '640px',
+        sm: '640px',
         // => @media (min-width: 640px) { ... }
 
-        'md': '768px',
+        md: '768px',
         // => @media (min-width: 768px) { ... }
 
-        'lg': '1024px',
+        lg: '1024px',
         // => @media (min-width: 1024px) { ... }
 
-        'xl': '1280px',
+        xl: '1280px',
         // => @media (min-width: 1280px) { ... }
 
         '2xl': '1536px',
@@ -44,19 +45,21 @@ module.exports = {
         warning: colors.amber,
         success: colors.emerald,
         secondary: colors.gray,
-        "code-400": "#fefcf9",
-        "code-600": "#3c455b",
+        'code-400': '#fefcf9',
+        'code-600': '#3c455b',
+        bgcolor: '#11101D',
       },
     },
   },
   variants: {
     ...defaultTheme.variants,
-    borderWidth: ['responsive', 'last', 'hover', 'focus']
+    borderWidth: ['responsive', 'last', 'hover', 'focus'],
   },
   plugins: [
+    require('flowbite/plugin'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp')
-  ]
-}
+    require('@tailwindcss/line-clamp'),
+  ],
+};
