@@ -12,7 +12,7 @@ Turbo.setProgressBarDelay(50);
 window.Rails = Rails;
 window.Turbo = Turbo;
 Rails.start();
-
+import 'flowbite';
 import '@rails/actiontext';
 import 'trix';
 import 'chartkick/chart.js';
