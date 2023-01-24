@@ -29,7 +29,7 @@
             = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
           .form-group
             = f.label "Foto de perfil", class: 'form-label text-white'
-            = f.file_field :avatar, required: true, class: 'form-input-file', direct_upload: true
+            = f.file_field :avatar,class: 'form-control h-12', required: true, direct_upload: true
           .actions
             = f.submit "Criar", class: "btn btn--primary"
       = render "devise/shared/links"
