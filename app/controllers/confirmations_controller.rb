@@ -17,6 +17,7 @@ class ConfirmationsController < ApplicationController
   def show
   end
 
+
   # GET /confirmations/new
   def new
     @confirmation = Confirmation.new
