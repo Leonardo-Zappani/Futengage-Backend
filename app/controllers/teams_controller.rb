@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   # GET /teams
   def index
- 
+    @teams = Team.all
   end
 
   # GET /teams/1 or /teams/1.json
@@ -26,8 +26,6 @@ class TeamsController < ApplicationController
     puts params
     @team = Team.find(params[:team_id])
     @place = Place.where("name = ?", params[:place_id]).first
-    puts @place 
-    puts @team
     @match = @team.matches.new(scheduled_at: params[:scheduled_at], place: @place, owner_id: params[:owner_id], team_one_name: params[:team_one_name], team_two_name: params[:team_two_name], team_one_score: params[:team_one_score], team_two_score: params[:team_two_score], confirmed_at: params[:confirmed_at])
       respond_to do |format|
         if @match.save
@@ -68,7 +66,6 @@ class TeamsController < ApplicationController
   # POST /teams or /teams.json
   def create
     @team = current_user.owned_teams.new(team_params)
-
     respond_to do |format|
       if @team.save
         notice = t('.success')

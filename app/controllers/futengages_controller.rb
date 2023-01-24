@@ -13,7 +13,7 @@ class FutengagesController < ApplicationController
 
   # GET /futengages or /futengages.json
   def index
-    
+    @teams = Team.new
 
   end
 
