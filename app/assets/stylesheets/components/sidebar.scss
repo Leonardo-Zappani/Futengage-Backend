@@ -12,16 +12,12 @@
   top: 0;
   height: 100%;
   width: 80px;
-  background: #11101D;
-  border-right: solid;
-  border-right-width: 4px;
-  border-right-color: #1d1b31;
+  background: #11101D; 
   padding: 6px 14px;
   z-index: 99;
-  transition: width 0.5s ease;
 }
 .sidebar.open{
-  width: 300px;
+  width: 20%;
 }
 .sidebar .logo-details{
   height: 60px;
@@ -38,7 +34,7 @@
   font-size: 20px;
   font-weight: 600;
   opacity: 0;
-  transition: widht, 0.5s ease;
+
 }
 .sidebar.open .logo-details .icon,
 .sidebar.open .logo-details .logo_name{
@@ -50,11 +46,11 @@
   right: 0;
   transform: translateY(-50%);
   font-size: 22px;
-  transition: widht, 0.4s ease;
+
   font-size: 23px;
   text-align: center;
   cursor: pointer;
-  transition: widht, 0.5s ease;
+
 }
 .sidebar.open .logo-details #btn{
   text-align: right;
@@ -113,7 +109,7 @@
   width: 50px;
   border: none;
   border-radius: 12px;
-  transition: widht, 0.5s ease;
+
   background: #1d1b31;
 }
 .sidebar.open input{
@@ -195,15 +191,14 @@
   position: fixed;
   height: 60px;
   width: 50px;
-  left: 0;
-  bottom: -8px;
-  padding: 10px 14px;
-  background: #1d1b31;
-  transition: widht, 0.5s ease;
+  left: 4;
+  bottom: 4px;
+  background: #ffffff05;
+  border-radius: 12px;
   overflow: hidden;
 }
 .sidebar.open li.profile{
-  width: 270px;
+  width: 19%;
 }
 .sidebar li .profile-details{
   display: flex;
@@ -253,8 +248,8 @@
   z-index: 2;
 }
 .sidebar.open ~ .home-section{
-  left: 300px;
-  width: calc(100% - 300px);
+  left: 20%;
+  width: calc(100% - 20%);
 }
 .home-section .text{
   display: inline-block;
