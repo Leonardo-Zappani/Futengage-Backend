@@ -1,8 +1,7 @@
 %link{href: "https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css", rel: "stylesheet"}/
-.sidebar
-  .logo-details
-    = image_tag '/logo-w.png', class: 'h-8 icon'
-    %i#btn.bx.bx-menu
+.sidebar.open
+  .logo-details.pt-6
+    = image_tag '/logo-w.png', class: 'h-10 icon'
   %ul.nav-list
     %li
       %a{href: "/home", class: request.fullpath.include?('home') && "active"} 
@@ -17,12 +16,7 @@
           -else
             %i.bx.bx-football{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
           .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.group_name 
-          .tooltip= teams.group_name    
-    %li
-      %a{href: "/histories", class: request.fullpath.include?("histories") && "active"}
-        %i.bx.bx-history{class: request.fullpath.include?("histories") && "iconactive"}
-        %span.links_name{class: request.fullpath.include?("histories") && "nameactive"} Ultimos jogos 
-      %span.tooltip Ultimos jogos  
+          .tooltip= teams.group_name
     %li
       %a{href: "/configs", class: request.fullpath.include?("configs") && "active"}
         %i.bx.bx-cog{class: request.fullpath.include?("configs") && "iconactive"}
@@ -33,8 +27,8 @@
         %i.bx.bx-plus-circle{class: request.fullpath.include?("teams/new") && "iconactive"}
         %span.links_name{class: request.fullpath.include?("teams/new") && "nameactive"} Criar nova equipe 
       %span.tooltip Criar nova equipe
-    %li.profile
-      .profile-details
+    %li.profile.mb-10
+      .profile-details.pt-2.pl-4
         -if current_user.avatar.attached?
           = image_tag url_for(current_user.avatar), class: 'profile-image'
         -else 
