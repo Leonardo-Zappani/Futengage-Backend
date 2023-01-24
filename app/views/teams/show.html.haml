@@ -1,14 +1,16 @@
-.flex.h-full.w-full.devise__background
-  .devise__layout.absolute.devise__background
-    .devise__left
-      .devise__container
-        .devise__header
-          %h2.devise__title= Team.where('id = ?', params[:id]).first.group_name
-        .devise__header.pt-1  
-          .devise__title= "Gerenciamento do time"
-        .devise__content
-          =render "form_match"
-        .pt-2
-          =render "form_place"  
-    .flex.pl-20
-      = render "team_viewer"
+.grid.grid-cols-2.h-full.devise__background
+  .col-span-1
+    .flex.h-full.w-full.devise__background
+      .devise__layout.absolute.devise__background
+        .devise__left
+          .devise__container
+            .devise__header
+              %h2.devise__title= Team.where('id = ?', params[:id]).first.group_name
+            .devise__header.pt-1  
+              .devise__title= "Gerenciamento do time"
+            .devise__content
+              =render "form_match"
+            .pt-2
+              =render "form_place"  
+  .col-span-1     
+    %h2💀
