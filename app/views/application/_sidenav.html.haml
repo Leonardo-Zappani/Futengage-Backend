@@ -16,17 +16,18 @@
           -else
             %i.bx.bx-football{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
           .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.group_name 
-          .tooltip= teams.group_name
+          .tooltip= teams.group_name   
     %li
       %a{href: "/configs", class: request.fullpath.include?("configs") && "active"}
         %i.bx.bx-cog{class: request.fullpath.include?("configs") && "iconactive"}
         %span.links_name{class: request.fullpath.include?("configs") && "nameactive"} Configurações 
       %span.tooltip Configurações     
     %li
-      %a{href: "/teams/new", class: request.fullpath.include?("teams/new") && "active"}
+      = render "modal_team"
+      %a{class: request.fullpath.include?("teams/new") && "active", "data-modal-target" => "center-center-modal", "data-modal-toggle" => "center-center-modal", type: "button"}
         %i.bx.bx-plus-circle{class: request.fullpath.include?("teams/new") && "iconactive"}
-        %span.links_name{class: request.fullpath.include?("teams/new") && "nameactive"} Criar nova equipe 
-      %span.tooltip Criar nova equipe
+        %span.links_name{class: request.fullpath.include?("teams/new") && "nameactive"} Criar novo time 
+      %span.tooltip Criar novo time
     %li.profile.mb-10
       .profile-details.pt-2.pl-4
         -if current_user.avatar.attached?
