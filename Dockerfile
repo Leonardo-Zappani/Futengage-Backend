@@ -1,6 +1,6 @@
 FROM ruby:3.1
 
-RUN gem install "bundler:~>2" --no-document && \
+RUN gem install bundler-2.4.5 --no-document && \
   gem update --system && \
   gem cleanup
 
