@@ -48,6 +48,7 @@ module.exports = {
         'code-400': '#fefcf9',
         'code-600': '#3c455b',
         bgcolor: '#11101D',
+        bgsecondary: '#ffffff04',
       },
     },
   },
