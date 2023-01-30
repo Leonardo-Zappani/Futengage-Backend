@@ -1,15 +1,34 @@
-- current_user.matches.each do | match | 
+- @past_matches.each do | match | 
   .pt-4
     -if match.scheduled_at < Time.now-1.day
-      .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-gray-800.text-white
+      .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
         .px-6.py-4
-          .font-bold.text-xl.mb-2.ml-2= match.team.group_name
-          %h4.text-md.font-semibold.text-white
-            %span.text-sm.text-white Próximo jogo
-          .flex.items-center
-            = heroicon "play", options: { class: "h-4 w-4 text-white" }  
-            %span.text-xs.text-white.pl-1
-              = @current_match ? @current_match.team.group_name : "Nenhum jogo agendado"
-          %p.text-gray-500.font-medium
-            %i.fas.fa-calendar-alt.mr-2>
-            Data: 01/01/2021
+          .font-bold.text-xl.mb-2= match.team.group_name
+          .grid.grid-cols-4.justify-beetween
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Local
+              .flex.items-center.column-span-1
+                = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
+                %span.text-xs.text-white.pl-1= match.place.name
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Jogadores
+              .flex.items-center.column-span-1
+                = heroicon "users", options: { class: "h-5 w-5 text-white" }  
+                %span.text-xs.text-white.pl-1 
+                  = match.confirmations.where("confirmed = ?", true).count
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Horário
+              .flex.items-center.column-span-1
+                = heroicon "clock", options: { class: "h-5 w-5 text-white" }  
+                %span.text-xs.text-white.pl-1 
+                  = match.scheduled_at.strftime("%H:%M")
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Data
+              .flex.items-center.column-span-1
+                = heroicon "calendar", options: { class: "h-5 w-5 text-white" }  
+                %span.text-xs.text-white.pl-1 
+                  = match.scheduled_at.strftime("%D")
