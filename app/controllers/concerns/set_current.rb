@@ -17,7 +17,7 @@ module SetCurrent
 
   def current_match
     if current_user.teams.present? && current_user.teams.joins(:matches).any?
-      @current_match = current_user.teams.joins(:matches).where("matches.scheduled_at >= ?", Time.now).order("matches.scheduled_at ASC").first.matches.where("matches.scheduled_at >= ?", Time.now).order("matches.scheduled_at ASC").first  
+      @current_match = current_user.matches.where("scheduled_at > ?", Time.now-1.day).order("scheduled_at ASC").first
     end
   end
 
@@ -26,6 +26,13 @@ module SetCurrent
       @all_matches = current_user.matches.all
     end
   end
+
+  def past_matches
+    if current_user.teams.present? && current_user.teams.joins(:matches).any?
+      @past_matches = current_user.matches.where("scheduled_at < ?", Time.now-1.day).order("scheduled_at ASC")
+    end
+  end
+
 
   def current_member
     if @current_match.present?
