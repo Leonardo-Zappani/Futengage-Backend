@@ -1,10 +1,17 @@
 .grid.grid-cols-5.h-full.devise__background
-  .col-span-2.pt-12.ml-12.overflow-y-auto
+  .col-span-2.pt-8.ml-12.overflow-y-auto
     %h2.text-2xl.font-semibold.text-white Últimos jogos
     -if @past_matches != nil
       = render 'history'
+      .px-14.py-4.pl-0
+        = button_to histories_path, class: "btn btn--primary h-10 w-full", method: :get do
+          %span.text-white Ver mais
     -else
       .pt-4
         = render 'no_history'
   .col-span-3.pt-12
-    %h2💀
+    .grid.grid-rows-8.h-full
+      .row-span-8.mr-12.pt-8
+        = render 'visualization'
+        .pt-4
+          = render 'stats'
