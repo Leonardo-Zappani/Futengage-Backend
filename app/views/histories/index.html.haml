@@ -1,23 +1,42 @@
-.flex.pt-6.pl-28.devise__background.h-full.pr-10
-  %h2.text-white falei pra não clicar aqui carai 💀💀
-  -# .grid.grid-rows-4.grid-flow-col.gap-6.pr-10.animate__animated.animate__fadeIn.animate__faster{class: "h-[900px]"}
-  -#   .block.rounded-lg.shadow-lg.bg-white.max-w-full.text-center.h-min
-  -#   - @all_maches.each do |history|
-  -#     .py-3.px-6.border-b.border-gray-300
-  -#       %h5.text-slate-900.text-xl.font-medium.mb-2 Futengage #1
-  -#     .p-2
-  -#       %p.text-slate-700.text-base.mb-4.pr-8
-  -#         .flex.place-content-center.gap-6.pb-4.justify-center
-  -#           .flex.items-center.pr-4
-  -#             = heroicon "clock", options: { class: "h-6 w-6 text-black" }  
-  -#             %span.text-md.pl-1.text-black 20H
-  -#           .flex.items-center
-  -#             = heroicon "map-pin", options: { class: "h-6 w-6 text-black" } 
-  -#             %span.text-xs.text-black Clubinho 
-  -#           .flex.items-center.pl-4
-  -#             = heroicon "user", options: { class: "h-6 w-6 text-black" } 
-  -#             %span.text-xs.text-black.pr-2 9/12     
-  -#       = link_to "Ver detalhes", "#", class: "btn btn--primary bg-slate-800 hover:bg-black"
-  -#     .py-3.px-6.border-t.border-gray-300.text-slate-600
-  -#       há dois dias
-    
+.pt-12.ml-12
+  %h2.text-2xl.font-semibold.text-white Últimos jogos
+  .pt-4
+    -if @past_matches != nil
+      .grid.grid-rows-4.grid-cols-3.gap-4.mr-6
+        - @past_matches.order(:scheduled_at).each do | match | 
+          .pt-4
+            .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
+              .px-6.py-4
+                .font-bold.text-xl.mb-2= match.team.group_name
+                .grid.grid-cols-4.justify-beetween
+                  .column-span-1
+                    %h4.text-md.font-semibold.text-white
+                      %span.text-sm.text-white Local
+                    .flex.items-center.column-span-1
+                      = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
+                      %span.text-xs.text-white.pl-1= match.place.name
+                  .column-span-1
+                    %h4.text-md.font-semibold.text-white
+                      %span.text-sm.text-white Jogadores
+                    .flex.items-center.column-span-1
+                      = heroicon "users", options: { class: "h-5 w-5 text-white" }  
+                      %span.text-xs.text-white.pl-1 
+                        = match.confirmations.where("confirmed = ?", true).count
+                  .column-span-1
+                    %h4.text-md.font-semibold.text-white
+                      %span.text-sm.text-white Horário
+                    .flex.items-center.column-span-1
+                      = heroicon "clock", options: { class: "h-5 w-5 text-white" }  
+                      %span.text-xs.text-white.pl-1 
+                        = match.scheduled_at.strftime("%H:%M")
+                  .column-span-1
+                    %h4.text-md.font-semibold.text-white
+                      %span.text-sm.text-white Data
+                    .flex.items-center.column-span-1
+                      = heroicon "calendar", options: { class: "h-5 w-5 text-white" }  
+                      %span.text-xs.text-white.pl-1 
+                        = match.scheduled_at.strftime("%e/%m/%y")
+    - else
+      = render 'no_history'              
+
+      
