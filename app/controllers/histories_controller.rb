@@ -13,6 +13,7 @@ class HistoriesController < ApplicationController
   before_action :current_player_count
   before_action :current_peding_confirmation
   before_action :all_matches
+  before_action :past_matches
 
   # GET /histories
 
