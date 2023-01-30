@@ -1,24 +1,25 @@
 version: '3.2'
 services:
-  FutEngage-mail:
+  Futngage-mail:
     image: 'sj26/mailcatcher'
     ports:
       - "1080:1080"
       - "1025:1025"
 
-  FutEngage-redis:
+  Futngage-redis:
     image: redis:alpine
     ports:
       - "6379:6379"
 
-  FutEngage-db:
+  Futngage-db:
     image: postgres:14-alpine
     environment:
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=pombo
+      - POSTGRES_PASSWORD=pombo
     ports:
-      - "5432:5432"
+      - "5532:5432"
     volumes:
-      - "futengage-db-data:/var/lib/postgresql/data"
+      - "futngage-db-data:/var/lib/postgresql/data"
 
 volumes:
-  futengage-db-data:
+  futngage-db-data:
