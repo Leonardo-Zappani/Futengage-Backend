@@ -1,4 +1,4 @@
-- @past_matches.each do | match | 
+- @past_matches.order(:scheduled_at).limit(5).each do | match | 
   .pt-4
     -if match.scheduled_at < Time.now-1.day
       .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
