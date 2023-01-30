@@ -1,20 +1,57 @@
-.devise__background
-  .flex.devise__soccerfield.place-content-center.min-h-full.animate__animated.animate__pulse.animate__faster
-    .absolute.pt-10
-      -if @current_confirmed_count == 0 || @current_confirmed_count.nil? 
-        = image_tag '/0.png'
-      -elsif @current_confirmed_count > 12
-        = image_tag '/12.png'
-      -else 
-        = image_tag '/' + @current_confirmed_count.to_s + '.png'
-      .flex.flex-col.pt-4.pl-4.pr-6
-      -if @current_peding_confirmation.nil?
+.rounded.shadow-lg.bg-bgsecondary.text-white.w-full
+  .px-6.py-2.w-full
+    .grid.grid-cols-6.justify-beetween.w-full.pb-1
+      .col-span-2
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm.text-white Próximo jogo
+        .flex.items-center.column-span-1
+          = heroicon "play", options: { class: "h-5 w-5 text-white" } 
+          %span.text-xs.text-white.pl-1= @current_match.team.group_name
+      .col-span-1
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm.text-white Local
+        .flex.items-center.column-span-1
+          = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
+          %span.text-xs.text-white.pl-1= @current_match.place.name
+      .col-span-1
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm.text-white Jogadores
+        .flex.items-center.column-span-1
+          = heroicon "users", options: { class: "h-5 w-5 text-white" }  
+          %span.text-xs.text-white.pl-1 
+            = @current_match.confirmations.where("confirmed = ?", true).count
+      .col-span-1
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm.text-white Horário
+        .flex.items-center.column-span-1
+          = heroicon "clock", options: { class: "h-5 w-5 text-white" }  
+          %span.text-xs.text-white.pl-1 
+            = @current_match.scheduled_at.strftime("%H:%M")
+      .col-span-1
+        %h4.text-md.font-semibold.text-white
+          %span.text-sm.text-white Data
+        .flex.items-center.column-span-1
+          = heroicon "calendar", options: { class: "h-5 w-5 text-white" }  
+          %span.text-xs.text-white.pl-1 
+            = @current_match.scheduled_at.strftime("%e/%m/%y")        
+.pt-4
+  -if @current_confirmed_count == 0 || @current_confirmed_count.nil? 
+    .rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white.p-2
+      = image_tag '/0.png', class: "h-[80%] w-[100%]"
+  -elsif @current_confirmed_count > 12
+    .rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white.p-2
+      = image_tag '/12.png', class: "h-[80%] w-[100%]"
+  -else 
+    .rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white.p-2
+      = image_tag '/' + @current_confirmed_count.to_s + '.png', class: "h-[80%] w-[100%]"
+  .flex.flex-col.pt-4.pl-4
+    -if @current_peding_confirmation.nil?
+      = button_to "confirm_presence_path", class: "btn btn--primary h-10 w-full bg-slate-700 hover:bg-black", disabled: true, method: :post do
+        %span.text-white Não há jogos para confirmar     
+    -else  
+      -if @current_peding_confirmation.confirmed?
         = button_to "confirm_presence_path", class: "btn btn--primary h-10 w-full bg-slate-700 hover:bg-black", disabled: true, method: :post do
-          %span.text-white Não há jogos para confirmar     
-      -else  
-        -if @current_peding_confirmation.confirmed?
-          = button_to "confirm_presence_path", class: "btn btn--primary h-10 w-full bg-slate-700 hover:bg-black", disabled: true, method: :post do
-            %span.text-white Você já confirmou sua presença.       
-        -else
-          = button_to ("confirmations/" + @current_peding_confirmation.id.to_s), class: "btn btn--primary h-10 w-full", method: :patch do
-            %span.text-white Confirmar presença              
+          %span.text-white Você já confirmou sua presença.       
+      -else
+        = button_to ("confirmations/" + @current_peding_confirmation.id.to_s), class: "btn btn--primary h-10 w-full", method: :patch do
+          %span.text-white Confirmar presença              
