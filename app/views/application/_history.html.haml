@@ -1,0 +1,15 @@
+- current_user.matches.each do | match | 
+  .pt-4
+    -if match.scheduled_at < Time.now-1.day
+      .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-gray-800.text-white
+        .px-6.py-4
+          .font-bold.text-xl.mb-2.ml-2= match.team.group_name
+          %h4.text-md.font-semibold.text-white
+            %span.text-sm.text-white Próximo jogo
+          .flex.items-center
+            = heroicon "play", options: { class: "h-4 w-4 text-white" }  
+            %span.text-xs.text-white.pl-1
+              = @current_match ? @current_match.team.group_name : "Nenhum jogo agendado"
+          %p.text-gray-500.font-medium
+            %i.fas.fa-calendar-alt.mr-2>
+            Data: 01/01/2021
