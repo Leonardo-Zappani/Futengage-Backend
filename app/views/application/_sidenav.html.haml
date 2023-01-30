@@ -28,6 +28,11 @@
         %i.bx.bx-plus-circle{class: request.fullpath.include?("teams/new") && "iconactive"}
         %span.links_name{class: request.fullpath.include?("teams/new") && "nameactive"} Criar novo time 
       %span.tooltip Criar novo time
+    %li
+      %a{href: "/histories", class: request.fullpath.include?("histories") && "active"}
+        %i.bx.bx-history{class: request.fullpath.include?("histories") && "iconactive"}
+        %span.links_name{class: request.fullpath.include?("histories") && "nameactive"} Histórico
+      %span.tooltip Histórico  
     %li.profile.mb-10
       .profile-details.pt-2.pl-4
         -if current_user.avatar.attached?
