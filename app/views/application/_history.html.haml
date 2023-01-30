@@ -31,4 +31,5 @@
               .flex.items-center.column-span-1
                 = heroicon "calendar", options: { class: "h-5 w-5 text-white" }  
                 %span.text-xs.text-white.pl-1 
-                  = match.scheduled_at.strftime("%D")
+                  = match.scheduled_at.strftime("%e/%m/%y")
+                 
