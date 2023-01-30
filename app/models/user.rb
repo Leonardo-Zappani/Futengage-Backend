@@ -45,6 +45,7 @@ class User < ApplicationRecord
   has_many :matches, through: :teams
   has_many :pending_confirmations, -> { where(confirmations: { confirmed: false }) }, through: :members, source: :confirmations
   has_many :confirmed_confirmations, -> { where(confirmations: { confirmed: true }) }, through: :members, source: :confirmations
+  has_many :past_matches, -> { where(matches: { scheduled_at: Time.now-1.day}) }, through: :teams, source: :matches
 
   def full_name
     "#{first_name} #{last_name}"
