@@ -46,30 +46,34 @@ class ConfirmationsController < ApplicationController
 
   # PATCH/PUT /confirmations/1 or /confirmations/1.json
   def update
-    @confirmation.update(confirmed: true)
-    redirect_to root_path
+    @role = current_user.role
+    if params[:role].present?
+      @role = params[:role]
+      @team_number = params[:team_number]
+    end
+    @confirmation.update(confirmed: true, position: @role, team_number: @team_number)
+    redirect_to "/home?id=#{params[:id]}"
   end
 
   # DELETE /confirmations/1 or /confirmations/1.json
   def destroy
-    @confirmation.destroy
-    respond_to do |format|
-      notice = t('.success')
-      format.html { redirect_to confirmations_url, notice: notice }
-      format.json { head :no_content }
-      format.turbo_stream { flash.now.notice = notice }
-    end
+    @confirmation.update(confirmed: false)
+    redirect_to "/home?id=#{params[:id]}"
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_confirmation
-    @confirmation = current_user.teams.joins(:matches).where("matches.scheduled_at > ?", Time.now-84640).order("matches.scheduled_at ASC").first.matches.where("matches.scheduled_at > ?", Time.now-84640).order("matches.scheduled_at ASC").first.confirmations.find(params[:id])
+    if params[:id].present?
+      @confirmation = Confirmation.find(params[:id])
+    else
+      @confirmation = current_user.teams.joins(:matches).where("matches.scheduled_at > ?", Time.now-84640).order("matches.scheduled_at ASC").first.matches.where("matches.scheduled_at > ?", Time.now-84640).order("matches.scheduled_at ASC").first.confirmations.find(params[:id])
+    end 
   end
 
   # Only allow a list of trusted parameters through.
   def confirmation_params
-    params.fetch(:confirmation, {})
+    params.require(:confirmation).permit(:team_number, :position, :confirmed, :id)
   end
 end
