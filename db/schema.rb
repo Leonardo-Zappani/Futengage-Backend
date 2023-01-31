@@ -50,6 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
   create_table "confirmations", force: :cascade do |t|
     t.bigint "member_id", null: false
     t.bigint "match_id", null: false
+    t.integer "position"
+    t.integer "team_number"
     t.datetime "confirmed_at"
     t.boolean "confirmed", default: false, null: false
     t.datetime "created_at", null: false
@@ -116,6 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
     t.string "address", null: false
     t.string "time", null: false
     t.string "day", null: false
+    t.integer "max_players", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_places_on_team_id"
@@ -137,6 +140,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "role", default: 0
     t.string "first_name"
     t.string "last_name"
     t.datetime "created_at", null: false
