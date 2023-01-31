@@ -7,7 +7,7 @@ class CreatePlaces < ActiveRecord::Migration[7.0]
       t.string :address,             null: false
       t.string :time,                null: false
       t.string :day,                 null: false
-
+      t.integer :max_players,        null: false
       t.timestamps
     end
   end
