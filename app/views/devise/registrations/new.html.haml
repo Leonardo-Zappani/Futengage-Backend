@@ -13,7 +13,7 @@
             = f.text_field :first_name, class: 'form-control'
           .form-group
             = f.label "Posição no campo", class: 'form-label text-white text-white'
-            = f.text_field :last_name, class: 'form-control'
+            = f.select :role, { Goleiro: :goleiro, Zagueiro: :zagueiro, Lateral: :lateral, Meia: :meia, Ponta: :ponta, Centroavante: :centroavante}, {}, class: 'form-control'
           .form-group
             = f.label :email, class: 'form-label text-white'
             = f.email_field :email, autocomplete: "email", class: 'form-control'
