@@ -1,0 +1,39 @@
+.mr-12
+  .rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white.w-full
+    .px-6.py-5
+      .font-bold.text-xl.ml-2 Jogadores confirmados
+- @past_matches.order(:scheduled_at).limit(5).each do | match | 
+  .pt-4.mr-12
+    -if match.scheduled_at < Time.now-1.day
+      .rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white.w-full
+        .px-5.py-4
+          .font-bold.text-xl.mb-1= match.team.group_name
+          .grid.grid-cols-4.justify-beetween
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Local
+              .flex.items-center.column-span-1
+                = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
+                %span.text-xs.text-white.pl-1= match.place.name
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Jogadores
+              .flex.items-center.column-span-1
+                = heroicon "users", options: { class: "h-5 w-5 text-white" }  
+                %span.text-xs.text-white.pl-1 
+                  = match.confirmations.where("confirmed = ?", true).count
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Horário
+              .flex.items-center.column-span-1
+                = heroicon "clock", options: { class: "h-5 w-5 text-white" }  
+                %span.text-xs.text-white.pl-1 
+                  = match.place.time
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Data
+              .flex.items-center.column-span-1
+                = heroicon "calendar", options: { class: "h-5 w-5 text-white" }  
+                %span.text-xs.text-white.pl-1 
+                  = match.scheduled_at.strftime("%e/%m/%y")
+                
