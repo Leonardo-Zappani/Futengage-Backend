@@ -29,7 +29,7 @@ module SetCurrent
 
   def past_matches
     if current_user.teams.present? && current_user.teams.joins(:matches).any?
-      @past_matches = current_user.matches.where("scheduled_at < ?", Time.now-1.day).order("scheduled_at ASC")
+      @past_matches = current_user.matches.where("scheduled_at > ?", Time.now-1.day).order("scheduled_at ASC")
     end
   end
 
@@ -65,8 +65,7 @@ module SetCurrent
 
   def current_player_count
     if @current_match.present?
-      @current_player_count = @current_match.team.members.count
-      @current_confirmed_count = @current_match.confirmations.where("confirmed = ?", true).count
+      @current_confirmed_count = @current_match.confirmations.where("confirmed = ?", true).count.to_i
     end
   end
 end
