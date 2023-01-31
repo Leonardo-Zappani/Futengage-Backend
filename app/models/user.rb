@@ -16,6 +16,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  role                   :integer          default("goleiro")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  invited_by_id          :integer
@@ -34,6 +35,8 @@ class User < ApplicationRecord
 
   has_person_name
   has_one_attached :avatar
+
+  enum role: { goleiro: 0, zagueiro: 1, lateral: 2, meia: 3, ponta: 4, centroavante: 5 }
 
   belongs_to :futengage, optional: true
 
