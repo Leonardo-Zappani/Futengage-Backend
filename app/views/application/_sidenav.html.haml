@@ -10,12 +10,12 @@
         .tooltip Dashboard
     - Team.joins(:members).where("members.user_id = ?", current_user.id).all.each do |teams|    
       %li
-        %a{href: "/teams/#{teams.id}", class: request.fullpath.include?(teams.id.to_s) && "active "}
+        %a{href: "/teams/#{teams.id}", class: request.fullpath.include?("/" +teams.id.to_s) && "active "}
           -if request.fullpath.include?(teams.id.to_s)
-            %i.bx.bx-right-arrow{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
+            %i.bx.bx-right-arrow{class: request.fullpath.include?("/" + teams.id.to_s) && "iconactive"}
           -else
-            %i.bx.bx-football{class: request.fullpath.include?(teams.id.to_s) && "iconactive"}
-          .links_name{class: request.fullpath.include?(teams.id.to_s) && "nameactive"}= teams.group_name 
+            %i.bx.bx-football{class: request.fullpath.include?("/" +teams.id.to_s) && "iconactive"}
+          .links_name{class: request.fullpath.include?("/" +teams.id.to_s) && "nameactive"}= teams.group_name 
           .tooltip= teams.group_name   
     %li
       %a{href: "/configs", class: request.fullpath.include?("configs") && "active"}
@@ -42,7 +42,7 @@
         .name_position
           .name_position
             = current_user.first_name
-          .name_position 
-            = current_user.last_name
+          .name_position_xs
+            = current_user.role
       = button_to destroy_user_session_path, method: :delete, form: {  data: { turbo: false }} do    
         %i#log_out.bx.bx-log-out
