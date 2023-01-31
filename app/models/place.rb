@@ -2,14 +2,15 @@
 #
 # Table name: places
 #
-#  id         :bigint           not null, primary key
-#  address    :string           not null
-#  day        :string           not null
-#  name       :string           not null
-#  time       :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  team_id    :bigint           not null
+#  id          :bigint           not null, primary key
+#  address     :string           not null
+#  day         :string           not null
+#  max_players :integer          not null
+#  name        :string           not null
+#  time        :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  team_id     :bigint           not null
 #
 # Indexes
 #
