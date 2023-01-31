@@ -23,4 +23,14 @@ class Member < ApplicationRecord
   belongs_to :user
 
   has_many :confirmations, dependent: :destroy
+
+  
+
+  def add_confirmations_to_members
+    team.matches.each do |match|
+      match.confirmations.create(member: self)
+    end
+  end
+
+  after_create :add_confirmations_to_members
 end
