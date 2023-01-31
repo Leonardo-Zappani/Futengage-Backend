@@ -15,6 +15,9 @@
     .form-group.pt-4
       = f.label "Horário" ,placeholder: "Futengage", class: 'form-label text-white'
       = f.text_field :time, placeholder: "Informe o horário dos jogos", class: 'form-control'
+    .form-group.pt-4
+      = f.label "Maximo de jogadores" ,placeholder: "Futengage", class: 'form-label text-white'
+      = f.text_field :max_players, placeholder: "Informe o número maximo de jogadores", class: 'form-control'  
     .actions.pt-4
       = f.submit "Salvar", class: "btn btn--primary"
     
