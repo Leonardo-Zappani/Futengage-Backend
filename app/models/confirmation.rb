@@ -5,6 +5,8 @@
 #  id           :bigint           not null, primary key
 #  confirmed    :boolean          default(FALSE), not null
 #  confirmed_at :datetime
+#  position     :integer
+#  team_number  :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  match_id     :bigint           not null
@@ -23,6 +25,8 @@
 class Confirmation < ApplicationRecord
   belongs_to :member
   belongs_to :match
+
+  enum position: { goleiro: 0, zagueiro: 1, lateral: 2, meia: 3, ponta: 4, centroavante: 5 }
 
   has_one :team, through: :member
   has_one :user, through: :member
