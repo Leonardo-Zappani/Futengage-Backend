@@ -136,7 +136,7 @@ class TeamsController < ApplicationController
   end
 
   def place_params
-    params.permit(:name, :address, :time, :day)
+    params.permit(:name, :address, :time, :day, :max_players)
   end
 
   def user_id
