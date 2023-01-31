@@ -17,7 +17,7 @@
   z-index: 99;
 }
 .sidebar.open{
-  width: 20%;
+  width: 16.5%;
 }
 .sidebar .logo-details{
   height: 60px;
@@ -197,7 +197,7 @@
   overflow: hidden;
 }
 .sidebar.open li.profile{
-  width: 18.5%;
+  width: 14.5%;
 }
 .sidebar li .profile-details{
   display: flex;
@@ -212,7 +212,7 @@
   margin-right: 10px;
 }
 .name_position{
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 400;
   color: #fff;
   white-space: nowrap;
@@ -222,6 +222,7 @@
   font-weight: 350;
   color: #fff;
   white-space: nowrap;
+  padding-top: 0;
 }
 .sidebar li.profile .job{
   font-size: 12px;
@@ -253,8 +254,8 @@
   z-index: 2;
 }
 .sidebar.open ~ .home-section{
-  left: 20%;
-  width: calc(100% - 20%);
+  left: 14.8%;
+  width: calc(100% - 14.5%);
 }
 .home-section .text{
   display: inline-block;
