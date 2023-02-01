@@ -28,7 +28,7 @@ class Member < ApplicationRecord
 
   def add_confirmations_to_members
     team.matches.each do |match|
-      match.confirmations.create(member: self)
+      match.confirmations.create(member: self, user_id: self.user_id)
     end
   end
 
