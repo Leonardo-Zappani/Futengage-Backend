@@ -10,4 +10,6 @@
   -#     = render 'members'      
   .col-span-2.pt-8.overflow-y-auto
     -if @past_matches != nil
-      = render 'next_matches'       
+      = render 'next_matches'    
+    -else
+      = render 'no_matches'     
