@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
   create_table "confirmations", force: :cascade do |t|
     t.bigint "member_id", null: false
     t.bigint "match_id", null: false
+    t.bigint "user_id", null: false
     t.integer "position"
     t.integer "team_number"
     t.datetime "confirmed_at"
@@ -58,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
     t.datetime "updated_at", null: false
     t.index ["match_id"], name: "index_confirmations_on_match_id"
     t.index ["member_id"], name: "index_confirmations_on_member_id"
+    t.index ["user_id"], name: "index_confirmations_on_user_id"
   end
 
   create_table "futengages", force: :cascade do |t|
@@ -161,6 +163,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_170513) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "confirmations", "matches"
   add_foreign_key "confirmations", "members"
+  add_foreign_key "confirmations", "users"
   add_foreign_key "futengages", "users"
   add_foreign_key "matches", "places"
   add_foreign_key "matches", "teams"
