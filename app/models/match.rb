@@ -43,7 +43,7 @@ class Match < ApplicationRecord
 
   def add_confirmations_to_members
     team.members.each do |member|
-      confirmations.create(member: member)
+      confirmations.create(member: member, user_id: member.user_id)
     end
   end
 end
