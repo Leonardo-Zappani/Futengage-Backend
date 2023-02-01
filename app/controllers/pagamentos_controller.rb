@@ -5,12 +5,7 @@ class PagamentosController < ApplicationController
 
   # GET /pagamentos
   def index
-    query = current_account.pagamentos.order(created_at: :asc)
-    query = query.search_by_q(params[:q]) if params[:q].present?
-
-    @pagy, @records = pagy(query)
-
-    @records.load
+   
   end
 
   # GET /pagamentos/1 or /pagamentos/1.json
