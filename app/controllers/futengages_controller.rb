@@ -15,10 +15,11 @@ class FutengagesController < ApplicationController
   # GET /futengages or /futengages.json
   def index
     @teams = Team.new
-    if request.fullpath == "/home"
-      redirect_to "/home?id=#{@current_match.id}"
+    if @current_match.present?
+      if request.fullpath == "/home" || request.fullpath == root_path
+        redirect_to "/home?id=#{@current_match.id}"
+      end
     end
-    
   end
 
   
