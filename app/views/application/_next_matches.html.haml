@@ -2,7 +2,7 @@
   .rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white.w-full
     .px-6.py-5
       .font-bold.text-xl.ml-2 Outros jogos próximos              
-- @past_matches.order(:scheduled_at).limit(6).each do | match | 
+- @past_matches.order(:scheduled_at).limit(5).each do | match | 
   = link_to "/home?id=#{match.id.to_s}" do
     .pt-4.mr-12
       -if params[:id] == match.id.to_s
