@@ -1,23 +1,39 @@
-=turbo_frame_tag "add_place" do 
-  = form_with url: teams_create_place_path, method: :post  do |f|
-    %h4.text-white.devise__header.pt-2 Criar novo local
-    .form-group.pt-4
-      = f.label "Nome do lugar", class: 'form-label text-white'
-      = f.text_field :name, placeholder: "Digitar nome do lugar", class: 'form-control'
-      = f.hidden_field :team_id, :value => request.path.gsub(/[^0-9]/, '')
-    .form-group.pt-4
-      = f.label "Endereço", placeholder: "20h", class: 'form-label text-white text-white'
-      = f.text_field :address, placeholder: "Informe o endereço", class: 'form-control'  
-    .form-group.pt-4
-      = f.label "Dia da semana", placeholder: "20h", class: 'form-label text-white text-white'
-      = f.text_field :day, placeholder: "Informe o dia da semana" , class: "form-control" 
-      = f.hidden_field :owner_id, :value => current_user.id
-    .form-group.pt-4
-      = f.label "Horário" ,placeholder: "Futengage", class: 'form-label text-white'
-      = f.text_field :time, placeholder: "Informe o horário dos jogos", class: 'form-control'
-    .form-group.pt-4
-      = f.label "Maximo de jogadores" ,placeholder: "Futengage", class: 'form-label text-white'
-      = f.text_field :max_players, placeholder: "Informe o número maximo de jogadores", class: 'form-control'  
-    .actions.pt-4
-      = f.submit "Salvar", class: "btn btn--primary"
-    
+.devise__background
+  =turbo_frame_tag "add_place" do 
+    = form_with url: teams_create_place_path, method: :post  do |f|
+      %h4.text-white.devise__header.pt-2 Criar novo local
+      .pt-2
+        .pt-1
+          .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
+            .px-2.py-2
+              = f.label "Nome do lugar", class: 'form-label text-white'
+              = f.text_field :name, placeholder: "Digitar nome do lugar", class: 'form-control text-slate-700'
+              = f.hidden_field :team_id, :value => request.path.gsub(/[^0-9]/, '')
+      .pt-2
+        .pt-1
+          .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
+            .px-2.py-2
+              = f.label "Endereço", placeholder: "20h", class: 'form-label text-white text-white'
+              = f.text_field :address, placeholder: "Informe o endereço", class: 'form-control text-slate-700'  
+      .pt-2
+        .pt-1
+          .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
+            .px-2.py-2
+              = f.label "Dia da semana", placeholder: "20h", class: 'form-label text-white text-white'
+              = f.select :day, { "Segunda-feira": :"Segunda-feira", "Terça-feira": :"Terça-feira", "Quarta-feira": :"Quarta-feira", "Quinta-feira": :"Quinta-feira", "Sexta-feira": :"Sexta-feira", "Sabado": :"Sabado", "Domingo": :"Domingo"}, {}, class: "form-control text-slate-700" 
+              = f.hidden_field :owner_id, :value => current_user.id
+      .pt-2
+        .pt-1
+          .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
+            .px-2.py-2
+              = f.label "Horário" ,placeholder: "Futengage", class: 'form-label text-white'
+              = f.select :time, {"06:00H": :"06:00H", "06:30H": :"06:30H", "07:00H": :"07:00H", "07:30H": :"07:30H", "08:00H": :"08:00H", "08:30H": :"08:30H", "09:00H": :"09:00H", "09:30H": :"09:30H", "10:00H": :"10:00H", "10:30H": :"10:30H", "11:00H": :"11:00H", "11:30H": :"11:30H", "12:00H": :"12:00H", "12:30H": :"12:30H", "13:00H": :"13:00H", "13:30H": :"13:30H", "14:00H": :"14:00H", "14:30H": :"14:30H", "15:00H": :"15:00H", "15:30H": :"15:30H", "16:00H": :"16:00H", "16:30H": :"16:30H", "17:00H": :"17:00H", "17:30H": :"17:30H", "18:00H": :"18:00H", "18:30H": :"18:30H", "19:00H": :"19:00H", "19:30H": :"19:30H", "20:00H": :"20:00H", "20:30H": :"20:30H", "21:00H": :"21:00H", "21:30H": :"21:30H", "22:00H": :"22:00H", "22:30H": :"22:30H", "23:00H": :"23:00H"}, {}, class: 'form-control text-slate-700'
+      .pt-2
+        .pt-1
+          .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
+            .px-2.py-2
+              = f.label "Maximo de jogadores" ,placeholder: "Futengage", class: 'form-label text-white'
+              = f.select :max_players, {"1": :"1","2": :"2","3": :"3","4": :"4","5": :"5","6": :"6","7": :"7","8": :"8","9": :"9","10": :"10","11": :"11","12": :"12","13": :"13","14": :"14","15": :"15","16": :"16"}, {}, class: 'form-control text-slate-700'  
+      .actions.pt-6
+        = f.submit "Salvar", class: "btn btn--primary w-full"
+      
