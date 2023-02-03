@@ -7,16 +7,17 @@
   font-family: "Poppins" , sans-serif;
 }
 .sidebar{
+  @apply: bg-bgseconday;
   position: fixed;
   left: 0;
   top: 0;
   height: 100%;
   width: 80px;
-  background: #ffffff04;
   padding: 6px 14px;
   z-index: 99;
 }
 .sidebar.open{
+  @apply: bg-bgseconday;
   width: 16.5%;
 }
 .sidebar .logo-details{
