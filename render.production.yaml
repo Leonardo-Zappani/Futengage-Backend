@@ -21,7 +21,7 @@ services:
     region: ohio
     domains:
       - app.FutEngage.io
-    repo: https://github.com/codengage/FutEngage
+    repo: https://github.com/Leonardo-Zappani/Futengage
     buildCommand: "./bin/render-build-web.sh"
     startCommand: "bundle exec rails s -p 3000 -b '0.0.0.0'"
     envVars:
@@ -61,7 +61,7 @@ services:
     name: FutEngage_worker_production
     env: ruby
     region: ohio
-    repo: https://github.com/codengage/FutEngage
+    repo: https://github.com/Leonardo-Zappani/Futengage
     buildCommand: "./bin/render-build-sidekiq.sh"
     startCommand: bundle exec sidekiq
     envVars:
