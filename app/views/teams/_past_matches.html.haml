@@ -1,0 +1,34 @@
+.rounded.shadow-lg.bg-bgsecondary.text-white.w-fit.mb-4
+  .px-6.py-5
+    .font-bold.text-xl.ml-2 Últimos jogos do time  
+.grid.grid-cols-3.gap-4.mr-6
+  -if Team.where("id =?", params[:id]).first.matches.where("scheduled_at <?", Time.now) != nil
+    - Team.where("id =?", params[:id]).first.matches.where("scheduled_at <?", Time.now).limit(3).each do | match | 
+      .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
+        .px-6.py-4
+          .font-bold.text-xl.mb-2= match.team.group_name.capitalize
+          .grid.grid-cols-3.justify-beetween
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Local
+              .flex.items-center.column-span-1
+                = heroicon "map-pin", options: { class: "h-5 w-5 text-white" } 
+                %span.text-xs.text-white.pl-1= match.place.name.capitalize
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Jogadores
+              .flex.items-center.column-span-1
+                = heroicon "users", options: { class: "h-5 w-5 text-white" }  
+                %span.text-xs.text-white.pl-1 
+                  = match.confirmations.where("confirmed = ?", true).count
+            .column-span-1
+              %h4.text-md.font-semibold.text-white
+                %span.text-sm.text-white Data
+              .flex.items-center.column-span-1
+                = heroicon "calendar", options: { class: "h-5 w-5 text-white" }  
+                %span.text-xs.text-white.pl-1 
+                  = match.scheduled_at.strftime("%e/%m/%y")
+  - else
+    = render 'no_history'              
+
+      
