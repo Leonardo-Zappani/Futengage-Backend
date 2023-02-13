@@ -31,6 +31,10 @@ class Confirmation < ApplicationRecord
 
   enum position: { goleiro: 0, zagueiro: 1, lateral: 2, meia: 3, ponta: 4, centroavante: 5 }
 
+  after_create_commit -> {broadcast_prepend_to 'confirmations', target: 'confirmations', partial: 'application/visualization', locals: { confirmation: self }}
+  after_update_commit -> {broadcast_replace_to 'confirmations', target: 'confirmations', partial: 'application/visualization', locals: { confirmation: self }}
+
+
   has_one :team, through: :member
   has_one :user, through: :member
   has_one :place, through: :match
