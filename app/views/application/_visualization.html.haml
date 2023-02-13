@@ -60,31 +60,14 @@
   .pt-4  
     = button_to "confirm_presence_path", class: "btn btn--primary h-10 w-full bg-slate-700 hover:bg-black", disabled: true, method: :post do
       %span.text-white Não há jogos para confirmar
--if params[:id].present?
-  .block.rounded.overflow-hidden.overflow-x-auto.shadow-lg.bg-bgsecondary.text-white
-    .flex.px-6.py-5
-      - Match.find(params[:id]).confirmations.where("confirmed =?", true).limit(4).each do |confirmation|
-        .w-44
-          .flex.items-center.py-2
-            .flex-shrink-0
-              = image_tag confirmation.user.avatar, class: "h-10 w-10 rounded-full"
-            .ml-3
-              %p.text-sm.font-medium.text-white
-                = confirmation.user.name
-              .flex.items-center
-                %span.text-xs.text-white
-                  = confirmation.position
-                %span.text-xs.text-white.ml-2
-                  = confirmation.team_number   
-      .place-content-end
-        = link_to "casa do caralho" do
-          .flex.items-center.py-2
-            .flex-shrink-0.mt-2
-              = heroicon "magnifying-glass", options: {class: "h-6 w-6 ml-5"}
-            %p.text-sm.font-medium.text-white.ml-2 Ver todos                                      
--else
-  .col-span-6
-    .block.rounded.overflow-hidden.overflow-x-auto.shadow-lg.bg-bgsecondary.text-white
-      .flex.px-6.py-5
-        %span.text-xs.text-white
-          Nenhum jogador confirmado
+.w-full
+  -if params[:id].present?
+    .infernodeblock
+      .flexdocaralho.px-6.py-5.rounded.shadow-lg.bg-bgsecondary.text-white
+        = render "players", id: Match.find(params[:id]) 
+  -else
+    .col-span-6
+      .block.rounded.overflow-hidden.overflow-x-auto.shadow-lg.bg-bgsecondary.text-white
+        .flex.px-6.py-5
+          %span.text-xs.text-white
+            Nenhum jogador confirmado
