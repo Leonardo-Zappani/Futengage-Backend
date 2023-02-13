@@ -1,4 +1,4 @@
-= form_with(model: @teams) do |f|
+= form_with url: "/teams", method: :post do |f|
   .form-group
     = f.label "Nome da equipe",placeholder: "Digite o nome", class: 'form-label text-white'
     = f.text_field :group_name, placeholder: "Nome do seu time" ,class: 'form-control'
