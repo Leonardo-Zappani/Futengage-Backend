@@ -22,7 +22,7 @@
 #
 class Place < ApplicationRecord
   belongs_to :team
-
+  after_create_commit -> {broadcast_prepend_to 'places', target: 'places', partial: 'teams/form_match', locals: { place: self }}
   has_many :matches, dependent: :destroy
   has_many :confirmed_matches, -> { where.not(confirmed_at: nil) }, class_name: 'Match'
   has_many :unconfirmed_matches, -> { where(confirmed_at: nil) }, class_name: 'Match'
