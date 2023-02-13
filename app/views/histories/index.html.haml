@@ -37,6 +37,9 @@
                       %span.text-xs.text-white.pl-1 
                         = match.scheduled_at.strftime("%e/%m/%y")
     - else
-      = render 'no_history'              
+      .pt-4
+        .max-w-sm.rounded.overflow-hidden.shadow-lg.bg-bgsecondary.text-white
+          .flex.px-6.py-5
+            %h4.text-md.font-semibold.text-white Nenhum jogo no histórico
 
       
