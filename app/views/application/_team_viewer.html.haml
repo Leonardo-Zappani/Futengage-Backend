@@ -21,7 +21,10 @@
               %span.text-sm.text-white Presença
             .flex.items-center.column-span-1
               = heroicon "calculator", options: { class: "h-5 w-5 text-white" }  
-              %span.text-xs.text-white.pl-1=  member.confirmations.where("confirmed = ?", true).count.to_s + " (" + ( member.confirmations.where("confirmed = ?", true).count.to_f / member.confirmations.count.to_f*100).round(2).to_s + "%)"
+              -if member.confirmations.any?
+                %span.text-xs.text-white.pl-1=  member.confirmations.where("confirmed = ?", true).count.to_s + " (" + ( member.confirmations.where("confirmed = ?", true).count.to_f / member.confirmations.count.to_f*100).round(2).to_s + "%)"
+              -else  
+                %span.text-xs.text-white.pl-1 0%
           .column-span-1
             %h4.text-md.font-semibold.text-white
               %span.text-sm.text-white Entrou em
