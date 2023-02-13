@@ -75,3 +75,16 @@ background-color:   #11101d;
   width: 80%;
   max-width: 600px;
 }
+
+.infernodeblock{
+  display: block;
+  height: 150px;
+  overflow: hidden;
+}
+
+.flexdocaralho{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
