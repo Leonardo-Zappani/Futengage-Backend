@@ -1,5 +1,5 @@
 .grid.grid-cols-8.h-full.devise__background
-  .col-span-2
+  .col-span-2.overflow-hidden
     .ml-12.pt-12
       .devise__header.pb-1
         %h2.devise__title= Team.where('id = ?', params[:id]).first.group_name.capitalize
@@ -10,7 +10,7 @@
           =render "form_match"
       .pt-4.mb-24
         =render "form_place"  
-  .col-span-6.ml-12.pt-12.h-full
+  .col-span-6.ml-12.pt-12.h-full.overflow-hidden
     = render "team_viewer"
-    -# .pt-4
-    -#   = render "past_matches", locals: { id: params[:id] }
+    .pt-4
+      -# = render "past_matches", locals: { id: params[:id] }
