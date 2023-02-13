@@ -128,7 +128,7 @@ class TeamsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   # Only allow a list of trusted parameters through.
   def team_params
-    params.require(:team).permit(:group_name,:team_one_name, :team_two_name, :description)
+    params.permit(:group_name,:team_one_name, :team_two_name, :description)
   end
 
   def match_params
