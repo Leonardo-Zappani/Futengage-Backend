@@ -18,7 +18,8 @@
           .links_name{class: request.fullpath.include?("/" +teams.id.to_s) && "nameactive"}= teams.group_name 
           .tooltip= teams.group_name   
     %li
-      %a{href: "/configs", class: request.fullpath.include?("configs") && "active"}
+      = render "modal_config"
+      %a{class: request.fullpath.include?("configs") && "active", "data-modal-target" => "center-center-modall", "data-modal-toggle" => "center-center-modall", type: "button"}
         %i.bx.bx-cog{class: request.fullpath.include?("configs") && "iconactive"}
         %span.links_name{class: request.fullpath.include?("configs") && "nameactive"} Configurações 
       %span.tooltip Configurações     
