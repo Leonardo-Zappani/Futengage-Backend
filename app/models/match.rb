@@ -41,6 +41,9 @@ class Match < ApplicationRecord
 
   private
 
+  after_create_commit -> {broadcast_prepend_to 'matches', target: 'matches', locals: { match: self }}
+
+
   def add_confirmations_to_members
     team.members.each do |member|
       confirmations.create(member: member, user_id: member.user_id)
