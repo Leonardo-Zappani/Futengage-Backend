@@ -32,6 +32,8 @@ class Team < ApplicationRecord
 
   private
 
+  after_create_commit -> {broadcast_prepend_to 'teams', target: 'teams', partial: 'teams/form_match', locals: { team: self }}
+
   def add_owner_as_member
     members.create(user: owner)
   end
