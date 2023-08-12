@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_12_213441) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_12_220502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_213441) do
     t.datetime "confirmed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
     t.index ["owner_id"], name: "index_matches_on_owner_id"
     t.index ["place_id"], name: "index_matches_on_place_id"
     t.index ["team_id"], name: "index_matches_on_team_id"

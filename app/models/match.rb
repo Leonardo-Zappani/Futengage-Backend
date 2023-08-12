@@ -3,6 +3,7 @@
 # Table name: matches
 #
 #  id             :bigint           not null, primary key
+#  active         :boolean          default(TRUE)
 #  confirmed_at   :datetime
 #  scheduled_at   :datetime
 #  team_one_name  :string           default("team one"), not null
