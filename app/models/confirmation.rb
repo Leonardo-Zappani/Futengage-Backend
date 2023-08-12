@@ -3,6 +3,7 @@
 # Table name: confirmations
 #
 #  id           :bigint           not null, primary key
+#  active       :boolean          default(TRUE)
 #  confirmed    :boolean          default(FALSE), not null
 #  confirmed_at :datetime
 #  position     :integer

@@ -33,6 +33,8 @@ class Match < ApplicationRecord
   belongs_to :place
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
 
+  before_update :maybe_set_active_to_false
+
   has_many :confirmations, dependent: :destroy
   # has_many :confirmed_members, through: :confirmations, -> { where(confirmations: { confirmed: true }) }, source: :member
   # has_many :unconfirmed_members, through: :confirmations, -> { where(confirmations: { confirmed: false }) }, source: :member
@@ -49,5 +51,10 @@ class Match < ApplicationRecord
     team.members.each do |member|
       confirmations.create(member: member, user_id: member.user_id)
     end
+  end
+
+  def discard!
+    update(active: false)
+    confirmations&.update_all(active: false)
   end
 end
