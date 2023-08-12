@@ -48,7 +48,7 @@ class User < ApplicationRecord
   has_many :matches, through: :teams
   has_many :unconfirmed_matches, -> { where(confirmations: { confirmed: false, confirmed_at: nil }) }, through: :matches, source: :confirmations
   has_many :next_matches, -> { where(matches: { active: true }) }, through: :teams, source: :matches
-  has_many :pending_confirmations, -> { where(confirmations: { confirmed: false, confirmed_at: nil }) }, through: :members, source: :confirmations
+  has_many :pending_confirmations, -> { where(confirmations: { confirmed: false, confirmed_at: nil, active: true }) }, through: :members, source: :confirmations
   has_many :confirmed_confirmations, -> { where(confirmations: { confirmed: true }) }, through: :members, source: :confirmations
 
   def full_name
@@ -61,5 +61,21 @@ class User < ApplicationRecord
     else
       "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?s=100&d=identicon"
     end
+  end
+
+  def next_match
+    unconfirmed_matches&.order(scheduled_at: :asc)&.first
+  end
+
+  def next_confirmation
+    return if pending_confirmations&.empty?
+
+    next_match = pending_confirmations&.first&.match
+
+    pending_confirmations&.each do |confirmation|
+      next_match = confirmation.match if confirmation.match.scheduled_at > next_match.scheduled_at
+    end
+
+    next_match.confirmations.find_by(user_id: id)
   end
 end
