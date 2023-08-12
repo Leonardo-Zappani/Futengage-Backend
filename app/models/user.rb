@@ -46,7 +46,7 @@ class User < ApplicationRecord
   has_many :owned_matches, class_name: 'Match', foreign_key: 'owner_id', dependent: :destroy
   has_many :places, through: :teams
   has_many :matches, through: :teams
-  has_many :unconfirmed_matches, -> { where(confirmations: { confirmed: false, confirmed_at: nil, active: true }) }, through: :matches, source: :confirmations
+  has_many :unconfirmed_matches, -> { where(confirmations: { confirmed: false, confirmed_at: nil }) }, through: :matches, source: :confirmations
   has_many :next_matches, -> { where(matches: { active: true }) }, through: :teams, source: :matches
   has_many :pending_confirmations, -> { where(confirmations: { confirmed: false, confirmed_at: nil }) }, through: :members, source: :confirmations
   has_many :confirmed_confirmations, -> { where(confirmations: { confirmed: true }) }, through: :members, source: :confirmations
