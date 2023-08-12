@@ -5,16 +5,12 @@ class ConfirmationsController < ApplicationController
 
   # GET /confirmations
   def index
-    query = current_account.confirmations.order(created_at: :asc)
-    query = query.search_by_q(params[:q]) if params[:q].present?
-
-    @pagy, @records = pagy(query)
-
-    @records.load
+    @confirmations = current_user.futengage.confirmations.where(confirmed: false, confirmed_at: nil)
   end
 
   # GET /confirmations/1 or /confirmations/1.json
   def show
+    render json: show, status: :ok
   end
 
 

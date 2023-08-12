@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  resources :pagamentos
   resources :teams
   resources :places
-  resources :plaes
+  resources :places
   resources :members
   resources :confirmations
   resources :matches

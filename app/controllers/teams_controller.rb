@@ -69,9 +69,9 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         notice = t('.success')
-        redirect_to "/teams/" + @team.id.to_s
-        format.json { render :show, status: :created, location: @team }
-        format.turbo_stream { flash.now.notice = notice }
+        # redirect_to "/teams/" + @team.id.to_s
+        # format.json { render :show, status: :created, location: @team }
+        # format.turbo_stream { flash.now.notice = notice }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @team.errors, status: :unprocessable_entity }

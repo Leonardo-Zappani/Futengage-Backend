@@ -26,6 +26,10 @@
 #
 class Futengage < ApplicationRecord
   has_many :users
+  has_many :confirmations, dependent: :destroy
+  has_many :matches, dependent: :destroy
+  has_many :members, through: :users
+
   def callbacks
     @current_futengage = Futengage.where(futengage.day > Time.now-84640).first
   end

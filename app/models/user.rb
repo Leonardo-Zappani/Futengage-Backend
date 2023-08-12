@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   enum role: { goleiro: 0, zagueiro: 1, lateral: 2, meia: 3, ponta: 4, centroavante: 5 }
 
-  belongs_to :futengage, optional: true
+  belongs_to :futengage
 
   has_many :members, dependent: :destroy
   has_many :teams, through: :members
