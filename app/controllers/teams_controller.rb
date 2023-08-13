@@ -12,115 +12,50 @@ class TeamsController < ApplicationController
   def show
   end
 
-  # GET /teams/new
-  def new
-    @team = Team.new
-  end
-
-  # GET /teams/1/edit
-  def edit
-  end
-
   # POST /teams/create_match 
   def create_match
-    puts params
-    @team = Team.find(params[:team_id])
-    @place = Place.where("name = ?", params[:place_id]).first
-    @match = @team.matches.new(scheduled_at: params[:scheduled_at], place: @place, owner_id: params[:owner_id], team_one_name: params[:team_one_name], team_two_name: params[:team_two_name], team_one_score: params[:team_one_score], team_two_score: params[:team_two_score], confirmed_at: params[:confirmed_at])
-      respond_to do |format|
-        if @match.save
-          notice = t('.success')
-          format.html { redirect_to matches_url, notice: notice }
-          format.json { render :show, status: :created, location: @match }
-          format.turbo_stream { flash.now.notice = notice }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @match.errors, status: :unprocessable_entity }
-      end
+    team = current_user.teams.find(params[:team_id])
+    place = team.places.find(params[:place_id])
+    @match = team.matches.new(scheduled_at: params[:scheduled_at], place: place, owner_id: params[:owner_id], team_one_name: params[:team_one_name], team_two_name: params[:team_two_name], team_one_score: params[:team_one_score], team_two_score: params[:team_two_score], confirmed_at: params[:confirmed_at])
+      if @match.save
+        render :show, status: :created, location: @match
+      else
+        render json: @match.errors, status: :unprocessable_entity
     end
-  end
-
-
-  # POST /teams/create_place
-  def create_place
-    @team = Team.find(params[:team_id])
-    @place = @team.places.create(place_params)
-    redirect_to "/teams/" + @team.id.to_s
   end
 
   # POST /teams/add_member
   def add_member
-    @team = (Team.find(params[:team_id])).id
-    @new_member = (User.find(User.where("email = ?", params[:user_id]).ids.first)).id
-    @member = Team.find(@team).members.create(user_id: @new_member)
-    respond_to do |format|
-      if @new_member.present?
-        notice = t('.success')
-        format.html { redirect_to "/teams/" + @team.to_s, notice: notice }
-      else
-        notice = t('.error')
-        format.html { render :new, status: :unprocessable_entity, notice: notice }
-      end
-    end
+    team = current_user.teams.find(params[:team_id])
+    new_member = User.find_by(email: params[:email])
+
+    raise ActiveRecord::RecordNotFound unless new_member
+
+    team.members.create(user_id: new_member)
+
+    render json: { head: 'Membro adicionado com sucesso!' }
   end
   # POST /teams or /teams.json
   def create
-    @team = current_user.owned_teams.new(team_params)
-    respond_to do |format|
-      if @team.save
-        notice = t('.success')
-        # redirect_to "/teams/" + @team.id.to_s
-        # format.json { render :show, status: :created, location: @team }
-        # format.turbo_stream { flash.now.notice = notice }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
-      end  
+    @team = current_user.owned_teams.create!(team_params)
 
-    end
-  end
-
-  def create_everything
-    @team = current_user.owned_teams.new(team_params)
-
-    respond_to do |format|
-      if @team.save
-        notice = t('.success')
-        redirect_to "/teams/" + @team.id.to_s
-        format.json { render :show, status: :created, location: @team }
-        format.turbo_stream { flash.now.notice = notice }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
-      end  
-      
-    end
+    render show: @team, status: :created
   end
 
   # PATCH/PUT /teams/1 or /teams/1.json
   def update
-    respond_to do |format|
-      if @team.update(team_params)
-        notice = t('.success')
-        format.json { render :show, status: :ok, location: @team }
-        format.html { redirect_to teams_url, notice: notice }
-        format.turbo_stream { flash.now.notice = notice }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
-      end
+    if @team.update(team_params)
+      render json: :show, status: :created, location: @team
+    else
+      render json: @team.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /teams/1 or /teams/1.json
   def destroy
     @team.destroy
-    respond_to do |format|
-      notice = t('.success')
-      format.html { redirect_to teams_url, notice: notice }
-      format.json { head :no_content }
-      format.turbo_stream { flash.now.notice = notice }
-    end
+
+    render json: { head: 'Time removido com sucesso!' }
   end
 
   private
