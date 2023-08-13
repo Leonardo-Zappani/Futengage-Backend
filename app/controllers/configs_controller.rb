@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ConfigsController < ApplicationController
-  before_action :set_config, only: %i[show edit update destroy]
 
   # GET /configs
   def index
@@ -65,11 +64,6 @@ class ConfigsController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_config
-    @config = current_account.configs.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def config_params
