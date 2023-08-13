@@ -1,1 +1,1 @@
-json.array! @histories, partial: "histories/history", as: :history
+json.array! @histories, partial: "matches/match", as: :match
