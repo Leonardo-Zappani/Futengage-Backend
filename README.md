@@ -56,21 +56,10 @@ rails server
 The backend server should now be running at `http://localhost:3000`.
 
 ## Frontend
-The frontend of FutEngage is built using Vite and React. Here's how to set it up:
 
-- Navigate to the frontend directory:
-```bash
-cd futengage/frontend
-```
-- Install dependencies:
-```bash
-npm install
-```
-- Start the development server:
-```bash
-npm run dev
-```
-The frontend development server should now be running at `http://localhost:3001`.
+See how to set it up [here](https://github.com/Leonardo-Zappani/Futengage-Frontend)
+
+The frontend development server should be running at `http://localhost:3001`.
 
 ## Usage
 Once both the backend and frontend are set up, you can access FutEngage by opening your web browser and navigating to `http://localhost:3001`. You'll be able to create teams, add players, schedule matches, and manage player performance data.
