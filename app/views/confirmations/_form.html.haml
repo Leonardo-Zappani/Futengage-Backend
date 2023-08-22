@@ -1,6 +1,0 @@
-= form_for @confirmation do |f|
-  - if @confirmation.errors.any?
-    = render 'errors', errors: @confirmation.errors
-  .flex.flex-col.space-y-4.sm:space-y-6
-    .form-group
-      = f.submit class: "btn btn--primary"

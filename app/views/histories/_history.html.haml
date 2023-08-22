@@ -1,6 +1,0 @@
-= render(Table::ItemComponent.new(item: history, classes: 'group', link: edit_history_path(history), options: { data: { turbo_frame: 'drawer' } })) do |item|
-  - item.col(classes: 'c-table__column--actions') do
-    = button_to edit_history_path(history), method: :get, onclick: 'event.stopPropagation()', data: { turbo_frame: 'drawer' }, class: 'btn-circle btn-circle--primary hidden group-hover:flex' do
-      = heroicon 'pencil', options: { class: 'btn-circle__icon' }
-    = button_to history, method: :delete, onclick: 'event.stopPropagation()', form: { data: { turbo_confirm: t('shared.are_you_sure?') } }, class: 'btn-circle btn-circle--danger hidden group-hover:flex' do
-      = heroicon 'trash', options: { class: 'btn-circle__icon' }
